@@ -22,7 +22,7 @@ Section 1.3
 Connections with RNNs
 Bandit learning
 Adversarial training
-Jana Rao Doppa's work
+Jana Rao Doppa
 Jason Eisner Coaching
 
 Part 2
@@ -30,4 +30,4 @@ Part 2
 - Dependency parsing: heuristic expert definition
 - NLG
 - Semantic parsing
-- focused costing, sequence correction, targeted exploration, changeprop
+- focused costing, sequence correction, targeted exploration, changeprop, asymmetric losses for trade off accuracy runtim, precision recall
