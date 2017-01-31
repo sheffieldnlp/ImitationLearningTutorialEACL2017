@@ -1,43 +1,38 @@
-Imitation learning for structured prediction in natural language processing
-Andreas Vlachos and Gerasimos Lampouras
+<h1>Imitation learning for structured prediction in natural language processing</h1>
+<h2><a href="http://andreasvlachos.github.io/">Andreas Vlachos</a> and <a href="http://glampouras.github.io/">Gerasimos Lampouras</a></h2>
 
 
-Objectives
+<h3>Objectives</h3>
 
-Imitation learning is a learning paradigm originally developed to learn robotic controllers from demonstrations by humans, e.g. autonomous flight from pilot demonstrations. Recently, algorithms for structured prediction were proposed under this paradigm and have been applied successfully to a number of tasks including syntactic dependency parsing, information extraction, coreference resolution, dynamic feature selection, semantic parsing and natural language generation. Key advantages are the ability to handle large output search spaces and to learn with non-decomposable loss functions. Our aim in this tutorial is to have a unified presentation of the various imitation algorithms for structure prediction, and show how they can be applied to a variety of NLP applications. 
+<p>Imitation learning is a learning paradigm originally developed to learn robotic controllers from demonstrations by humans, e.g. autonomous flight from pilot demonstrations. Recently, algorithms for structured prediction were proposed under this paradigm and have been applied successfully to a number of tasks including syntactic dependency parsing, information extraction, coreference resolution, dynamic feature selection, semantic parsing and natural language generation. Key advantages are the ability to handle large output search spaces and to learn with non-decomposable loss functions. Our aim in this tutorial is to have a unified presentation of the various imitation algorithms for structure prediction, and show how they can be applied to a variety of NLP applications.
+</p>
 
-All material associated to the tutorial will be available at http://multimodalnlp.github.io/
+<h3>Tutorial Overview</h3>
 
+<b>Part I: Imitation Learning</b>
 
-Tutorial Overview
+<p>In the first part, we will give a unified presentation of imitation learning for structured prediction focusing on the intuition behind the framework. We will then delve into the details of the different algorithms that have been proposed so far under the imitation learning paradigm, including SEARN, DAgger, V-DAgger, LOLS, and MIXER. Furthermore, we will give a comparative overview of the various algorithms presented that will expose their differences and their practical implications. We will conclude by discussing the relation of imitation learning to recurrent neural networks, bandit learning, adversarial learning, and reinforcement learning.</p>
 
-Part I: Imitation Learning
+<b>Part II: Applications in NLP</b>
 
-In the first part, we will give a unified presentation of imitation learning for structured prediction focusing on the intuition behind the framework. We will then delve into the details of the different algorithms that have been proposed so far under the imitation learning paradigm, including SEARN, DAgger, V-DAgger, LOLS, and MIXER. Furthermore, we will give a comparative overview of the various algorithms presented that will expose their differences and their practical implications. We will conclude by discussing the relation of imitation learning to recurrent neural networks, bandit learning, adversarial learning, and reinforcement learning.
-
-Part II: Applications in NLP
-
-In the second part, we will discuss recent work applying imitation learning methods in the context of NLP. We will begin by reviewing the application of imitation learning on syntactic dependency parsers and discuss how to create dynamic oracles. Furthermore, we will review how imitation learning is applied on semantic parsing, and how it can benefit natural language generation, where the search space is all English sentences. In this process we will explain techniques that work to augment imitation learning and solve problems that arise in each particular application, such as focused costing, noise reduction, targeted exploration, sequence correction, and change propagation. Finally, we will briefly present applications on biomedical event extraction, feature selection, coreference resolution, autonomous driving learning, and pruning policies for syntactic parsing.
+<p>In the second part, we will discuss recent work applying imitation learning methods in the context of NLP. We will begin by reviewing the application of imitation learning on syntactic dependency parsers and discuss how to create dynamic oracles. Furthermore, we will review how imitation learning is applied on semantic parsing, and how it can benefit natural language generation, where the search space is all English sentences. In this process we will explain techniques that work to augment imitation learning and solve problems that arise in each particular application, such as focused costing, noise reduction, targeted exploration, sequence correction, and change propagation. Finally, we will briefly present applications on biomedical event extraction, feature selection, coreference resolution, autonomous driving learning, and pruning policies for syntactic parsing.</p>
 
 
-Structure
+<h3>Structure</h3>
 
-Part I: Imitation Learning Algorithms (90 minutes)
-- Introduction, intuition and unified overview of the algorithms (30 min): Seminal work, structured prediction basics, per-action and end-to-end supervision, and decomposability
-- Detailed algorithm descriptions (30 minutes): Exact imitation, DAgger, roll outs and non-decomposable loss, latent variables, and cost-sensitive classification
-- Advanced topics (30 minutes): imitation learning by coaching, and relation of imitation learning to recurrent neural networks, bandit learning, adversarial learning, reinforcement learning 
+<b>Part I: Imitation Learning Algorithms</b> (90 minutes)
+<ul>
+<li>Introduction, intuition and unified overview of the algorithms (30 min): Structured prediction basics, per-action and end-to-end supervision, and decomposability</li>
+<li>Detailed algorithm descriptions (30 minutes): Exact imitation, DAgger, roll outs and non-decomposable loss, latent variables, and cost-sensitive classification</li>
+<li> Advanced topics (30 minutes): imitation learning by coaching, and relation of imitation learning to recurrent neural networks, bandit learning, adversarial learning, reinforcement learning</li>
+</ul>
 
-Break (15 minutes)
+<p><b>Break!</b> (15 minutes)</p>
 
-Part II: Applications (90 minutes)
-- Syntactic dependency parsers (25 minutes): heuristic expert definition
-- Natural language generation (25 minutes): sequence correction
-- Semantic parsing (25 minutes): abstract meaning representations, focused costing, noise reduction, and targetted exploration
-- Brief presentation of other applications (15 minutes): Biomedical event extraction, feature selection, coreference resolution, autonomous driving learning, pruning policies for syntactic parsing 
-
-
-About the Speakers
-
-Andreas Vlachos (\url{http://andreasvlachos.github.io/}) is a lecturer at the University of Sheffield, working on the intersection of Natural Language Processing and Machine Learning. Previously he was a postdoc at the Machine Reading group at UCL working with Sebastian Riedel on automated fact-checking in collaboration with the BBC research and development team. Before that he was a member of the Natural Language and Information Processing group at the University of Cambridge working with Stephen Clark on semantic parsing. Earlier he was a postdoc at the University of Wisconsin-Madison working with Mark Craven on information extraction from biomedical text. He is broadly interested in natural language understanding (e.g. information extraction, semantic parsing) and in machine learning approaches that would help us towards this goal. He has also worked on active learning, clustering and biomedical text mining.
-
-Gerasimos Lampouras (\url{http://glampouras.github.io/}) is a postdoc at the University of Sheffield, working with Andreas Vlachos on developing domain-independent Natural Language Generation frameworks using Imitation Learning. Previously he was a postdoc at the Machine Reading group at University College London working with Andreas Vlachos and Sebastian Riedel. Before that he received his PhD from Athens University of Economics and Business while supervised by Ion Androutsopoulos. His research interests revolve around natural language generation, machine learning and global optimization approaches in natural language processing. His previous work also includes text summarization and question answering.
+<b>Part II: Applications</b> (90 minutes)
+<ul>
+<li>Syntactic dependency parsers (25 minutes): heuristic expert definition</li>
+<li>Natural language generation (25 minutes): sequence correction</li>
+<li>Semantic parsing (25 minutes): abstract meaning representations, focused costing, noise reduction, and targetted exploration</li>
+<li>Brief presentation of other applications (15 minutes): Biomedical event extraction, feature selection, coreference resolution, autonomous driving learning, pruning policies for syntactic parsing</li>
+</ul>
