@@ -36,7 +36,7 @@ Part II: Applications (90 minutes)
 - Brief presentation of other applications (15 minutes): Biomedical event extraction, feature selection, coreference resolution, autonomous driving learning, pruning policies for syntactic parsing 
 
 
-About the Speakers
+About the speakers
 
 Andreas Vlachos (http://andreasvlachos.github.io/) is a lecturer at the University of Sheffield, working on the intersection of Natural Language Processing and Machine Learning.  Current projects include natural language generation, automated fact-checking and imitation learning. He has also published research on semantic parsing, language modelling, information extraction, active learning, clustering and biomedical text mining.
 
