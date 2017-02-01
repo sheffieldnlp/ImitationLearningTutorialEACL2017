@@ -1,5 +1,5 @@
 Imitation learning for structured prediction in natural language processing
-Andreas Vlachos and Gerasimos Lampouras
+Andreas Vlachos, Gerasimos Lampouras and Sebastian Riedel
 
 
 Objectives
@@ -23,17 +23,17 @@ In the second part, we will discuss recent work applying imitation learning meth
 Structure
 
 Part I: Imitation Learning Algorithms (90 minutes)
-- Introduction, basic concepts and intuition (30 min): Structured prediction basics, per-action and end-to-end supervision, and decomposability
-- Detailed algorithm descriptions (30 minutes): Exact imitation, DAgger, roll outs and non-decomposable losses, latent variables, and cost-sensitive classification
-- Advanced topics (30 minutes): imitation learning by coaching, imitation learning for recurrent neural network training, bandit learning, adversarial learning, reinforcement learning 
+- Introduction, basic concepts and intuition: Structured prediction basics, per-action and end-to-end supervision, and decomposability
+- Detailed algorithm descriptions: Exact imitation, DAgger, roll outs and non-decomposable losses, latent variables, and cost-sensitive classification
+- Advanced topics: Imitation learning by coaching, imitation learning for recurrent neural network training, bandit learning, adversarial learning, reinforcement learning 
 
 Break (15 minutes)
 
 Part II: Applications (90 minutes)
-- Syntactic dependency parsers (25 minutes): expert policy specification
-- Natural language generation (25 minutes): sequence correction
-- Semantic parsing (25 minutes): abstract meaning representation, focused costing, noise reduction, and targeted exploration
-- Brief presentation of other applications (15 minutes): Biomedical event extraction, feature selection, coreference resolution, autonomous driving learning, pruning policies for syntactic parsing 
+- Syntactic dependency parsers: Expert policy specification
+- Natural language generation: Sequence correction
+- Semantic parsing: Abstract meaning representation, focused costing, noise reduction, and targeted exploration
+- Brief presentation of other applications : Biomedical event extraction, feature selection, coreference resolution, autonomous driving learning, pruning policies for syntactic parsing 
 
 
 About the speakers
@@ -41,3 +41,5 @@ About the speakers
 Andreas Vlachos (http://andreasvlachos.github.io/) is a lecturer at the University of Sheffield, working on the intersection of Natural Language Processing and Machine Learning.  Current projects include natural language generation, automated fact-checking and imitation learning. He has also published research on semantic parsing, language modelling, information extraction, active learning, clustering and biomedical text mining.
 
 Gerasimos Lampouras (http://glampouras.github.io/) is a postdoc at the University of Sheffield, working with Andreas Vlachos on developing domain-independent Natural Language Generation frameworks using Imitation Learning. Previously he was a postdoc at the Machine Reading group at University College London working with Andreas Vlachos and Sebastian Riedel. Before that he received his PhD from Athens University of Economics and Business while supervised by Ion Androutsopoulos. His research interests revolve around natural language generation, machine learning and global optimization approaches for natural language processing. His previous work also includes text summarization and question answering.
+
+Sebastian Riedel (http://www.riedelcastro.org/) is a Reader at University College London and leading the Machine Reading Lab. He is an Allen Distinguished Investigator, Marie Curie fellow and received a Google Focused Research award. Sebastian is generally interested in the intersection of Natural Language Processing and Machine Learning, and particularly interested in teaching machines to read and to reason with what was read. He has published various papers on this topic, covering questions related to scalable inference, probabilistic programming and representation learning.
