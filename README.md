@@ -12,11 +12,14 @@ To run execute `jupyter notebook` and pick the appropriate notebeook. I suggest 
 
 Part 1
 
-Section 1.1
+Section 1.0
 - introduction/motivation: where have they seen this before, recent paper, e.g. dynamic oracles, reinforcement learning for anaphora?
+
+Section 1.1
 - structure prediiction basics->transition-based
 - kinds of supervision: per-action, end reward
 - decomposability
+- Cost-sensitive classification
 
 Section 1.2
 Pos tagging example interleaved with the algorithm
@@ -24,12 +27,14 @@ Pos tagging example interleaved with the algorithm
 - DAgger
 - with roll outs and non-decomposable loss
 - latent variables
-- Cost-sensitive classification
+
 
 Section 1.3
 Connections with RNNs
 Bandit learning
 Adversarial training
+Negative sampling
+Actor-Critic
 Jana Rao Doppa
 Jason Eisner Coaching
 
