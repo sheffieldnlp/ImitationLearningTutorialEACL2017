@@ -26,17 +26,19 @@ Pos tagging example interleaved with the algorithm
 - exact imitation
 - DAgger
 - with roll outs and non-decomposable loss
-- latent variables
+- latent variables/sub-optimal experts
 
 
 Section 1.3
-Connections with RNNs
-Bandit learning
-Adversarial training
-Negative sampling
-Actor-Critic
-Jana Rao Doppa
-Jason Eisner Coaching
+- A bit of the theory from Goodman et al. 2016
+- LoLS diagram connecting it to RL
+- Connections with RNNs
+- Bandit learning
+- Adversarial training/best demonstration not necessarily the best teaching material.
+- Negative sampling
+- Actor-Critic
+- Jana Rao Doppa
+- Jason Eisner Coaching
 
 Part 2
 
