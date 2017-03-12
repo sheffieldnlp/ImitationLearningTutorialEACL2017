@@ -26,10 +26,10 @@
 
 \begin{tikzpicture}[text height=1.5ex,text depth=.25ex,framed, background rectangle/.style={thick, draw=black}]
 \matrix(m)[matrix of math nodes,column sep=1cm,row sep=0.3cm]{
-    \textbf{Noun} &  \mathord{\cdot}   &\mathord{\cdot} &   \color{red}{\mathord{\circ}} &  \\
-    \textbf{Verb} & \mathord{\cdot}  &\cdot &    \color{red}{\mathord{\bigstar}} &    \\
-    \textbf{Modal}  &\mathord{\cdot} & \mathord{\bigstar} &  \color{red}{\mathord{\circ}} &  \\
-    \textbf{Pronoun} & \mathord{\bigstar}   &\mathord{\cdot} &   \color{red}{\mathord{\circ}} &  \\       
+    \textbf{Noun} &  \mathord{\cdot}   & \color{red}{\circ} &   \mathord{\cdot} & \hspace{-0.4in} cost=2 \\
+    \textbf{Verb} & \mathord{\cdot}  &\color{red}{\circ} &    \mathord{\bigstar} &   \\
+    \textbf{Modal}  &\mathord{\cdot} & \color{red}{\mathord{\bigstar}} &  \mathord{\cdot} &  \\
+    \textbf{Pronoun} & \mathord{\bigstar}   & \color{red}{\circ} &   \mathord{\cdot} &  \\       
         & \textit{I} & \textit{can} &  \textit{fly} &  \\
 };
 \draw[dotted] 
@@ -52,9 +52,15 @@
 (m-4-3)edge(m-4-4)
 ;
 
+%\draw[->,ultra thick]
+%(m-4-2)edge(m-3-3)
+%(m-3-3)edge(m-2-4)
+%;
+
 \draw[->,ultra thick, dashed]
-(m-4-2)edge(m-2-3)
-;
+(m-2-3)edge  node [xshift=-0.08in,yshift=+0.12in] {rollout}  (m-1-4)
+(m-4-2)edge  node [auto, xshift=-0.1in] {rollin}  (m-2-3);
+
 
 \end{tikzpicture}
 

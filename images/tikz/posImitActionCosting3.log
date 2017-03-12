@@ -1,9 +1,9 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2017.1.3)  12 MAR 2017 20:11
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2017.1.3)  12 MAR 2017 20:09
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**posImitOffGold.tex
-(./posImitOffGold.tex
+**posImitActionCosting3.tex
+(./posImitActionCosting3.tex
 LaTeX2e <2016/02/01>
 Babel <3.9q> and hyphenation patterns for 81 language(s) loaded.
 (/usr/share/texlive/texmf-dist/tex/latex/standalone/standalone.cls
@@ -362,13 +362,13 @@ zlibrarytopaths.code.tex
 File: tikzlibrarytopaths.code.tex 2008/06/17 v3.0.1a (rcs-revision 1.2)
 )))
 \sa@box=\box37
-runsystem(pdflatex  -shell-escape  -jobname 'posImitOffGold' '\expandafter\def\
-csname sa@internal@run\endcsname{1}\input{posImitOffGold}')...disabled (restric
-ted).
+runsystem(pdflatex  -shell-escape  -jobname 'posImitActionCosting3' '\expandaft
+er\def\csname sa@internal@run\endcsname{1}\input{posImitActionCosting3}')...dis
+abled (restricted).
 
- (./posImitOffGold.aux)
-runsystem(convert -density 1000 posImitOffGold.pdf -resize 2000x1000 -quality 9
-0 posImitOffGold.png)...disabled (restricted).
+ (./posImitActionCosting3.aux)
+runsystem(convert -density 1000 posImitActionCosting3.pdf -resize 2000x1000 -qu
+ality 90 posImitActionCosting3.png)...disabled (restricted).
 
 
 
@@ -577,8 +577,8 @@ Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
 LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
 (Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
 ))
-(./posImitOffGold.aux)
-\openout1 = `posImitOffGold.aux'.
+(./posImitActionCosting3.aux)
+\openout1 = `posImitActionCosting3.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 23.
 LaTeX Font Info:    ... okay on input line 23.
@@ -656,24 +656,26 @@ LaTeX Font Info:    Try loading font information for U+msb on input line 29.
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) [1
 
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] (./posImitOffGold.aux) ) 
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] (./posImitActionCosting3.a
+ux) ) 
 Here is how much of TeX's memory you used:
- 16032 strings out of 493029
- 348399 string characters out of 6136235
- 406253 words of memory out of 5000000
- 19229 multiletter control sequences out of 15000+600000
+ 16045 strings out of 493029
+ 348731 string characters out of 6136235
+ 407253 words of memory out of 5000000
+ 19240 multiletter control sequences out of 15000+600000
  9365 words of font info for 35 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 62i,16n,82p,426b,875s stack positions out of 5000i,500n,10000p,200000b,80000s
-</
-usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb></usr/sha
-re/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texl
-ive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti8.pfb></usr/share/texlive/tex
-mf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb>
-Output written on posImitOffGold.pdf (1 page, 36529 bytes).
+ 62i,16n,82p,433b,875s stack positions out of 5000i,500n,10000p,200000b,80000s
+</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb></
+usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/sha
+re/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texli
+ve/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/texm
+f-dist/fonts/type1/public/amsfonts/cm/cmti8.pfb></usr/share/texlive/texmf-dist/
+fonts/type1/public/amsfonts/symbols/msam10.pfb>
+Output written on posImitActionCosting3.pdf (1 page, 52707 bytes).
 PDF statistics:
- 51 PDF objects out of 1000 (max. 8388607)
- 27 compressed objects within 1 object stream
+ 59 PDF objects out of 1000 (max. 8388607)
+ 33 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  109 words of extra memory for PDF output out of 10000 (max. 10000000)
 

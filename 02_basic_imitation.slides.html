@@ -11927,9 +11927,10 @@ a.anchor-link {
 <h3>Gold standard in search space</h3><p><img src="images/tikz/posImitGold.png" style="width:75%; float:left;">
 <br></p>
 <p style="float:left;">
-Three actions to complete the output
-<br>
-Expert policy replicates the gold standard
+<ul style="float:left;">
+<li>Three actions to complete the output</li>
+<li>Expert policy replicates the gold standard</li>
+</ul>
 </p>
 </div>
 </div>
@@ -11940,7 +11941,7 @@ Expert policy replicates the gold standard
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3>Training a classifier<span class="fragment" data-fragment-index="1"> with structure features </span></h3><p><img src="images/tikz/posImitClassifierTraining.png" style="width:75%; float:left;"></p>
-<table style="border-style: hidden; border-collapse: collapse; padding: 50px; float:left;">
+<table style="font-size:100%; border-style:hidden; border-collapse:collapse; padding:50px; float:left;">
 <thead>
 <tr>
 <th>label</th>
@@ -11950,39 +11951,18 @@ Expert policy replicates the gold standard
 <tbody>
 <tr>
 <td><b>Pronoun</b></td>
-<td>token=I, ...<span class="fragment" data-fragment-index="1">, <font color="red">prev=<b>NULL</b></font></span></td>
+<td>token=I, ...<span class="fragment" data-fragment-index="1">, prev=<b>NULL</b></span></td>
 </tr>
 <tr>
 <td><b>Modal</b></td>
-<td>token=can, ...<span class="fragment" data-fragment-index="1">, <font color="red">prev=<b>Pronoun</b></font></span></td>
+<td>token=can, ...<span class="fragment" data-fragment-index="1">, prev=<b>Pronoun</b></span></td>
 </tr>
 <tr>
 <td><b>Verb</b></td>
-<td>token=fly, ...<span class="fragment" data-fragment-index="1">, <font color="red">prev=<b>Modal</b></font></span></td>
+<td>token=fly, ...<span class="fragment" data-fragment-index="1">, prev=<b>Modal</b></span></td>
 </tr>
 </tbody>
-</table><p style="float:left; font-size: 100%" class="fragment" data-fragment-index="2">With logistic regression and $k$ previous tags: training a $kth$-order Maximum Entropy Markov Model (<a href="http://people.csail.mit.edu/mcollins/6864/slides/memm.pdf">McCallum et al., 2000</a>)</p>
-</div>
-</div>
-</div><aside class="notes">
-
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>The feature restricition though is needed only to be able to use dynamic programming (i.e. Viterbi) for efficient joint inference. In incremental model though this is not needed thus features can use all previous tags.</p>
-
-</div>
-</div>
-</div>
-</aside></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Falling-off-the-expert-trajectory">Falling off the expert trajectory<a class="anchor-link" href="#Falling-off-the-expert-trajectory">&#182;</a></h3>
+</table><p style="float:left; font-size: 100%" class="fragment" data-fragment-index="3">With logistic regression and $k$ previous tags: training a $kth$-order Maximum Entropy Markov Model (<a href="http://people.csail.mit.edu/mcollins/6864/slides/memm.pdf">McCallum et al., 2000</a>)</p>
 </div>
 </div>
 </div></section></section><section><section>
@@ -11991,10 +11971,95 @@ Expert policy replicates the gold standard
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Dagger">Dagger<a class="anchor-link" href="#Dagger">&#182;</a></h3><p>Maybe use some of the driving images here</p>
-<p>Also talk about the meaning of the learning rate</p>
-<p>introduce mixed <em>roll-in</em></p>
+<h3 id="Exposure-bias">Exposure bias<a class="anchor-link" href="#Exposure-bias">&#182;</a></h3><p><img src="images/tikz/posImitOffGold.png" style="width:75%; align:left;">
+<br></p>
+<p style="float: left">We had seen: &nbsp;&nbsp; 
+<table style="float: left; border-style: hidden; border-collapse: collapse;">
+<thead>
+<tr>
+<th>label</th>
+<th>features</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><b>Verb</b></td>
+<td>token=fly,..., prev=<b>Modal</b></td>
+</tr>
+</tbody>
+</table>
+</p>
+</div>
+</div>
+</div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p style="float: left">but not: &nbsp;&nbsp;
+<table style="float: left; border-style: hidden; border-collapse: collapse; padding: 50px;">
+<thead>
+<tr>
+<th>label</th>
+<th>features</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><b>Verb</b></td>
+<td>token=fly,..., prev=<b>Verb</b></td>
+</tr>
+</tbody>
+</table></p>
+</div>
+</div>
+</div></div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Addressing-exposure">Addressing exposure<a class="anchor-link" href="#Addressing-exposure">&#182;</a></h3><p><p style="float: left;">Allow the classifier to guide the learning<br></p>  <a href="https://www.pinterest.com/explore/affordable-driving-school/"><img src="images/driving_mix.jpg" style="width:35%; float: right;"></a></p>
 
+</div>
+</div>
+</div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>1st iteration: <strong>roll-in</strong> through the data with the expert</li>
+<li>2nd onwards: mix expert and classifier to expose the classifier to its own actions</li>
+</ul>
+
+</div>
+</div>
+</div></div></section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="DAgger-algorithm">DAgger algorithm<a class="anchor-link" href="#DAgger-algorithm">&#182;</a></h3><p style="border:3px; border-radius: 25px; background-color:lightgrey; border-style:solid; border-color:black; padding: 0.3em; font-size: 80%">
+\begin{align}
+& \textbf{Input:} \; D_{train} = \{(\mathbf{x}^1,\mathbf{y}^1)...(\mathbf{x}^M,\mathbf{y}^M)\}, \; expert\; \pi^{\star}, \; loss \; function \; L\\
+& \textbf{Output:} \; classifier \; H\\
+& training\; examples\; \cal E = \emptyset, \; expert\; probability\; \beta=1\\
+& \mathbf{while}\; \text{termination condition not reached}\; \mathbf{do}\\
+& \quad \text{set} \; rollin \; policy \; \pi^{in} = \beta H + (1-\beta)\pi^{\star}\\
+& \quad \mathbf{for} \; (\mathbf{x},\mathbf{y}) \in D_{train} \; \mathbf{do}\\
+& \quad \quad \text{rollin to predict} \; \hat \alpha_1\dots\hat \alpha_T  = \pi^{in}(\mathbf{x},\mathbf{y})\\
+& \quad \quad \mathbf{for} \; \hat \alpha_t \in \hat \alpha_1\dots\hat \alpha_T \; \mathbf{do}\\
+& \quad \quad \quad \text{ask expert for best action}\; \alpha^{\star} = \pi^{\star}(\mathbf{x},S_{t-1}) \\
+& \quad \quad \quad \text{extract } features=\phi(\mathbf{x},S_{t-1}) \\
+& \quad \quad \quad \cal E = \cal E \cup (features,\alpha^{\star})\\
+& \quad \text{learn} \; H\; \text{from}\; \cal E\\
+& \quad \text{decrease} \; \beta\\
+\end{align}
+</p>
 </div>
 </div>
 </div></section><section>
@@ -12003,46 +12068,35 @@ Expert policy replicates the gold standard
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="DAgger-algorithm">DAgger algorithm<a class="anchor-link" href="#DAgger-algorithm">&#182;</a></h3><p style="border:3px; border-radius: 25px; background-color:lightgrey; border-style:solid; border-color:black; padding: 0.3em; font-size: 80%">
-\begin{align}
-& \textbf{Input:} \; D_{train} = \{(\mathbf{x}^1,\mathbf{y}^1)...(\mathbf{x}^M,\mathbf{y}^M)\}, \; expert\; \pi^{\star}, \; loss \; function \; \ell\\
-& \textbf{Output:} \; classifier \; H\\
-& training\; examples\; \cal E = \emptyset\\
-& \mathbf{while}\; \text{termination condition not reached}\; \mathbf{do}\\
-& \quad \text{set} \; rollin \; policy \; \pi^{in} = mix(H,\pi^{\star})\\
-& \quad \mathbf{for} \; (\mathbf{x},\mathbf{y}) \in D_{train} \; \mathbf{do}\\
-& \quad \quad \text{rollin to predict} \; \hat y_1\dots\hat y_N  = \pi^{in}(\mathbf{x})\\
-& \quad \quad \mathbf{for} \; \hat y_n \in \hat y_1\dots\hat y_N \; \mathbf{do}\\
-& \quad \quad \quad \text{ask expert for best action}\; y^{\star} = \pi^{\star}(\hat y_1\dots\hat y_{n-1}, \mathbf{x},\mathbf{y}) \; \\
-& \quad \quad \quad \text{extract features}\; f=\phi(\mathbf{x},\hat y_1\dots \hat y_{n-1}) \\
-& \quad \quad \quad \cal E = \cal E \cup (f,y^{\star})\\
-& \quad \text{learn} \; H\; \text{from}\; \cal E\\
-\end{align}
-</p>
+<h3 id="DAgger-algorithm">DAgger algorithm<a class="anchor-link" href="#DAgger-algorithm">&#182;</a></h3><p>Proposed by <a href="http://www.cs.cmu.edu/~sross1/publications/Ross-AIStats11-NoRegret.pdf">Ross et al. (2011)</a> motivated by robotics</p>
+<ul>
+<li>first iteration is standard classification training</li>
+<li>task loss and gold standard are implicitly considered via the expert</li>
+<li>DAgger: the Datasets in each iteration are Aggregated</li>
+</ul>
+
 </div>
 </div>
-</div></section></section><section><section>
+</div><div class="fragment">
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Is-that-all?">Is that all?<a class="anchor-link" href="#Is-that-all?">&#182;</a></h3><p>So far we looked at how to deal with previous errors, also known as exposure bias.</p>
-<p>What about the future ones?</p>
+<p>So far we looked at how to overcome previous errors. What about anticipating (and avoiding) the future ones?</p>
 
 </div>
 </div>
-</div></section></section><section><section>
+</div></div></section></section><section><section>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Training-labels-as-costs">Training labels as costs<a class="anchor-link" href="#Training-labels-as-costs">&#182;</a></h3><p><img src="images/tikz/posImitClassifierTraining.png" style="width:75%; float:left;"></p>
-<table style="float:left;">
+<table style="float: left; border-style: hidden; border-collapse: collapse; padding: 50px; float:left;">
 <thead>
 <tr>
-<th>word</th>
 <th><b>Pronoun</b></th>
 <th><b>Modal</b></th>
 <th><b>Verb</b></th>
@@ -12052,7 +12106,6 @@ Expert policy replicates the gold standard
 </thead>
 <tbody>
 <tr>
-<td><i>I</i></td>
 <td>0</td>
 <td>1</td>
 <td>1</td>
@@ -12060,7 +12113,6 @@ Expert policy replicates the gold standard
 <td>token=I, prev=<b>NULL</b>...</td>
 </tr>
 <tr>
-<td>can</td>
 <td>1</td>
 <td>0</td>
 <td>1</td>
@@ -12068,7 +12120,6 @@ Expert policy replicates the gold standard
 <td>token=can, prev=<b>Pronoun</b>...</td>
 </tr>
 <tr>
-<td>fly</td>
 <td>1</td>
 <td>1</td>
 <td>0</td>
@@ -12098,10 +12149,10 @@ Expert policy replicates the gold standard
 <div class="text_cell_render border-box-sizing rendered_html">
 <p style="float:left;">
 <ul>
-<li><i>roll-in</i> to a point in the sentence</li>
-<li>try each possible label and <i>rollout</i> till the end</li>
+<li><b>roll-in</b> to a point in the sentence</li>
+<li>try each possible label and <b>rollout</b> till the end</li>
 <li>evaluate the complete output with the task loss</li>
-<li>If <i>roll-out</i> with expert, correct action has 0 cost, incorrect 1.</li>
+<li>If <b>roll-out</b> with expert only, correct action has 0 cost, incorrect 1.</li>
 </ul>
 </p>
 </div>
@@ -12112,7 +12163,28 @@ Expert policy replicates the gold standard
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Mixed-roll-outs">Mixed roll-outs<a class="anchor-link" href="#Mixed-roll-outs">&#182;</a></h3>
+<h3 id="Mixed-roll-outs">Mixed roll-outs<a class="anchor-link" href="#Mixed-roll-outs">&#182;</a></h3><p>Rolling out with the classifier allows us to see future mistakes</p>
+<p><img src="images/tikz/posImitActionCosting3.png" style="width:75%; float:left;"></p>
+<table style="float: left; border-style: hidden; border-collapse: collapse; padding: 50px; float:left;">
+<thead>
+<tr>
+<th><b>Pronoun</b></th>
+<th><b>Modal</b></th>
+<th><b>Verb</b></th>
+<th><b>Noun</b></th>
+<th>features</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>0</td>
+<td>2</td>
+<td>1</td>
+<td>token=can, prev=<b>Pronoun</b>...</td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 </div></section></section><section><section>
@@ -12121,8 +12193,25 @@ Expert policy replicates the gold standard
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="DAgger-with-roll-outs">DAgger with roll-outs<a class="anchor-link" href="#DAgger-with-roll-outs">&#182;</a></h3><p>Algorithm</p>
-
+<h3 id="DAgger-with-roll-outs">DAgger with roll-outs<a class="anchor-link" href="#DAgger-with-roll-outs">&#182;</a></h3><p style="border:3px; border-radius: 25px; background-color:lightgrey; border-style:solid; border-color:black; padding: 0.3em; font-size: 80%">
+\begin{align}
+& \textbf{Input:} \; D_{train} = \{(\mathbf{x}^1,\mathbf{y}^1)...(\mathbf{x}^M,\mathbf{y}^M)\}, \; expert\; \pi^{\star}, \; loss \; function \; L\\
+& \textbf{Output:} \; classifier \; H\\
+& training\; examples\; \cal E = \emptyset, \; expert\; probability\; \beta=1\\
+& \mathbf{while}\; \text{termination condition not reached}\; \mathbf{do}\\
+& \quad \text{set} \; rollin/out \; policy \; \pi^{in/out} = \beta H + (1-\beta)\pi^{\star}\\
+& \quad \mathbf{for} \; (\mathbf{x},\mathbf{y}) \in D_{train} \; \mathbf{do}\\
+& \quad \quad \text{rollin to predict} \; \hat \alpha_1\dots\hat \alpha_T  = \pi^{in/out}(\mathbf{x},\mathbf{y})\\
+& \quad \quad \mathbf{for} \; \hat \alpha_t \in \hat \alpha_1\dots\hat \alpha_T \; \mathbf{do}\\
+& \quad \quad \quad \mathbf{for} \; \alpha \in {\cal A} \; \mathbf{do}\\
+& \quad \quad \quad \quad \text{rollout} \; S_{final} = \pi^{in/out}(S_{t-1}, \alpha, \mathbf{x})\\
+& \quad \quad \quad \quad cost\; c_{\alpha}=L(S_{final}, \mathbf{y})  \\
+& \quad \quad \quad \text{extract } features=\phi(\mathbf{x}, S_{t-1}) \\
+& \quad \quad \quad \cal E = \cal E \cup (features,\mathbf{c})\\
+& \quad \text{learn} \; H\; \text{from}\; \cal E\\
+& \quad \text{decrease} \; \beta\\
+\end{align}
+</p>
 </div>
 </div>
 </div></section><section>
@@ -12131,20 +12220,45 @@ Expert policy replicates the gold standard
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Roll-outs">Roll-outs<a class="anchor-link" href="#Roll-outs">&#182;</a></h3><p>First proposed in SEARN,</p>
-<p>also used to hybridise DAgger by Vlachos and Clark, referred to as V-DAgger in Goodman et al. 2016.</p>
-<p>Also known as look-aheads (<a href="http://www.anthology.aclweb.org/W/W11/W11-0328.pdf">Tsuruoka et al. 2011</a>) and shown to help incremental, transition-based models rival global ones.</p>
-<p>Very useful, but can be expensive (wait for second part how to help ourselves!)</p>
+<h3 id="Roll-outs">Roll-outs<a class="anchor-link" href="#Roll-outs">&#182;</a></h3><ul>
+<li>can learn with non-decomposable losses</li>
+<li>can learn with sub-optimal experts</li>
+<li>expensive when there are many actions and long sequences to complete outputs </li>
+</ul>
 
 </div>
 </div>
-</div></section></section><section><section>
+</div><div class="fragment">
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="LoLS">LoLS<a class="anchor-link" href="#LoLS">&#182;</a></h3>
+<p>Some history:</p>
+<ul>
+<li><p>first proposed in SEARN (<a href="http://hunch.net/~jl/projects/reductions/searn/searn.pdf">Daumé III et al., 2009</a>)</p>
+</li>
+<li><p>used to hybridise DAgger by <a href="http://www.aclweb.org/anthology/Q14-1042">Vlachos and Clark</a>, referred to later as V-DAgger (<a href="http://aclweb.org/anthology/P16-1001">Goodman et al. 2016</a>)</p>
+</li>
+<li><p>also proposed as look-aheads (<a href="http://www.anthology.aclweb.org/W/W11/W11-0328.pdf">Tsuruoka et al. 2011</a>)</p>
+</li>
+</ul>
+
+</div>
+</div>
+</div></div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="LoLS">LoLS<a class="anchor-link" href="#LoLS">&#182;</a></h3><p>Locally Optimal Learning to Search (<a href="https://arxiv.org/pdf/1502.02206.pdf">Chang et al., 2015</a>)</p>
+<p><img src="images/lols.png" style="width:70%;"></p>
+<ul>
+<li>rollin always with the classifier</li>
+<li>each rollout uses either the expert or the classifier exclusively </li>
+</ul>
+
 </div>
 </div>
 </div></section></section><section><section>
@@ -12155,17 +12269,17 @@ Expert policy replicates the gold standard
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3>Generic imitation learning</h3><p style="border:3px; border-radius: 25px; background-color:lightgrey; border-style:solid; border-color:black; padding: 0.3em; font-size: 80%">
 \begin{align}
-& \textbf{Input:} \; D_{train} = \{(\mathbf{x}^1,\mathbf{y}^1)...(\mathbf{x}^M,\mathbf{y}^M)\}, \; expert\; \pi^{\star}, \; loss \; function \; \ell\\
+& \textbf{Input:} \; D_{train} = \{(\mathbf{x}^1,\mathbf{y}^1)...(\mathbf{x}^M,\mathbf{y}^M)\}, \; expert\; \pi^{\star}, \; loss \; function \; L\\
 & \textbf{Output:} \; classifier \; H\\
 & training\; examples\; \cal E = \emptyset\\
 & \mathbf{while}\; \text{termination condition not reached}\; \mathbf{do}\\
 & \quad \text{set} \; rollin \; policy \; \pi^{in} = mix(H,\pi^{\star})\\
 & \quad \text{set} \; rollout \; policy \; \pi^{out} = mix(H,\pi^{\star})\\
 & \quad \mathbf{for} \; (\mathbf{x},\mathbf{y}) \in D_{train} \; \mathbf{do}\\
-& \quad \quad \text{rollin to predict} \; \hat y_1\dots\hat y_N  = \pi^{in}(\mathbf{x})\\
-& \quad \quad \mathbf{for} \; \hat y_n \in \hat y_1\dots\hat y_N \; \mathbf{do}\\
-& \quad \quad \quad \text{rollout to obtain costs}\; c \; \text{for all possible actions using}\; \ell\;  \\
-& \quad \quad \quad \text{extract features}\; f=\phi(\mathbf{x},\hat y_1\dots \hat y_{n-1}) \\
+& \quad \quad \text{rollin to predict} \; \hat \alpha_1\dots\hat \alpha_T  = \pi^{in}(\mathbf{x},\mathbf{y})\\
+& \quad \quad \mathbf{for} \; \hat \alpha_t \in \hat \alpha_1\dots\hat \alpha_T \; \mathbf{do}\\
+& \quad \quad \quad \text{rollout to obtain costs}\; c \; \text{for all possible actions using}\; L\;  \\
+& \quad \quad \quad \text{extract features}\; f=\phi(\mathbf{x},S_{t-1}) \\
 & \quad \quad \quad \cal E = \cal E \cup (f,c)\\
 & \quad \text{learn} \; H\; \text{from}\; \cal E\\
 \end{align}
@@ -12178,28 +12292,13 @@ Expert policy replicates the gold standard
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Non-decomposable">Non-decomposable<a class="anchor-link" href="#Non-decomposable">&#182;</a></h3><p>are now possible</p>
-<p>Unlike DAgger, it is possible to improve on suboptimal experts, as we use the rollOuts</p>
+<h3 id="Summary-so-far">Summary so far<a class="anchor-link" href="#Summary-so-far">&#182;</a></h3><ul>
+<li>basic intuition behind IL</li>
+<li>rollin and the DAgger algorithm </li>
+<li>rollouts and V-DAgger and LoLS</li>
+<li>generic imitation learning recipe</li>
+</ul>
 
-</div>
-</div>
-</div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Latent-actions">Latent actions<a class="anchor-link" href="#Latent-actions">&#182;</a></h3><p>Mention UNSEARN</p>
-
-</div>
-</div>
-</div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Summary-so-far">Summary so far<a class="anchor-link" href="#Summary-so-far">&#182;</a></h3>
 </div>
 </div>
 </div></section></section>
