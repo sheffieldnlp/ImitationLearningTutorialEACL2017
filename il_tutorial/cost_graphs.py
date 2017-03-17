@@ -37,11 +37,26 @@ def draw_cost_breakdown(rows, columns, path, cost, cost_cell, roll_in_cell, roll
 
     def label_cell(cell, label):
         x, y = coord(*cell)
-        dwg.add(dwg.text(label, insert=(x, y)))
+        dwg.add(dwg.text(label, insert=(x, y - 5)))
+
+    def plot_grid():
+        # horizontal lines
+        for col in range(1, len(columns)):
+            for row in range(0, len(rows)):
+                x1, y1 = coord(col - 1, row)
+                x2, y2 = coord(col, row)
+                dwg.add(dwg.line((x1 + 5, y1), (x2 - 5, y2), stroke=svgwrite.rgb(10, 10, 16, '%'))).dasharray([5, 5])
+
+        for col in range(0, len(columns)):
+            for row in range(1, len(rows)):
+                x1, y1 = coord(col, row - 1)
+                x2, y2 = coord(col, row)
+                dwg.add(dwg.line((x1, y1 + 5), (x2, y2 - 5), stroke=svgwrite.rgb(10, 10, 16, '%'))).dasharray([5, 5])
 
     label_cost()
     label_cell(roll_in_cell, "rollin")
     label_cell(roll_out_cell, "rollout")
+    plot_grid()
 
     # dwg.add(dwg.text('Blah', insert=(0, 10)))
     return HTML(dwg.tostring())
