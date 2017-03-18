@@ -11939,7 +11939,7 @@ a.anchor-link {
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3>Structured prediction</h3><p><img src="images/nlg.png" style="width:100%;"></p>
 <p>Natural language generation (NLG), but also summarization, decoding in machine translation, etc.</p><p><b>Input:</b> a meaning representation<br>
-<b>Output:</b> a sentence $\mathbf{w}=[w_1...w_N], w\in {\cal V}\cup END, w_N=END$</p>
+<b>Output:</b> $\mathbf{w}=[w_1...w_N], w\in {\cal V}\cup END, w_N=END$</p>
 </div>
 </div>
 </div></section></section><section><section>
@@ -11995,7 +11995,7 @@ $$\mathbf{\hat y} =\hat y_{1}\ldots \hat y_{N} = \mathop{\arg \max}_{Y \in {\cal
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Incremental-modeling">Incremental modeling<a class="anchor-link" href="#Incremental-modeling">&#182;</a></h3><p>A classifier that predicts one label at a time given the previous predictions:</p>
+<h3 id="Incremental-modeling">Incremental modeling<a class="anchor-link" href="#Incremental-modeling">&#182;</a></h3><p>A classifier predicting a label at a time given the previous ones:</p>
 \begin{align}
 \hat y_1 &=\mathop{\arg \max}_{y \in {\cal Y}} f(y, \mathbf{x}),\\
 \mathbf{\hat y} = \quad \hat y_2 &=\mathop{\arg \max}_{y \in {\cal Y}} f(y, \mathbf{x}, \hat y_1), \cdots\\
@@ -12049,14 +12049,13 @@ but generate better (non-i.i.d.) training data</p>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3>Transition system</h3><p>The <b>actions</b> $\cal A$ the classifier $f$ can predict and their effect on the <b>state</b> which keeps track of the prediction: $S_{t+1}=(S_1, \alpha_1...\alpha_t)$</p><p style="text-align: left; border:3px; border-radius: 25px; background-color:lightgrey; border-style:solid; border-color:black; padding: 0.3em; font-size: 80%">
+<h3>Transition system</h3><p>The <b>actions</b> $\cal A$ the classifier $f$ can predict and their effect on the <b>state</b> which keeps track of the prediction: $S_{t+1}=(S_1, \alpha_1...\alpha_t)$</p><p style="text-align: left; border:3px; border-radius: 25px; background-color:lightgrey; border-style:solid; border-color:black; padding: 0.3em; font-size: 75%">
 \begin{align}
 & \textbf{Input:} \; \mathbf{x}\\
 & state \; S_1=initialize(\mathbf{x}); timestep \; t = 1\\
 & \mathbf{while}\; S_t \; \text{not final}\; \mathbf{do}\\
 & \quad action \; \alpha_t = \mathop{\arg \max}_{\alpha \in {\cal A}} f(\alpha, \mathbf{x})\\
-& \quad S_{c+1}=update(\alpha_t,S_t); t=t+1\\
-& \textbf{Output:} \; S_{final} = S_t\\
+& \quad S_{t+1}=update(\alpha_t,S_t); t=t+1\\
 \end{align}
 </p>
 </div>
@@ -12092,7 +12091,7 @@ $$loss  = L(S_{final}, \mathbf{y}) \geq 0$$
 <ul>
 <li><b>PoS tagging?</b> <span class="fragment">Hamming loss: number of incorrect tags</span></li>
 <li class="fragment"><b>NER?</b> <span class="fragment">number of false positives and false negatives</span></li>
-<li class="fragment"><b>NLG?</b> <span class="fragment">BLEU: % of n-grams predicted present in the gold reference(s) ($L=1-BLEU(s_{final}, \mathbf{y})$)</span></li>
+<li class="fragment"><b>NLG?</b> <span class="fragment">BLEU: % of n-grams predicted present in the gold reference(s), i.e. $L=1-BLEU(s_{final}, \mathbf{y})$</span></li>
 </ul><p class="fragment"><b>Goal:</b> models minimizing the loss on unseen test data</p>
 </div>
 </div>
@@ -12102,7 +12101,7 @@ $$loss  = L(S_{final}, \mathbf{y}) \geq 0$$
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Decomposable-losses">Decomposable losses<a class="anchor-link" href="#Decomposable-losses">&#182;</a></h3><p>A loss is <strong>decomposable</strong> if it is the sum of the losses for each action $\alpha_t$ independently of the future actions $[\alpha_{t+1}...\alpha_T]$:
+<h3 id="Decomposable-losses">Decomposable losses<a class="anchor-link" href="#Decomposable-losses">&#182;</a></h3><p>A loss is <strong>decomposable</strong> if defined as the sum of the losses for each action $\alpha_t$ independently of the future $[\alpha_{t+1}...\alpha_T]$:
 $$L(S,\mathbf{y})= \sum_{t=1}^T \ell(\alpha_t, \mathbf{y}, [\alpha_1 ...\alpha_{t-1}]) $$</p>
 <table class="fragment" data-fragment-index="1" style="font-size:80%; border-style: hidden; border-collapse: collapse; padding: 50px">
 <thead>
@@ -12136,10 +12135,8 @@ $$L(S,\mathbf{y})= \sum_{t=1}^T \ell(\alpha_t, \mathbf{y}, [\alpha_1 ...\alpha_{
 <td><span class="fragment" data-fragment-index="4">I-PER</span></td>
 </tr>
 </tbody>
-</table><p><span class="fragment" data-fragment-index="1">
-Can we tell $\ell(\alpha_6, \cdot)$ for</span></p>
-<ul><li class="fragment" data-fragment-index="1">PoS tagging? <span class="fragment" data-fragment-index="2"><b>Yes!</b> $\ell(\alpha_6, \cdot)=0$ no matter $\alpha_7$ </span></li>
-<li class="fragment" data-fragment-index="3">NER? <span class="fragment" data-fragment-index="4"><b>No!</b> If $\alpha_7$ is</span>
+</table><ul><li class="fragment" data-fragment-index="1">PoS tagging decomposable? <span class="fragment" data-fragment-index="2"><b>Yes!</b> $\ell(\alpha_6, \cdot)=0$</span></li>
+<li class="fragment" data-fragment-index="3">NER decomposable? <span class="fragment" data-fragment-index="4"><b>No!</b> If $\alpha_7$ is</span>
 <ul class="fragment" data-fragment-index="4">
 <li>I-PER:  $\ell(\alpha_6, \cdot)=0$ (correct)</li> 
 <li>O: $\ell(\alpha_6, \cdot)=2$ (1 FP and 1 FN)</li>
@@ -12239,7 +12236,7 @@ $$\alpha^{\star}=\pi^{\star}(S_t, \mathbf{y}) = \mathop{\arg \min}_{\alpha \in {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><p style="float: left;">Only available for the training data<br> (it cheats!): a human teacher<br>demonstrating how to perform the task </p> <a href="http://www.salon.com/2016/10/06/what-makes-a-good-teacher-why-certifications-and-standards-dont-guarantee-quality-educators_partner/"><img src="images/english_teacher.jpg" style="width:30%; float: right;"></a></p>
+<p><p style="float: left;">Only available for the training data<br> (it cheats!): a human teacher<br>demonstrating how to perform the task </p> <a href="http://www.salon.com/2016/10/06/what-makes-a-good-teacher-why-certifications-and-standards-dont-guarantee-quality-educators_partner/"><img src="images/english_teacher.jpg" style="width:25%; float: right;"></a></p>
 
 </div>
 </div>
@@ -12321,7 +12318,7 @@ $$\alpha^{\star}=\pi^{\star}(S_t, \mathbf{y}) = \mathop{\arg \min}_{\alpha \in {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>Multi-label classification</strong>: multiple correct labels per-instance, e.g. B-ORG, B-LOC</p>
+<p><strong>Multi-label classification</strong>: multiple correct labels per-instance</p>
 
 </div>
 </div>
@@ -12331,7 +12328,7 @@ $$\alpha^{\star}=\pi^{\star}(S_t, \mathbf{y}) = \mathop{\arg \min}_{\alpha \in {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>Cost-sensitive classification</strong>: each label has a cost, e.g.</p>
+<p><strong>Cost-sensitive classification</strong>: each label has a cost:</p>
 <table style="border-style: hidden; border-collapse: collapse; padding: 50px">
 <thead>
 <tr>
@@ -12351,7 +12348,7 @@ $$\alpha^{\star}=\pi^{\star}(S_t, \mathbf{y}) = \mathop{\arg \min}_{\alpha \in {
 <td>2</td>
 <td>0</td>
 <td>1</td>
-<td>0</td>
+<td>1</td>
 <td>1</td>
 </tr>
 </tbody>
@@ -12380,8 +12377,8 @@ $$\alpha^{\star}=\pi^{\star}(S_t, \mathbf{y}) = \mathop{\arg \min}_{\alpha \in {
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Learning with costs:</p>
 <ul>
-<li>sample instances according to their cost to train a classifier (<a href="http://www.hunch.net/~jl/projects/reductions/mc2/p542-Abe.pdf">Abe et al., 2004</a>)</li>
-<li>adjust the updates according the cost in error-driven learning (<a href="http://jmlr.csail.mit.edu/papers/volume7/crammer06a/crammer06a.pdf">Crammer et al. 2006</a>)</li>
+<li>sample instances according to their cost to train any classifier (<a href="http://www.hunch.net/~jl/projects/reductions/mc2/p542-Abe.pdf">Abe et al., 2004</a>)</li>
+<li>in error-driven learning adjust the updates in proportion to the error cost (<a href="http://jmlr.csail.mit.edu/papers/volume7/crammer06a/crammer06a.pdf">Crammer et al., 2006</a>)</li>
 </ul>
 
 </div>

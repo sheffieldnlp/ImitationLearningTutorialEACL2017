@@ -11962,7 +11962,26 @@ a.anchor-link {
 <td>token=fly, ...<span class="fragment" data-fragment-index="1">, prev=<b>Modal</b></span></td>
 </tr>
 </tbody>
-</table><p style="float:left; font-size: 100%" class="fragment" data-fragment-index="3">With logistic regression and $k$ previous tags: training a $kth$-order Maximum Entropy Markov Model (<a href="http://people.csail.mit.edu/mcollins/6864/slides/memm.pdf">McCallum et al., 2000</a>)</p>
+</table>
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Algorithm">Algorithm<a class="anchor-link" href="#Algorithm">&#182;</a></h3><p style="border:3px; border-radius: 25px; background-color:lightgrey; border-style:solid; border-color:black; padding: 0.3em; font-size: 80%">
+\begin{align}
+& \textbf{Input:} \; D_{train} = \{(\mathbf{x}^1,\mathbf{y}^1)...(\mathbf{x}^M,\mathbf{y}^M)\}, \; expert\; \pi^{\star}, \; loss \; function \; L\\
+& training\; examples\; \cal E = \emptyset,\\
+& \mathbf{for} \; (\mathbf{x},\mathbf{y}) \in D_{train} \; \mathbf{do}\\
+& \quad \text{generate expert trajectory} \; \hat \alpha_1\dots\hat \alpha_T  = \pi^{\star}(\mathbf{x},\mathbf{y})\\
+& \quad \text{extract } features=\phi(\mathbf{x},S_{t-1}) \\
+& \quad \cal E = \cal E \cup (features,\alpha^{\star})\\
+& \text{learn classifier} \; \text{from}\; \cal E\\
+\end{align}
+</p><p style="float:left; font-size: 100%" class="fragment" data-fragment-index="2">With logistic regression and $k$ previous tags: training a $kth$-order Maximum Entropy Markov Model (<a href="http://people.csail.mit.edu/mcollins/6864/slides/memm.pdf">McCallum et al., 2000</a>)</p>
 </div>
 </div>
 </div></section></section><section><section>
@@ -11971,7 +11990,7 @@ a.anchor-link {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Exposure-bias">Exposure bias<a class="anchor-link" href="#Exposure-bias">&#182;</a></h3><p><img src="images/tikz/posImitOffGold.png" style="width:75%; align:left;">
+<h3 id="Exposure-bias">Exposure bias<a class="anchor-link" href="#Exposure-bias">&#182;</a></h3><p><img src="images/tikz/posImitOffGold.png" style="width:70%; align:left;">
 <br></p>
 <p style="float: left">We had seen: &nbsp;&nbsp; 
 <table style="float: left; border-style: hidden; border-collapse: collapse;">
@@ -12046,7 +12065,6 @@ a.anchor-link {
 <h3 id="DAgger-algorithm">DAgger algorithm<a class="anchor-link" href="#DAgger-algorithm">&#182;</a></h3><p style="border:3px; border-radius: 25px; background-color:lightgrey; border-style:solid; border-color:black; padding: 0.3em; font-size: 80%">
 \begin{align}
 & \textbf{Input:} \; D_{train} = \{(\mathbf{x}^1,\mathbf{y}^1)...(\mathbf{x}^M,\mathbf{y}^M)\}, \; expert\; \pi^{\star}, \; loss \; function \; L\\
-& \textbf{Output:} \; classifier \; H\\
 & training\; examples\; \cal E = \emptyset, \; expert\; probability\; \beta=1\\
 & \mathbf{while}\; \text{termination condition not reached}\; \mathbf{do}\\
 & \quad \text{set} \; rollin \; policy \; \pi^{in} = \beta H + (1-\beta)\pi^{\star}\\
@@ -12056,7 +12074,7 @@ a.anchor-link {
 & \quad \quad \quad \text{ask expert for best action}\; \alpha^{\star} = \pi^{\star}(\mathbf{x},S_{t-1}) \\
 & \quad \quad \quad \text{extract } features=\phi(\mathbf{x},S_{t-1}) \\
 & \quad \quad \quad \cal E = \cal E \cup (features,\alpha^{\star})\\
-& \quad \text{learn} \; H\; \text{from}\; \cal E\\
+& \quad \text{learn classifier} \; \text{from}\; \cal E\\
 & \quad \text{decrease} \; \beta\\
 \end{align}
 </p>
@@ -12193,10 +12211,9 @@ a.anchor-link {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="DAgger-with-roll-outs">DAgger with roll-outs<a class="anchor-link" href="#DAgger-with-roll-outs">&#182;</a></h3><p style="border:3px; border-radius: 25px; background-color:lightgrey; border-style:solid; border-color:black; padding: 0.3em; font-size: 80%">
+<h3 id="DAgger-with-roll-outs">DAgger with roll-outs<a class="anchor-link" href="#DAgger-with-roll-outs">&#182;</a></h3><p style="border:3px; border-radius: 25px; background-color:lightgrey; border-style:solid; border-color:black; padding: 0.3em; font-size: 75%">
 \begin{align}
 & \textbf{Input:} \; D_{train} = \{(\mathbf{x}^1,\mathbf{y}^1)...(\mathbf{x}^M,\mathbf{y}^M)\}, \; expert\; \pi^{\star}, \; loss \; function \; L\\
-& \textbf{Output:} \; classifier \; H\\
 & training\; examples\; \cal E = \emptyset, \; expert\; probability\; \beta=1\\
 & \mathbf{while}\; \text{termination condition not reached}\; \mathbf{do}\\
 & \quad \text{set} \; rollin/out \; policy \; \pi^{in/out} = \beta H + (1-\beta)\pi^{\star}\\
@@ -12208,7 +12225,7 @@ a.anchor-link {
 & \quad \quad \quad \quad cost\; c_{\alpha}=L(S_{final}, \mathbf{y})  \\
 & \quad \quad \quad \text{extract } features=\phi(\mathbf{x}, S_{t-1}) \\
 & \quad \quad \quad \cal E = \cal E \cup (features,\mathbf{c})\\
-& \quad \text{learn} \; H\; \text{from}\; \cal E\\
+& \quad \text{learn classifier} \; \text{from}\; \cal E\\
 & \quad \text{decrease} \; \beta\\
 \end{align}
 </p>
@@ -12253,10 +12270,10 @@ a.anchor-link {
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="LoLS">LoLS<a class="anchor-link" href="#LoLS">&#182;</a></h3><p>Locally Optimal Learning to Search (<a href="https://arxiv.org/pdf/1502.02206.pdf">Chang et al., 2015</a>)</p>
-<p><img src="images/lols.png" style="width:70%;"></p>
+<p><img src="images/lols.png" style="width:60%;"></p>
 <ul>
 <li>rollin always with the classifier</li>
-<li>each rollout uses either the expert or the classifier exclusively </li>
+<li>each rollout uses only the expert or the classifier </li>
 </ul>
 
 </div>
@@ -12270,7 +12287,6 @@ a.anchor-link {
 <h3>Generic imitation learning</h3><p style="border:3px; border-radius: 25px; background-color:lightgrey; border-style:solid; border-color:black; padding: 0.3em; font-size: 80%">
 \begin{align}
 & \textbf{Input:} \; D_{train} = \{(\mathbf{x}^1,\mathbf{y}^1)...(\mathbf{x}^M,\mathbf{y}^M)\}, \; expert\; \pi^{\star}, \; loss \; function \; L\\
-& \textbf{Output:} \; classifier \; H\\
 & training\; examples\; \cal E = \emptyset\\
 & \mathbf{while}\; \text{termination condition not reached}\; \mathbf{do}\\
 & \quad \text{set} \; rollin \; policy \; \pi^{in} = mix(H,\pi^{\star})\\
@@ -12281,7 +12297,7 @@ a.anchor-link {
 & \quad \quad \quad \text{rollout to obtain costs}\; c \; \text{for all possible actions using}\; L\;  \\
 & \quad \quad \quad \text{extract features}\; f=\phi(\mathbf{x},S_{t-1}) \\
 & \quad \quad \quad \cal E = \cal E \cup (f,c)\\
-& \quad \text{learn} \; H\; \text{from}\; \cal E\\
+& \quad \text{learn classifier} \; \text{from}\; \cal E\\
 \end{align}
 </p>
 </div>

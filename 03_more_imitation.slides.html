@@ -11876,7 +11876,7 @@ a.anchor-link {
 <li>the agent is a classifier</li>
 <li>rewards?</li>
 </ul>
-</p><p><a href="https://webdocs.cs.ualberta.ca/~sutton/book/ebook/node28.html"><img src="images/RL_sutton.png" style="width:44%; float: right;"></a></p>
+</p><p><a href="https://webdocs.cs.ualberta.ca/~sutton/book/ebook/node28.html"><img src="images/RL_sutton.png" style="width:40%; float: right;"></a></p>
 
 </div>
 </div>
@@ -11901,12 +11901,29 @@ a.anchor-link {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Bandit-learning">Bandit learning<a class="anchor-link" href="#Bandit-learning">&#182;</a></h3><p>Rolling out each action can be expensive:</p>
+<ul>
+<li>many possible actions</li>
+<li>expensive loss functions to calculate</li>
+</ul>
+<p>What if we could only roll-out one? <strong>Bandit Learning</strong></p>
+<p><img src="images/bandits.jpg" style="width:50%;"></p>
+<p><a href="http://www.cl.uni-heidelberg.de/~sokolov/pubs/sokolov16learning.pdf">Sokolov et al. (2016)</a> used it to learn chunking/MT re-ranking</p>
+
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Semi/Unsupervised-learning">Semi/Unsupervised learning<a class="anchor-link" href="#Semi/Unsupervised-learning">&#182;</a></h3><p>Learning with non-decomposable loss functions means</p>
 <ul>
 <li>no need to know the correct actions</li>
 <li>learn to predict them in order to minimize the loss</li>
 </ul>
-<p><img src="images/tikz/semParse.png" style="width:100%;"></p>
+<p><img src="images/tikz/semParse.png" style="width:80%;"></p>
 
 </div>
 </div>
@@ -11926,13 +11943,13 @@ a.anchor-link {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Negative-data-sampling">Negative data sampling<a class="anchor-link" href="#Negative-data-sampling">&#182;</a></h3><p><img src="images/tikz/posImitClassifierTraining.png" style="width:65%; align:left;"></p>
+<h3 id="Negative-data-sampling">Negative data sampling<a class="anchor-link" href="#Negative-data-sampling">&#182;</a></h3><p><img src="images/tikz/posImitClassifierTraining.png" style="width:55%; align:left;"></p>
 <ul>
 <li>Expert action sequence → positive example</li>
 <li>All other action sequences → negative examples</li>
 <li>Using all negative examples inefficient</li>
 </ul>
-<p>Imitation learning: generate negative samples around the expert</p>
+<p>Instead generate useful negative samples around the expert</p>
 
 </div>
 </div>
@@ -11963,7 +11980,7 @@ a.anchor-link {
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Expert: $\alpha^{\star}= \mathop{\arg \min}_{\alpha \in {\cal A}} L(S_t(\alpha,\pi^{\star}),\mathbf{y})$</p>
-<p>Coach: $\alpha^{\star}= \mathop{\arg \min}_{\alpha \in {\cal A}} L(S_t(\alpha,\pi^{\star}),\mathbf{y}) $</p>
+<p>Coach: $\alpha^{\star}= \mathop{\arg \min}_{\alpha \in {\cal A}} L(S_t(\alpha,\pi^{\star}),\mathbf{y}) - \lambda f(\alpha, \mathbf{x}, S_t)$</p>
 
 </div>
 </div>
@@ -11994,6 +12011,21 @@ a.anchor-link {
 <li>no rollouts, learn a  regressor to estimate action costs</li>
 <li>end-to-end back propagation through the sequence</li>
 <li>MIXER  (<a href="https://arxiv.org/abs/1511.06732">Ranzato et al., 2016</a>): Mix REINFORCE-ment learning with imitation: we have the expert policy!</li>
+</ul>
+
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Actor-critic">Actor-critic<a class="anchor-link" href="#Actor-critic">&#182;</a></h3><p><img src="images/actorcritic.png" alt=""></p>
+<p><a href="https://arxiv.org/pdf/1607.07086.pdf">Bahdanau et al. (2017)</a>:</p>
+<ul>
+<li>actor: the RNN we are learning to use during testing</li>
+<li>critic: another RNN that is trained to predict the value of the actions of the critic</li>
 </ul>
 
 </div>
