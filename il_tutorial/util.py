@@ -38,13 +38,13 @@ class Carousel:
 
         result = """
         <div id="{0}" class="carousel" data-ride="carousel" data-interval="false">
+          <div class="carousel-inner" role="listbox">
+          {1}
+          </div>
           <!-- Controls -->
           <a href="#{0}" role="button2" data-slide="prev">Previous</a>
           &nbsp
           <a  href="#{0}" role="button2" data-slide="next">Next</a>
-          <div class="carousel-inner" role="listbox">
-          {1}
-          </div>
         </div>
         """.format(div_id, items_html)
         return result
