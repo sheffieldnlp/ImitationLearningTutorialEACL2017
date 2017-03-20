@@ -11,20 +11,29 @@
 
 <b>Part I: Imitation Learning</b>
 
-<p>In the first part, we will give a unified presentation of imitation learning for structured prediction focusing on the intuition behind the framework. We will then delve into the details of the different algorithms that have been proposed so far under the imitation learning paradigm, including SEARN, DAgger, V-DAgger, LOLS, and MIXER. Furthermore, we will give a comparative overview of the various algorithms presented that will expose their differences and their practical implications. We will conclude by discussing the relation of imitation learning to recurrent neural networks, bandit learning, adversarial learning, and reinforcement learning.</p>
+<p>In the first part, we will give a unified presentation of imitation learning
+  for structured prediction focusing on the intuition behind the framework. We
+  will then delve into the details of the different algorithms that have been
+  proposed so far under the imitation learning paradigm. Furthermore, we will
+  give a comparative overview of the various algorithms presented that will
+  expose their differences and their practical implications. We will conclude
+   by discussing the relation of imitation learning to recurrent neural networks,
+    bandit learning, adversarial learning, and reinforcement learning.</p>
 
 <b>Part II: Applications in NLP</b>
 
 <p>In the second part, we will discuss recent work applying imitation learning methods in the context of NLP. We will begin by reviewing the application of imitation learning on syntactic dependency parsers and discuss how to create dynamic oracles. Furthermore, we will review how imitation learning is applied on semantic parsing, and how it can benefit natural language generation, where the search space is all English sentences. In this process we will explain techniques that work to augment imitation learning and solve problems that arise in each particular application, such as focused costing, noise reduction, targeted exploration, sequence correction, and change propagation. Finally, we will briefly present applications on biomedical event extraction, feature selection, coreference resolution, autonomous driving learning, and pruning policies for syntactic parsing.</p>
 
 
-<h3>Structure</h3>
+<h3>Contents:</h3>
 
+<p>
 <b>Part I: Imitation Learning Algorithms</b> (90 minutes)
 <ul>
-<li>Introduction, intuition and unified overview of the algorithms (30 min): Structured prediction basics, per-action and end-to-end supervision, and decomposability</li>
-<li>Detailed algorithm descriptions (30 minutes): Exact imitation, DAgger, roll outs and non-decomposable loss, latent variables, and cost-sensitive classification</li>
-<li> Advanced topics (30 minutes): imitation learning by coaching, and relation of imitation learning to recurrent neural networks, bandit learning, adversarial learning, reinforcement learning</li>
+<li><a href="00_intro.slides.html">Introduction</a></li>
+<li><a href="01_basics.slides.html">Basic concepts</a></li>
+<li><a href="02_basic_imitation.slides.html">Imitation learning</a></li>
+<li><a href="03_more_imitation.slides.html">Connections and interpretations</a></li>
 </ul>
 
 <p><b>Break!</b> (15 minutes)</p>
@@ -36,3 +45,10 @@
 <li>Semantic parsing (25 minutes): abstract meaning representations, focused costing, noise reduction, and targetted exploration</li>
 <li>Brief presentation of other applications (15 minutes): Biomedical event extraction, feature selection, coreference resolution, autonomous driving learning, pruning policies for syntactic parsing</li>
 </ul>
+
+
+
+<i>(NOTE: These are the html/reveal.js versions of the slides which should be fine
+   for the browser (tested in Chrome). If you want PDFs, just add <code>?print-pdf</code> to the link and print.
+  For jupyter+python dynamic versions (with some more animations) you need to clone the
+  <a href="https://github.com/sheffieldnlp/ImitationLearningTutorialEACL2017">github repo</a>.)</i>

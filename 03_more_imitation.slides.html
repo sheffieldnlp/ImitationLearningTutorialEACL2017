@@ -11860,7 +11860,7 @@ a.anchor-link {
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <center>
-<h2>Interpretation and connections</h2>
+<h2>Connections and interpretations</h2>
 </center>
 </div>
 </div>
@@ -11891,7 +11891,7 @@ a.anchor-link {
 <li>we have the expert policy (inferred from the gold standard in the training data)</li>
 <li>we infer the per-action reward function (rollin/out)                </li>
 </ul>
-<p>Replacing the expert policy in LoLS with a random (sub-optimal) one is RL (<a href="https://arxiv.org/pdf/1502.02206.pdf">Chang et al., 2015</a>)</p>
+<p>Rollin/out in LoLS with classifier only is RL (<a href="https://arxiv.org/pdf/1502.02206.pdf">Chang et al., 2015</a>)</p>
 
 </div>
 </div>
@@ -11990,6 +11990,19 @@ a.anchor-link {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Changeprop">Changeprop<a class="anchor-link" href="#Changeprop">&#182;</a></h3><p>Speed-up action costing in LOLS
+(<a href="https://timvieira.github.io/doc/2016-tacl-pruning.pdf">Viera and Eisner, 2016</a>):</p>
+<p>If one action changes, don't assess the cost of the whole trajectory, <strong>prop</strong>agate the <strong>change</strong>!</p>
+<p><img src="images/changeprop.png" style="width:70%;">&lt;/a&gt;</p>
+
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <h3> What about Recurrent Neural Networks?</h3><p><img src="images/rnn.png" width="70%"  style="background:none;" /></p>
 <p>They face similar problems:
                 <ul>
@@ -12008,9 +12021,9 @@ a.anchor-link {
 <h3 id="Imitation-learning-and-RNNs">Imitation learning and RNNs<a class="anchor-link" href="#Imitation-learning-and-RNNs">&#182;</a></h3><p><img src="images/mixer.png" width="70%"  style="background:none;" /></p>
 <ul>
 <li>DAgger mixed rollins, similar to scheduled sampling (<a href="http://arxiv.org/abs/1506.03099">Bengio et al., 2015</a>)</li>
+<li>MIXER  (<a href="https://arxiv.org/abs/1511.06732">Ranzato et al., 2016</a>): Mix REINFORCE-ment learning with imitation: we have the expert policy!</li>
 <li>no rollouts, learn a  regressor to estimate action costs</li>
 <li>end-to-end back propagation through the sequence</li>
-<li>MIXER  (<a href="https://arxiv.org/abs/1511.06732">Ranzato et al., 2016</a>): Mix REINFORCE-ment learning with imitation: we have the expert policy!</li>
 </ul>
 
 </div>

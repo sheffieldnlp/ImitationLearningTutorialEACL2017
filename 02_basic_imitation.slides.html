@@ -11973,12 +11973,13 @@ a.anchor-link {
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Algorithm">Algorithm<a class="anchor-link" href="#Algorithm">&#182;</a></h3><p style="border:3px; border-radius: 25px; background-color:lightgrey; border-style:solid; border-color:black; padding: 0.3em; font-size: 80%">
 \begin{align}
-& \textbf{Input:} \; D_{train} = \{(\mathbf{x}^1,\mathbf{y}^1)...(\mathbf{x}^M,\mathbf{y}^M)\}, \; expert\; \pi^{\star}, \; loss \; function \; L\\
-& training\; examples\; \cal E = \emptyset,\\
+& \textbf{Input:} \; D_{train} = \{(\mathbf{x}^1,\mathbf{y}^1)...(\mathbf{x}^M,\mathbf{y}^M)\}, \; expert\; \pi^{\star}\\
+& \text{set} \; training\; examples\; \cal E = \emptyset\\
 & \mathbf{for} \; (\mathbf{x},\mathbf{y}) \in D_{train} \; \mathbf{do}\\
-& \quad \text{generate expert trajectory} \; \hat \alpha_1\dots\hat \alpha_T  = \pi^{\star}(\mathbf{x},\mathbf{y})\\
-& \quad \text{extract } features=\phi(\mathbf{x},S_{t-1}) \\
-& \quad \cal E = \cal E \cup (features,\alpha^{\star})\\
+& \quad \text{generate expert trajectory} \; \alpha_1^{\star}\dots \alpha_T^{\star}  = \pi^{\star}(\mathbf{x},\mathbf{y})\\
+& \quad \mathbf{for} \; \alpha^{\star}_t \in \alpha_1^{\star}\dots \alpha_T^{\star} \; \mathbf{do}\\
+& \quad \quad \text{extract } features=\phi(\mathbf{x},S_{t-1}) \\
+& \quad \quad \cal E = \cal E \cup (features,\alpha^{\star}_t)\\
 & \text{learn classifier} \; \text{from}\; \cal E\\
 \end{align}
 </p><p style="float:left; font-size: 100%" class="fragment" data-fragment-index="2">With logistic regression and $k$ previous tags: training a $kth$-order Maximum Entropy Markov Model (<a href="http://people.csail.mit.edu/mcollins/6864/slides/memm.pdf">McCallum et al., 2000</a>)</p>
@@ -12039,7 +12040,7 @@ a.anchor-link {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Addressing-exposure">Addressing exposure<a class="anchor-link" href="#Addressing-exposure">&#182;</a></h3><p><p style="float: left;">Allow the classifier to guide the learning<br></p>  <a href="https://www.pinterest.com/explore/affordable-driving-school/"><img src="images/driving_mix.jpg" style="width:35%; float: right;"></a></p>
+<h3 id="Addressing-exposure-with-Rollins">Addressing exposure with Rollins<a class="anchor-link" href="#Addressing-exposure-with-Rollins">&#182;</a></h3><p><p style="float: left;">Allow the classifier to guide the learning<br></p>  <a href="https://www.pinterest.com/explore/affordable-driving-school/"><img src="images/driving_mix.jpg" style="width:35%; float: right;"></a></p>
 
 </div>
 </div>
@@ -12050,8 +12051,12 @@ a.anchor-link {
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <ul>
-<li>1st iteration: <strong>roll-in</strong> through the data with the expert</li>
-<li>2nd onwards: mix expert and classifier to expose the classifier to its own actions</li>
+<li>1st iteration: <strong>rollin</strong> through the data with the expert</li>
+<li>2nd onwards: mix expert and classifier to expose the classifier to its own actions<ul>
+<li>just roll a dice</li>
+<li>gradually decrease the expert's probability</li>
+</ul>
+</li>
 </ul>
 
 </div>
@@ -12064,17 +12069,17 @@ a.anchor-link {
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="DAgger-algorithm">DAgger algorithm<a class="anchor-link" href="#DAgger-algorithm">&#182;</a></h3><p style="border:3px; border-radius: 25px; background-color:lightgrey; border-style:solid; border-color:black; padding: 0.3em; font-size: 80%">
 \begin{align}
-& \textbf{Input:} \; D_{train} = \{(\mathbf{x}^1,\mathbf{y}^1)...(\mathbf{x}^M,\mathbf{y}^M)\}, \; expert\; \pi^{\star}, \; loss \; function \; L\\
-& training\; examples\; \cal E = \emptyset, \; expert\; probability\; \beta=1\\
+& \textbf{Input:} \; D_{train} = \{(\mathbf{x}^1,\mathbf{y}^1)...(\mathbf{x}^M,\mathbf{y}^M)\}, \; expert\; \pi^{\star}\\
+& \text{set} \; training\; examples\; \cal E = \emptyset, \; expert\; probability\; \beta=1\\
 & \mathbf{while}\; \text{termination condition not reached}\; \mathbf{do}\\
-& \quad \text{set} \; rollin \; policy \; \pi^{in} = \beta H + (1-\beta)\pi^{\star}\\
+& \quad \color{red}{\text{set} \; rollin \; policy \; \pi^{in} = \beta + (1-\beta)\pi^{\star}}\\
 & \quad \mathbf{for} \; (\mathbf{x},\mathbf{y}) \in D_{train} \; \mathbf{do}\\
-& \quad \quad \text{rollin to predict} \; \hat \alpha_1\dots\hat \alpha_T  = \pi^{in}(\mathbf{x},\mathbf{y})\\
+& \quad \quad \color{red}{\text{generate trajectory} \; \hat \alpha_1\dots\hat \alpha_T  = \pi^{in}(\mathbf{x},\mathbf{y})}\\
 & \quad \quad \mathbf{for} \; \hat \alpha_t \in \hat \alpha_1\dots\hat \alpha_T \; \mathbf{do}\\
-& \quad \quad \quad \text{ask expert for best action}\; \alpha^{\star} = \pi^{\star}(\mathbf{x},S_{t-1}) \\
+& \quad \quad \quad \color{red}{\text{ask expert for best action}\; \alpha^{\star} = \pi^{\star}(\mathbf{x},S_{t-1})} \\
 & \quad \quad \quad \text{extract } features=\phi(\mathbf{x},S_{t-1}) \\
 & \quad \quad \quad \cal E = \cal E \cup (features,\alpha^{\star})\\
-& \quad \text{learn classifier} \; \text{from}\; \cal E\\
+& \quad \text{learn classifier H} \; \text{from}\; \cal E\\
 & \quad \text{decrease} \; \beta\\
 \end{align}
 </p>
@@ -12086,7 +12091,7 @@ a.anchor-link {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="DAgger-algorithm">DAgger algorithm<a class="anchor-link" href="#DAgger-algorithm">&#182;</a></h3><p>Proposed by <a href="http://www.cs.cmu.edu/~sross1/publications/Ross-AIStats11-NoRegret.pdf">Ross et al. (2011)</a> motivated by robotics</p>
+<p>Proposed by <a href="http://www.cs.cmu.edu/~sross1/publications/Ross-AIStats11-NoRegret.pdf">Ross et al. (2011)</a> motivated by robotics</p>
 <ul>
 <li>first iteration is standard classification training</li>
 <li>task loss and gold standard are implicitly considered via the expert</li>
@@ -12101,7 +12106,17 @@ a.anchor-link {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>So far we looked at how to overcome previous errors. What about anticipating (and avoiding) the future ones?</p>
+<p><strong>rollins</strong> exposes to previous mistakes. Future ones?</p>
+
+</div>
+</div>
+</div></div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>rollouts</strong>: expose the classifier to future mistakes!</p>
 
 </div>
 </div>
@@ -12167,10 +12182,10 @@ a.anchor-link {
 <div class="text_cell_render border-box-sizing rendered_html">
 <p style="float:left;">
 <ul>
-<li><b>roll-in</b> to a point in the sentence</li>
+<li><b>rollin</b> to a point in the sentence</li>
 <li>try each possible label and <b>rollout</b> till the end</li>
 <li>evaluate the complete output with the task loss</li>
-<li>If <b>roll-out</b> with expert only, correct action has 0 cost, incorrect 1.</li>
+<li>If <b>rollout</b> with expert only, correct action has 0 cost, incorrect 1.</li>
 </ul>
 </p>
 </div>
@@ -12214,15 +12229,15 @@ a.anchor-link {
 <h3 id="DAgger-with-roll-outs">DAgger with roll-outs<a class="anchor-link" href="#DAgger-with-roll-outs">&#182;</a></h3><p style="border:3px; border-radius: 25px; background-color:lightgrey; border-style:solid; border-color:black; padding: 0.3em; font-size: 75%">
 \begin{align}
 & \textbf{Input:} \; D_{train} = \{(\mathbf{x}^1,\mathbf{y}^1)...(\mathbf{x}^M,\mathbf{y}^M)\}, \; expert\; \pi^{\star}, \; loss \; function \; L\\
-& training\; examples\; \cal E = \emptyset, \; expert\; probability\; \beta=1\\
+& \text{set} \; training\; examples\; \cal E = \emptyset, \; expert\; probability\; \beta=1\\
 & \mathbf{while}\; \text{termination condition not reached}\; \mathbf{do}\\
-& \quad \text{set} \; rollin/out \; policy \; \pi^{in/out} = \beta H + (1-\beta)\pi^{\star}\\
+& \quad \color{red}{\text{set} \; rollin/out \; policy \; \pi^{in/out} = \beta H + (1-\beta)\pi^{\star}}\\
 & \quad \mathbf{for} \; (\mathbf{x},\mathbf{y}) \in D_{train} \; \mathbf{do}\\
 & \quad \quad \text{rollin to predict} \; \hat \alpha_1\dots\hat \alpha_T  = \pi^{in/out}(\mathbf{x},\mathbf{y})\\
 & \quad \quad \mathbf{for} \; \hat \alpha_t \in \hat \alpha_1\dots\hat \alpha_T \; \mathbf{do}\\
 & \quad \quad \quad \mathbf{for} \; \alpha \in {\cal A} \; \mathbf{do}\\
-& \quad \quad \quad \quad \text{rollout} \; S_{final} = \pi^{in/out}(S_{t-1}, \alpha, \mathbf{x})\\
-& \quad \quad \quad \quad cost\; c_{\alpha}=L(S_{final}, \mathbf{y})  \\
+& \quad \quad \quad \quad \color{red}{\text{rollout} \; S_{final} = \pi^{in/out}(S_{t-1}, \alpha, \mathbf{x})}\\
+& \quad \quad \quad \quad \color{red}{cost\; c_{\alpha}=L(S_{final}, \mathbf{y})}\\
 & \quad \quad \quad \text{extract } features=\phi(\mathbf{x}, S_{t-1}) \\
 & \quad \quad \quad \cal E = \cal E \cup (features,\mathbf{c})\\
 & \quad \text{learn classifier} \; \text{from}\; \cal E\\
@@ -12251,7 +12266,6 @@ a.anchor-link {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Some history:</p>
 <ul>
 <li><p>first proposed in SEARN (<a href="http://hunch.net/~jl/projects/reductions/searn/searn.pdf">Daumé III et al., 2009</a>)</p>
 </li>
@@ -12287,7 +12301,7 @@ a.anchor-link {
 <h3>Generic imitation learning</h3><p style="border:3px; border-radius: 25px; background-color:lightgrey; border-style:solid; border-color:black; padding: 0.3em; font-size: 80%">
 \begin{align}
 & \textbf{Input:} \; D_{train} = \{(\mathbf{x}^1,\mathbf{y}^1)...(\mathbf{x}^M,\mathbf{y}^M)\}, \; expert\; \pi^{\star}, \; loss \; function \; L\\
-& training\; examples\; \cal E = \emptyset\\
+& \text{set} \; training\; examples\; \cal E = \emptyset\\
 & \mathbf{while}\; \text{termination condition not reached}\; \mathbf{do}\\
 & \quad \text{set} \; rollin \; policy \; \pi^{in} = mix(H,\pi^{\star})\\
 & \quad \text{set} \; rollout \; policy \; \pi^{out} = mix(H,\pi^{\star})\\
@@ -12302,6 +12316,68 @@ a.anchor-link {
 </p>
 </div>
 </div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Overview">Overview<a class="anchor-link" href="#Overview">&#182;</a></h3><table>
+<thead><tr>
+<th>Method</th>
+<th>rollin</th>
+<th>rollout</th>
+<th>loss</th>
+<th>expert decay</th>
+<th>training data</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>classification (exact imit.)</td>
+<td>expert</td>
+<td>N/A</td>
+<td>expert 0/1</td>
+<td>N/A</td>
+<td>1st iter</td>
+</tr>
+<tr>
+<td>DAgger</td>
+<td>mix</td>
+<td>N/A</td>
+<td>expert 0/1</td>
+<td>decrease (abrupt)</td>
+<td>all iterations</td>
+</tr>
+<tr>
+<td>V-DAgger</td>
+<td>mix</td>
+<td>mix</td>
+<td>task</td>
+<td>exponential</td>
+<td>all iterations</td>
+</tr>
+<tr>
+<td>LOLS</td>
+<td>classifier</td>
+<td>mix (same for each action explored)</td>
+<td>task</td>
+<td>no decay</td>
+<td>each iteration, average</td>
+</tr>
+<tr>
+<td>SEARN</td>
+<td>mix</td>
+<td>mix</td>
+<td>task</td>
+<td>exponential</td>
+<td>each iteration, weighted average</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
 </div></section></section><section><section>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
@@ -12311,7 +12387,7 @@ a.anchor-link {
 <h3 id="Summary-so-far">Summary so far<a class="anchor-link" href="#Summary-so-far">&#182;</a></h3><ul>
 <li>basic intuition behind IL</li>
 <li>rollin and the DAgger algorithm </li>
-<li>rollouts and V-DAgger and LoLS</li>
+<li>rollouts, V-DAgger and LoLS</li>
 <li>generic imitation learning recipe</li>
 </ul>
 

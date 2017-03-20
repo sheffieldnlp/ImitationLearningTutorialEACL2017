@@ -11981,8 +11981,8 @@ a.anchor-link {
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Joint-modeling">Joint modeling<a class="anchor-link" href="#Joint-modeling">&#182;</a></h3><p>A model (e.g. conditional random field) that scores complete outputs (e.g. label sequences):</p>
 $$\mathbf{\hat y} =\hat y_{1}\ldots \hat y_{N} = \mathop{\arg \max}_{Y \in {\cal Y}^N} f(y_{1}\ldots y_{N}, \mathbf{x})$$<ul class="fragment">
-                    <li>no error propagation</li>
                     <li>exhaustive exploration of the search space</li>
+                    <li>no error propagation</li>
                     <li>large/complex search spaces are challenging</li>
                     <li>efficient dynamic programming restricts modelling flexibility
                         (i.e. Markov assumptions)</li>
@@ -12039,7 +12039,12 @@ but generate better (non-i.i.d.) training data</p>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>But let's see some basic concepts first</p>
+<p>To apply IL we need to have:</p>
+<ul>
+<li>transition system</li>
+<li>task loss</li>
+<li>expert policy</li>
+</ul>
 
 </div>
 </div>
@@ -12068,7 +12073,7 @@ but generate better (non-i.i.d.) training data</p>
 <div class="text_cell_render border-box-sizing rendered_html">
 <ul>
 <li><b>PoS/NER tagging?</b> <span class="fragment">for each word in the sentence, left-to-right, predict a PoS tag which is added to the output</span></li>
-<li class="fragment"><b>NLG?</b> <span class="fragment">predict a word from the vocabulary that is added to the output until the <code>END</code></span></li>
+<li class="fragment"><b>NLG?</b> <span class="fragment">predict a word adding it to the output until the <code>EndOfSentence</code> is predicted</span></li>
 </ul>
 </div>
 </div>
@@ -12361,9 +12366,9 @@ $$\alpha^{\star}=\pi^{\star}(S_t, \mathbf{y}) = \mathop{\arg \min}_{\alpha \in {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Cost-sensitive-classification">Cost-sensitive classification<a class="anchor-link" href="#Cost-sensitive-classification">&#182;</a></h3><p>Imitation learning: learn a better model, i.e. action-predicting classifier by imitating expert demonstrations</p>
+<h3 id="Imitation-learning">Imitation learning<a class="anchor-link" href="#Imitation-learning">&#182;</a></h3><p>Learn an action-predicting classifier by imitating expert demonstrations</p>
 <ul>
-<li>learn that same mistakes are worse than others</li>
+<li>learn that some mistakes are worse than others</li>
 <li>multiple actions can be optimal</li>
 </ul>
 
