@@ -29,8 +29,7 @@ class Carousel:
             element = self.elements[index]
             value = generic_to_html(element)
             css_class = "item active" if active else "item"
-            return """<div class="{}">{} {} / {}</div>""".format(css_class, value, index + 1,
-                                                                 len(self.elements))
+            return """<div class="{}">{}</div>""".format(css_class, value)
 
         items = [create_item(i, i == 0) for i in range(0, len(self.elements))]
         items_html = "\n".join(items)
