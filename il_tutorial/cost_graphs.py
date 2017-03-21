@@ -2,9 +2,10 @@ import svgwrite
 from IPython.core.display import HTML
 
 
-def draw_cost_breakdown(rows, columns, path, cost=None, cost_cell=None, roll_in_cell=None, roll_out_cell=None,
-                        row_height=60, column_width=100):
-    height = row_height * (len(rows) + 2)
+def draw_cost_breakdown(rows, columns, path, cost=None, cost_cell=None,
+                        roll_in_cell=None, roll_out_cell=None, explore_cell=None,
+                        row_height=50, column_width=100):
+    height = row_height * (len(rows) + 1.3)
     width = column_width * (len(columns) + 1)
     dwg = svgwrite.Drawing('test.svg', size=(width, height))
 
@@ -20,10 +21,10 @@ def draw_cost_breakdown(rows, columns, path, cost=None, cost_cell=None, roll_in_
         return (col + 1) * column_width, (row + 1) * row_height
 
     for i, row in enumerate(rows):
-        dwg.add(dwg.text(row, insert=(0, row_height + i * row_height), style="font-size:20px; font-weight:bold; font-family:Lato"))
+        dwg.add(dwg.text(row, insert=(0, row_height + i * row_height), style="font-size:25px; font-weight:bold; font-family:Lato"))
 
     for i, col in enumerate(columns):
-        dwg.add(dwg.text(col, insert=((i + 1) * column_width, table_height + row_height), style="font-size:20px; font-family:Lato"))
+        dwg.add(dwg.text(col, insert=((i + 1) * column_width, table_height + row_height), style="font-size:25px; font-family:Lato"))
 
     for i in range(1, len(path)):
         prev = path[i - 1]
@@ -33,11 +34,11 @@ def draw_cost_breakdown(rows, columns, path, cost=None, cost_cell=None, roll_in_
 
     def label_cost():
         x, y = coord(*cost_cell)
-        dwg.add(dwg.text("cost = " + str(cost), insert=(x + 10, y), style="font-size:20px; font-weight:bold; font-family:Lato"))
+        dwg.add(dwg.text("cost = " + str(cost), insert=(x + 10, y), style="font-size:25px; font-weight:bold; font-family:Lato"))
 
     def label_cell(cell, label):
         x, y = coord(*cell)
-        dwg.add(dwg.text(label, insert=(x-15, y - 15), style="font-size:20px; font-weight:bold; font-family:Lato"))
+        dwg.add(dwg.text(label, insert=(x-15, y - 15), style="font-size:25px; font-weight:bold; font-family:Lato"))
 
     def plot_grid():
         # horizontal lines
@@ -57,6 +58,8 @@ def draw_cost_breakdown(rows, columns, path, cost=None, cost_cell=None, roll_in_
         label_cost()
     if roll_in_cell:
         label_cell(roll_in_cell, "rollin")
+    if explore_cell:
+        label_cell(explore_cell, "explore")
     if roll_out_cell:
         label_cell(roll_out_cell, "rollout")
     plot_grid()
