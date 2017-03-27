@@ -11888,8 +11888,11 @@ University College London
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Your-name-sounds-familiar">Your name sounds familiar<a class="anchor-link" href="#Your-name-sounds-familiar">&#182;</a></h3><p><img src="images/Walter_and_Seth_Singleton.jpg"  style="width:45%;"></p>
-<p>Imitation is an advanced behavior whereby an individual observes and replicates another's behavior. Imitation is also a form of social learning that leads to the development of traditions, and ultimately our culture.</p>
-<p>(<a href="https://en.wikipedia.org/wiki/Imitation">https://en.wikipedia.org/wiki/Imitation</a>)</p>
+<p><a href="https://en.wikipedia.org/wiki/Imitation">Imitation learning:</a></p>
+<ul>
+<li>an advanced behavior whereby an individual observes and replicates another's behavior</li>
+<li>a form of social learning that leads to the development of traditions, and ultimately our culture</li>
+</ul>
 
 </div>
 </div>
@@ -11987,36 +11990,58 @@ University College London
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Why-should-NLP-care?">Why should NLP care?<a class="anchor-link" href="#Why-should-NLP-care?">&#182;</a></h3><p>In NLP we use classifiers (= policy) trained on gold standard (demonstrations by experts)</p>
-<p>Imitation learning can improve them</p>
-<p>Empirical successes in a number of tasks</p>
+<h3 id="Is-it-supervised-learning?">Is it supervised learning?<a class="anchor-link" href="#Is-it-supervised-learning?">&#182;</a></h3><p><p style="float: left;"><b>Yes</b>: we assume gold standard<br> output for training</p> 
+<img src="images/tikz/StucturedPredictionDef.png" style="width:40%; float: right;"></p>
 
 </div>
 </div>
-</div></section><section>
+</div><div class="fragment">
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="IL-vs-supervised-learning">IL vs supervised learning<a class="anchor-link" href="#IL-vs-supervised-learning">&#182;</a></h3><p>Yes: we also assume the gold standard structured output during training</p>
-<p>But there is more:</p>
+<p><p style="float: left;"><b>But</b>: we train a classifier to predict<br> <b>actions</b> constructing the output.<br><br>Actions not in gold;<br> IL is rather <b>semi-supervised</b></p> 
+<img src="images/tikz/StucturedPrediction.png" style="width:40%; float: right;"></p>
+
+</div>
+</div>
+</div></div></section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Is-it-reinforcement-learning?">Is it reinforcement learning?<a class="anchor-link" href="#Is-it-reinforcement-learning?">&#182;</a></h3><p><p style="float: left;"><b>Yes</b> (a kind of): we train a policy to<br>maximize rewards/minimize losses</p> 
+<a href="http://www.clipartkid.com/you-never-learn-to-swear-until-you-teach-your-teenager-to-drive-d85J9Y-clipart/"><img src="images/driver.jpg" style="width:35%; float: right;"></a></p>
+
+</div>
+</div>
+</div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><p style="float: left;">But learning is facilitated by an <b>expert</b><br></p>  <a href="https://www.pinterest.com/explore/affordable-driving-school/"><img src="images/driving_mix.jpg" style="width:35%; float: right;"></a></p>
+
+</div>
+</div>
+</div></div></section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Why-should-I-care?">Why should I care?<a class="anchor-link" href="#Why-should-I-care?">&#182;</a></h3><p>In NLP we train classifiers to imitate experts in many tasks:</p>
 <ul>
-<li>we train a classifier that predicts actions</li>
-<li>the actions are not necessarily defined in the gold standard</li>
+<li>syntactic parsing</li>
+<li>cofererence resolution</li>
+<li>semantic parsing</li>
+<li>natural language generation</li>
+<li>machine translation</li>
 </ul>
-<p>The latent actions make IL more like semi-supervised learning</p>
-
-</div>
-</div>
-</div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="IL-vs-reinforcement-learning">IL vs reinforcement learning<a class="anchor-link" href="#IL-vs-reinforcement-learning">&#182;</a></h3><p>learning with a teacher vs learning on your own</p>
-<p>use driving</p>
+<p>Imitation learning has been used to improve accuracy in all of them achieving SOTA results!</p>
 
 </div>
 </div>
