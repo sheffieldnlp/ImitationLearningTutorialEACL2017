@@ -11951,7 +11951,7 @@ a.anchor-link {
 <h3 id="Two-main-paradigms">Two main paradigms<a class="anchor-link" href="#Two-main-paradigms">&#182;</a></h3><p>Joint modeling, a.k.a:</p>
 <ul>
 <li>global inference</li>
-<li>structured prediction</li>
+<li>structured models</li>
 </ul>
 
 </div>
@@ -11982,7 +11982,6 @@ a.anchor-link {
 <h3 id="Joint-modeling">Joint modeling<a class="anchor-link" href="#Joint-modeling">&#182;</a></h3><p>A model (e.g. conditional random field) that scores complete outputs (e.g. label sequences):</p>
 $$\mathbf{\hat y} =\hat y_{1}\ldots \hat y_{N} = \mathop{\arg \max}_{Y \in {\cal Y}^N} f(y_{1}\ldots y_{N}, \mathbf{x})$$<ul class="fragment">
                     <li>exhaustive exploration of the search space</li>
-                    <li>no error propagation</li>
                     <li>large/complex search spaces are challenging</li>
                     <li>efficient dynamic programming restricts modelling flexibility
                         (i.e. Markov assumptions)</li>
@@ -12039,11 +12038,11 @@ but generate better (non-i.i.d.) training data</p>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>To apply IL we need to have:</p>
+<p>To apply IL we need:</p>
 <ul>
-<li>transition system</li>
-<li>task loss</li>
-<li>expert policy</li>
+<li>transition system (what our classifier can do)</li>
+<li>task loss (what we optimize for)</li>
+<li>expert policy (the teacher to help us)</li>
 </ul>
 
 </div>
@@ -12054,13 +12053,23 @@ but generate better (non-i.i.d.) training data</p>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3>Transition system</h3><p>The <b>actions</b> $\cal A$ the classifier $f$ can predict and their effect on the <b>state</b> which keeps track of the prediction: $S_{t+1}=(S_1, \alpha_1...\alpha_t)$</p><p style="text-align: left; border:3px; border-radius: 25px; background-color:lightgrey; border-style:solid; border-color:black; padding: 0.3em; font-size: 75%">
+<h3>Transition system</h3><p>The <b>actions</b> $\cal A$ the classifier $f$ can predict and their effect on the <b>state</b> which keeps track of the prediction: $S_{t+1}=S_1(\alpha_1\ldots\alpha_t)$</p><p><img src="images/tikz/IncrementalStructure.png" style="align:center; width:70%"></p>
+
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3>Transition system</h3><p style="text-align: left; border:3px; border-radius: 25px; background-color:lightgrey; border-style:solid; border-color:black; padding: 0.3em; font-size: 75%">
 \begin{align}
-& \textbf{Input:} \; \mathbf{x}\\
+& \textbf{Input:} \; sentence \; \mathbf{x}\\
 & state \; S_1=initialize(\mathbf{x}); timestep \; t = 1\\
 & \mathbf{while}\; S_t \; \text{not final}\; \mathbf{do}\\
 & \quad action \; \alpha_t = \mathop{\arg \max}_{\alpha \in {\cal A}} f(\alpha, \mathbf{x})\\
-& \quad S_{t+1}=update(\alpha_t,S_t); t=t+1\\
+& \quad S_{t+1}=S_t(\alpha_t); t=t+1\\
 \end{align}
 </p>
 </div>
@@ -12083,8 +12092,8 @@ but generate better (non-i.i.d.) training data</p>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Task-loss">Task loss<a class="anchor-link" href="#Task-loss">&#182;</a></h3><p>Given $S_{final}$, how does it compare to the gold standard $\mathbf{y}$?</p>
-$$loss  = L(S_{final}, \mathbf{y}) \geq 0$$
+<h3 id="Supervising-the-classifier">Supervising the classifier<a class="anchor-link" href="#Supervising-the-classifier">&#182;</a></h3><p>What are good actions in incremental structured prediction?</p>
+
 </div>
 </div>
 </div><div class="fragment">
@@ -12093,11 +12102,21 @@ $$loss  = L(S_{final}, \mathbf{y}) \geq 0$$
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
+<p>Those that reach $S_{final} = S_1(\alpha_1\ldots\alpha_T)$ with low <strong>task loss</strong>:</p>
+$$loss  = L(S_{final}, \mathbf{y}) \geq 0$$
+</div>
+</div>
+</div></div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <ul>
 <li><b>PoS tagging?</b> <span class="fragment">Hamming loss: number of incorrect tags</span></li>
 <li class="fragment"><b>NER?</b> <span class="fragment">number of false positives and false negatives</span></li>
-<li class="fragment"><b>NLG?</b> <span class="fragment">BLEU: % of n-grams predicted present in the gold reference(s), i.e. $L=1-BLEU(s_{final}, \mathbf{y})$</span></li>
-</ul><p class="fragment"><b>Goal:</b> models minimizing the loss on unseen test data</p>
+<li class="fragment"><b>NLG?</b> <span class="fragment">BLEU: % of n-grams predicted present in the gold reference(s), i.e. $L=1-BLEU(S_{final}, \mathbf{y})$</span></li>
+</ul>
 </div>
 </div>
 </div></div></section></section><section><section>
@@ -12106,9 +12125,7 @@ $$loss  = L(S_{final}, \mathbf{y}) \geq 0$$
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Decomposable-losses">Decomposable losses<a class="anchor-link" href="#Decomposable-losses">&#182;</a></h3><p>A loss is <strong>decomposable</strong> if defined as the sum of the losses for each action $\alpha_t$ independently of the future $[\alpha_{t+1}...\alpha_T]$:
-$$L(S,\mathbf{y})= \sum_{t=1}^T \ell(\alpha_t, \mathbf{y}, [\alpha_1 ...\alpha_{t-1}]) $$</p>
-<table class="fragment" data-fragment-index="1" style="font-size:80%; border-style: hidden; border-collapse: collapse; padding: 50px">
+<h3 id="Action-goodness">Action goodness<a class="anchor-link" href="#Action-goodness">&#182;</a></h3><table style="font-size:80%; border-style: hidden; border-collapse: collapse; padding: 50px">
 <thead>
 <tr>
 <th>I</th> 
@@ -12122,33 +12139,33 @@ $$L(S,\mathbf{y})= \sum_{t=1}^T \ell(\alpha_t, \mathbf{y}, [\alpha_1 ...\alpha_{
 </thead>
 <tbody>
 <tr>
-<td><span class="fragment" data-fragment-index="1">PRP</span></td>
-<td><span class="fragment" data-fragment-index="1">VBD</span></td>
-<td><span class="fragment" data-fragment-index="1">IN</span></td>
+<td>PRP</td>
+<td>VBD</td>
+<td>IN</td>
+<td>NNP</td>
+<td>IN</td>
+<td>NNP</td>
 <td><span class="fragment" data-fragment-index="1">NNP</span></td>
-<td><span class="fragment" data-fragment-index="1">IN</span></td>
-<td><span class="fragment" data-fragment-index="1">NNP</span></td>
-<td><span class="fragment" data-fragment-index="2">NNP</span></td>
 </tr>
 <tr>
-<td><span class="fragment" data-fragment-index="3">O</span></td>
-<td><span class="fragment" data-fragment-index="3">O</span></td>
-<td><span class="fragment" data-fragment-index="3">O</span></td>
-<td><span class="fragment" data-fragment-index="3">B-LOC</span></td>
-<td><span class="fragment" data-fragment-index="3">O</span></td>
-<td><span class="fragment" data-fragment-index="3">B-PER</span></td>
-<td><span class="fragment" data-fragment-index="4">I-PER</span></td>
+<td><span class="fragment" data-fragment-index="2">O</span></td>
+<td><span class="fragment" data-fragment-index="2">O</span></td>
+<td><span class="fragment" data-fragment-index="2">O</span></td>
+<td><span class="fragment" data-fragment-index="2">B-LOC</span></td>
+<td><span class="fragment" data-fragment-index="2">O</span></td>
+<td><span class="fragment" data-fragment-index="2">B-PER</span></td>
+<td><span class="fragment" data-fragment-index="3">I-PER</span></td>
 </tr>
 </tbody>
-</table><ul><li class="fragment" data-fragment-index="1">PoS tagging decomposable? <span class="fragment" data-fragment-index="2"><b>Yes!</b> $\ell(\alpha_6, \cdot)=0$</span></li>
-<li class="fragment" data-fragment-index="3">NER decomposable? <span class="fragment" data-fragment-index="4"><b>No!</b> If $\alpha_7$ is</span>
-<ul class="fragment" data-fragment-index="4">
-<li>I-PER:  $\ell(\alpha_6, \cdot)=0$ (correct)</li> 
-<li>O: $\ell(\alpha_6, \cdot)=2$ (1 FP and 1 FN)</li>
-<li>B-*: $\ell(\alpha_6, \cdot)=3$ (2 FP and 1 FN)</li>
-</li>
+</table><p>How many incorrect PoS tags due to $\alpha_6$  being NNP? <span class="fragment" data-fragment-index="1"><b>0</b></span>
+</p>
+<p class="fragment" data-fragment-index="2"> How many $FP+FN$ due to $\alpha_6$ being B-PER? <span class="fragment" data-fragment-index="3"><b>Depends!</b> If $\alpha_7$ is</span>
+<ul class="fragment" data-fragment-index="3">
+<li>I-PER:  $0$ (correct)</li> 
+<li>O: $2$ (1FP+1FN)</li>
+<li>B-*: $3$ (2FP+1FN)</li>
 </ul>
-</ul>
+</p>
 </div>
 </div>
 </div></section><section>
@@ -12157,7 +12174,7 @@ $$L(S,\mathbf{y})= \sum_{t=1}^T \ell(\alpha_t, \mathbf{y}, [\alpha_1 ...\alpha_{
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Non-decomposable-loss">Non-decomposable loss<a class="anchor-link" href="#Non-decomposable-loss">&#182;</a></h3><p>Is BLEU score decomposable?</p>
+<h3 id="More-action-goodness">More action goodness<a class="anchor-link" href="#More-action-goodness">&#182;</a></h3><p>Can we tell how predicting a word will change our BLEU?</p>
 $$
 BLEU([\alpha_1...\alpha_T],\mathbf{y}) = \prod_{n=1}^N \frac{\# \text{n-grams} \in ([\alpha_1...\alpha_T] \cap \mathbf{y})}{\# \text{n-grams} \in [\alpha_1..\alpha_T]}
 $$
@@ -12169,7 +12186,7 @@ $$
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>No</strong>! Assuming N&gt;1 and a word-by-word predictor.</p>
+<p><strong>No</strong>! (assuming N&gt;1)</p>
 
 </div>
 </div>
@@ -12179,7 +12196,8 @@ $$
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Non-decomposability affects joint models: loss does not always decompose over the graphical model (<a href="http://www.cs.toronto.edu/~dtarlow/tarlow_zemel_aistats12.pdf">Tarlow and Zemel, 2012</a>)</p>
+<p><strong>Non-decomposable</strong> losses wrt transition system are common!</p>
+<p>Imitation learning trains incremental models for these losses</p>
 
 </div>
 </div>
@@ -12189,7 +12207,7 @@ $$
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Even F-score for binary classification is non-decomposable (<a href="http://jmlr.org/proceedings/papers/v37/narasimhana15.pdf">Narasimhan et al., 2015</a>)!</p>
+<p>Affects joint models: loss does not always decompose over the graphical model (<a href="http://www.cs.toronto.edu/~dtarlow/tarlow_zemel_aistats12.pdf">Tarlow and Zemel, 2012</a>)</p>
 
 </div>
 </div>
@@ -12199,7 +12217,7 @@ $$
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Expert-policy">Expert policy<a class="anchor-link" href="#Expert-policy">&#182;</a></h3><p>Returns the best action at the current state by looking at the gold standard assuming future actions are also optimal:</p>
+<h3 id="Expert-policy">Expert policy<a class="anchor-link" href="#Expert-policy">&#182;</a></h3><p>Returns the best action at the current state by looking at the gold standard assuming <strong>future actions are also optimal</strong>:</p>
 $$\alpha^{\star}=\pi^{\star}(S_t, \mathbf{y}) = \mathop{\arg \min}_{\alpha \in {\cal A}} L(S_t(\alpha,\pi^{\star}),\mathbf{y})$$
 </div>
 </div>
@@ -12313,27 +12331,7 @@ $$\alpha^{\star}=\pi^{\star}(S_t, \mathbf{y}) = \mathop{\arg \min}_{\alpha \in {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Cost-sensitive-classification">Cost-sensitive classification<a class="anchor-link" href="#Cost-sensitive-classification">&#182;</a></h3><p><strong>Classification</strong>: single correct label per-instance, e.g. B-PER</p>
-
-</div>
-</div>
-</div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>Multi-label classification</strong>: multiple correct labels per-instance</p>
-
-</div>
-</div>
-</div></div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>Cost-sensitive classification</strong>: each label has a cost:</p>
+<h3 id="Cost-sensitive-classification">Cost-sensitive classification<a class="anchor-link" href="#Cost-sensitive-classification">&#182;</a></h3><p>Each action has a different cost:</p>
 <table style="border-style: hidden; border-collapse: collapse; padding: 50px">
 <thead>
 <tr>
@@ -12358,20 +12356,6 @@ $$\alpha^{\star}=\pi^{\star}(S_t, \mathbf{y}) = \mathop{\arg \min}_{\alpha \in {
 </tr>
 </tbody>
 </table>
-</div>
-</div>
-</div></div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Imitation-learning">Imitation learning<a class="anchor-link" href="#Imitation-learning">&#182;</a></h3><p>Learn an action-predicting classifier by imitating expert demonstrations</p>
-<ul>
-<li>learn that some mistakes are worse than others</li>
-<li>multiple actions can be optimal</li>
-</ul>
-
 </div>
 </div>
 </div><div class="fragment">
