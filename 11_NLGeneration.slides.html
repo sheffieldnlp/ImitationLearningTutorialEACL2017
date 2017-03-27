@@ -11870,10 +11870,7 @@ a.anchor-link {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Natural-Language-Generation--(concept-to-text)">Natural Language Generation <i> (concept-to-text)</i><a class="anchor-link" href="#Natural-Language-Generation--(concept-to-text)">&#182;</a></h3><h6 id="(Lampouras-and-Vlachos-2016)">(<a href="https://aclweb.org/anthology/C/C16/C16-1105.pdf">Lampouras and Vlachos 2016</a>)<a class="anchor-link" href="#(Lampouras-and-Vlachos-2016)">&#182;</a></h6><p>...is the natural language processing task of generating text from a non-linguistic form...</p>
-<ul>
-<li>e.g. a meaning representation, database records.</li>
-</ul>
+<h3 id="Natural-Language-Generation--(concept-to-text)">Natural Language Generation <i> (concept-to-text)</i><a class="anchor-link" href="#Natural-Language-Generation--(concept-to-text)">&#182;</a></h3><p>The natural language processing task of generating text from a meaning representation.</p>
 
 </div>
 </div>
@@ -11883,25 +11880,28 @@ a.anchor-link {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
+<center>
 <div>
     <div style="display:inline-block;">
         <p style="border:2px; border-radius: 15px; background-color:white; border-style:solid; border-color:black; padding: 0.5em; font-size: 80%; display: inline-block">
         \begin{align}
         & \text{Predicate: INFORM}\\
         & \text{______________________}\\
-        & \text{type = "hotel"}\\
-        & \text{count = "182"}\\
-        & \text{dogs_allowed = dont_care}
+        & \color{blue}{\text{type = "hotel"}}\\
+        & \color{green}{\text{count = "182"}}\\
+        & \color{red}{\text{dogs_allowed = dont_care}}
         \end{align}
         </p>
     </div>
-    <font size="300">&#10143;</font>
-    <div style="display:inline-block;">
-        <p style="display:block; width:600px; word-wrap:break-word;">
-        There are _182_ _hotels_ if you _do not care_ whether dogs are allowed.
+        <font size="300">&#10143;</font>
+    <div style="display:inline-block; vertical-align: middle;" >
+        <p style="display:block; width:400px; word-wrap:break-word;">
+        There are <font color="green"><u>182</u></font> <font color="blue"><u>hotels</u></font> if you <font color="red"><u>do not care</u></font> whether dogs are allowed.
         </p>
     </div>
 </div>
+</center><p><a href="https://aclweb.org/anthology/C/C16/C16-1105.pdf">Lampouras and Vlachos 2016</a> proposed using LoLS for NLG.</p>
+
 </div>
 </div>
 </div></div></section><section>
@@ -11910,31 +11910,14 @@ a.anchor-link {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="NLG-Motivation">NLG Motivation<a class="anchor-link" href="#NLG-Motivation">&#182;</a></h3><p>Statistical methods (mostly) rely on human-annotated data for training.</p>
+<h3 id="Transition-system?">Transition system?<a class="anchor-link" href="#Transition-system?">&#182;</a></h3><p><b>State:</b> meaning representation, incomplete sentence.
+<br>
+<br>
+<span class="fragment" data-fragment-index="1"><b>Action space:</b></span></p>
 <ul>
-<li>Especially on alignments between the meaning representation and reference texts.</li>
-<li>Time-consuming and costly to construct.</li>
+<li class="fragment" data-fragment-index="2"><b>What to say?</b>: content prediction actions a<sub>c</sub>, and</li>
+<li class="fragment" data-fragment-index="2"><b>How to say it?</b>: word prediction actions a<sub>w</sub> .</li>
 </ul>
-<p><br></p>
-<div>
-    <div style="display:inline-block;">
-        <p style="border:2px; border-radius: 15px; background-color:white; border-style:solid; border-color:black; padding: 0.5em; font-size: 70%; display: inline-block">
-        \begin{align}
-        & \text{Predicate: INFORM}\\
-        & \text{______________________}\\
-        & \text{type = "Sanjalisco"}\\
-        & \text{good_for_meal = breakfast}\\
-        & \text{near = mission}
-        \end{align}
-        </p>
-    </div>
-    <font size="300">&#10143;</font>
-    <div style="display:inline-block;">
-        <p style="display:block; width:600px; word-wrap:break-word;">
-        __Sanjalisco__ is good for __breakfast__ and is near the __mission__ district.
-        </p>
-    </div>
-</div>
 </div>
 </div>
 </div></section><section>
@@ -11943,41 +11926,10 @@ a.anchor-link {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="How-can-Imitation-Learning-help-with-that?">How can Imitation Learning help with that?<a class="anchor-link" href="#How-can-Imitation-Learning-help-with-that?">&#182;</a></h3><p>Imitation Learning can be used to learn from unaligned data.</p>
-<ul>
-<li>Why unaligned data? To limit the cost of dataset construction!</li>
-<li>Why Imitation Learning? It can learn from non-decomposable loss functions, and suboptimal training data!</li>
-</ul>
-
-</div>
-</div>
-</div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Transition-system?">Transition system?<a class="anchor-link" href="#Transition-system?">&#182;</a></h3><p>NLG is a complex task due to large output space.</p>
-<ul>
-<li>The set of possible words limited to those observed from the references of the training data.</li>
-</ul>
-<p>We formulate NLG as a sequence A of two types of actions:</p>
-<ul>
-<li>content prediction actions a<sub>c</sub>, and</li>
-<li>word prediction actions a<sub>w</sub>.</li>
-</ul>
-
-</div>
-</div>
-</div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="NLG-formulation">NLG formulation<a class="anchor-link" href="#NLG-formulation">&#182;</a></h3><p style="border:3px; border-radius: 25px; background-color:lightgrey; border-style:solid; border-color:black; padding: 0.5em; font-size: 70%; display: inline-block">
+<h3 id="NLG-formulation">NLG formulation<a class="anchor-link" href="#NLG-formulation">&#182;</a></h3><p style="border:3px; border-radius: 25px; background-color:lightgrey; border-style:solid; border-color:black; padding: 0.5em; font-size: 70%">
 \begin{align}
-& \textbf{Input:} \; \text{meaning representation} \; MR \; \text{with set of attributes} \; C, \; \text{attribute dictionaries} \; D_c,\;\forall c \in C\\
+& \textbf{Input:} \; \text{meaning representation} \; MR \; \text{with set of attributes} \; C, \; \\ 
+& \quad \quad \quad \text{word action dictionaries} \; D_c,\;\forall c \in C\\
 & \textbf{Output:} \; \text{action sequence} \; A \\
 & \; \\
 & 1 \;\;  \quad \mathbf{do} \\
@@ -12001,8 +11953,29 @@ a.anchor-link {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="NLG-transition-in-action!">NLG transition in action!<a class="anchor-link" href="#NLG-transition-in-action!">&#182;</a></h3><p><img src="images/toBeAnimated/NLG_actionSeq1.png">
-<img src="images/toBeAnimated/NLG_actionSeq2.png"></p>
+<h3 id="NLG-transition-in-action!">NLG transition in action!<a class="anchor-link" href="#NLG-transition-in-action!">&#182;</a></h3><p><br></p>
+<p><center><h3><span style="font-variant: small-caps;"></span></h3>
+<img src="images/toBeAnimated/NLG_actionSeq_step1.png">
+</center>
+<br>
+<br>
+<small></p>
+<p><div>
+    <div style="display:inline-block;">
+        <p style="border:2px; border-radius: 15px; background-color:white; border-style:solid; border-color:black; padding: 0.5em; font-size: 80%; display: inline-block">
+        \begin{align}
+        & \text{Predicate: INFORM}\\
+        & \text{______________________}\\
+        & \text{name = X-name-1}\\
+        & \text{serves = food}\\
+        & \text{eattype = restaurant}\\
+        & \text{near = riverside}\\
+        & \text{area = X-area-1, X-area-2}
+        \end{align}
+        </p>
+    </div>
+&lt;/div&gt;
+&lt;/small&gt;</p>
 
 </div>
 </div>
@@ -12012,234 +11985,990 @@ a.anchor-link {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Task-loss?">Task loss?<a class="anchor-link" href="#Task-loss?">&#182;</a></h3><p>We can use various loss functions (e.g. BLEU, ROUGE).</p>
+<h3 id="NLG-transition-in-action!">NLG transition in action!<a class="anchor-link" href="#NLG-transition-in-action!">&#182;</a></h3><p><center><h3><span style="font-variant: small-caps;">Content</span>: name</h3>
+<img src="images/toBeAnimated/NLG_actionSeq_step2.png">
+</center>
+<br>
+<br>
+<small></p>
+<p><div>
+    <div style="display:inline-block;">
+        <p style="border:2px; border-radius: 15px; background-color:white; border-style:solid; border-color:black; padding: 0.5em; font-size: 80%; display: inline-block">
+        \begin{align}
+        & \text{Predicate: INFORM}\\
+        & \text{______________________}\\
+        & \color{red}{\textbf{name}} \text{ = X-name-1}\\
+        & \text{serves = food}\\
+        & \text{eattype = restaurant}\\
+        & \text{near = riverside}\\
+        & \text{area = X-area-1, X-area-2}
+        \end{align}
+        </p>
+    </div>
+&lt;/div&gt;
+&lt;/small&gt;</p>
+
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="NLG-transition-in-action!">NLG transition in action!<a class="anchor-link" href="#NLG-transition-in-action!">&#182;</a></h3><p><center><h3><span style="font-variant: small-caps;">Content</span>: eattype</h3>
+<img src="images/toBeAnimated/NLG_actionSeq_step3.png">
+</center>
+<br>
+<br>
+<small></p>
+<p><div>
+    <div style="display:inline-block;">
+        <p style="border:2px; border-radius: 15px; background-color:white; border-style:solid; border-color:black; padding: 0.5em; font-size: 80%; display: inline-block">
+        \begin{align}
+        & \text{Predicate: INFORM}\\
+        & \text{______________________}\\
+        & \color{red}{\textbf{name}}\text{ = X-name-1}\\
+        & \text{serves = food}\\
+        & \color{red}{\textbf{eattype}}\text{ = restaurant}\\
+        & \text{near = riverside}\\
+        & \text{area = X-area-1, X-area-2}
+        \end{align}
+        </p>
+    </div>
+&lt;/div&gt;
+&lt;/small&gt;</p>
+
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="NLG-transition-in-action!">NLG transition in action!<a class="anchor-link" href="#NLG-transition-in-action!">&#182;</a></h3><p><center><h3><span style="font-variant: small-caps;"></span>and so on</h3>
+<img src="images/toBeAnimated/NLG_actionSeq_step4.png">
+</center>
+<br>
+<br>
+<small></p>
+<p><div>
+    <div style="display:inline-block;">
+        <p style="border:2px; border-radius: 15px; background-color:white; border-style:solid; border-color:black; padding: 0.5em; font-size: 80%; display: inline-block">
+        \begin{align}
+        & \text{Predicate: INFORM}\\
+        & \text{______________________}\\
+        & \color{red}{\textbf{name}}\text{ = X-name-1}\\
+        & \text{serves = food}\\
+        & \color{red}{\textbf{eattype}}\text{ = restaurant}\\
+        & \color{red}{\textbf{near}}\text{ = riverside}\\
+        & \color{red}{\textbf{area}}\text{ = X-area-1, X-area-2}
+        \end{align}
+        </p>
+    </div>
+&lt;/div&gt;
+&lt;/small&gt;</p>
+
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="NLG-transition-in-action!">NLG transition in action!<a class="anchor-link" href="#NLG-transition-in-action!">&#182;</a></h3><p><center><h3><span style="font-variant: small-caps;">Word:</span> X-name-1</h3>
+<img src="images/toBeAnimated/NLG_actionSeq_step5.png">
+</center>
+<br>
+<br>
+<small></p>
+<p><div>
+    <div style="display:inline-block;">
+        <p style="border:2px; border-radius: 15px; background-color:white; border-style:solid; border-color:black; padding: 0.5em; font-size: 80%; display: inline-block">
+        \begin{align}
+        & \text{Predicate: INFORM}\\
+        & \text{______________________}\\
+        & \color{red}{\textbf{name = X-name-1}}\\
+        & \text{serves = food}\\
+        & \color{red}{\textbf{eattype}}\text{ = restaurant}\\
+        & \color{red}{\textbf{near}}\text{ = riverside}\\
+        & \color{red}{\textbf{area}}\text{ = X-area-1, X-area-2}
+        \end{align}
+        </p>
+    </div>
+&lt;/div&gt;
+&lt;/small&gt;</p>
+
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="NLG-transition-in-action!">NLG transition in action!<a class="anchor-link" href="#NLG-transition-in-action!">&#182;</a></h3><p><center><h3><span style="font-variant: small-caps;">Word: EoS</span></h3>
+<img src="images/toBeAnimated/NLG_actionSeq_step6.png">
+</center>
+<br>
+<br>
+<small></p>
+<p><div>
+    <div style="display:inline-block;">
+        <p style="border:2px; border-radius: 15px; background-color:white; border-style:solid; border-color:black; padding: 0.5em; font-size: 80%; display: inline-block">
+        \begin{align}
+        & \text{Predicate: INFORM}\\
+        & \text{______________________}\\
+        & \color{red}{\textbf{name = X-name-1}}\\
+        & \text{serves = food}\\
+        & \color{red}{\textbf{eattype}}\text{ = restaurant}\\
+        & \color{red}{\textbf{near}}\text{ = riverside}\\
+        & \color{red}{\textbf{area}}\text{ = X-area-1, X-area-2}
+        \end{align}
+        </p>
+    </div>
+&lt;/div&gt;
+&lt;/small&gt;</p>
+
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="NLG-transition-in-action!">NLG transition in action!<a class="anchor-link" href="#NLG-transition-in-action!">&#182;</a></h3><p><center><h3><span style="font-variant: small-caps;">Word:</span> is</h3>
+<img src="images/toBeAnimated/NLG_actionSeq_step7.png">
+</center>
+<br>
+<br>
+<small></p>
+<p><div>
+    <div style="display:inline-block;">
+        <p style="border:2px; border-radius: 15px; background-color:white; border-style:solid; border-color:black; padding: 0.5em; font-size: 80%; display: inline-block">
+        \begin{align}
+        & \text{Predicate: INFORM}\\
+        & \text{______________________}\\
+        & \color{red}{\textbf{name = X-name-1}}\\
+        & \text{serves = food}\\
+        & \color{red}{\textbf{eattype}}\text{ = restaurant}\\
+        & \color{red}{\textbf{near}}\text{ = riverside}\\
+        & \color{red}{\textbf{area}}\text{ = X-area-1, X-area-2}
+        \end{align}
+        </p>
+    </div>
+&lt;/div&gt;
+&lt;/small&gt;</p>
+
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="NLG-transition-in-action!">NLG transition in action!<a class="anchor-link" href="#NLG-transition-in-action!">&#182;</a></h3><p><center><h3><span style="font-variant: small-caps;">Word:</span> a</h3>
+<img src="images/toBeAnimated/NLG_actionSeq_step8.png">
+</center>
+<br>
+<br>
+<small></p>
+<p><div>
+    <div style="display:inline-block;">
+        <p style="border:2px; border-radius: 15px; background-color:white; border-style:solid; border-color:black; padding: 0.5em; font-size: 80%; display: inline-block">
+        \begin{align}
+        & \text{Predicate: INFORM}\\
+        & \text{______________________}\\
+        & \color{red}{\textbf{name = X-name-1}}\\
+        & \text{serves = food}\\
+        & \color{red}{\textbf{eattype}}\text{ = restaurant}\\
+        & \color{red}{\textbf{near}}\text{ = riverside}\\
+        & \color{red}{\textbf{area}}\text{ = X-area-1, X-area-2}
+        \end{align}
+        </p>
+    </div>
+&lt;/div&gt;
+&lt;/small&gt;</p>
+
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="NLG-transition-in-action!">NLG transition in action!<a class="anchor-link" href="#NLG-transition-in-action!">&#182;</a></h3><p><center><h3><span style="font-variant: small-caps;">Word:</span> restaurant</h3>
+<img src="images/toBeAnimated/NLG_actionSeq_step9.png">
+</center>
+<br>
+<br>
+<small></p>
+<p><div>
+    <div style="display:inline-block;">
+        <p style="border:2px; border-radius: 15px; background-color:white; border-style:solid; border-color:black; padding: 0.5em; font-size: 80%; display: inline-block">
+        \begin{align}
+        & \text{Predicate: INFORM}\\
+        & \text{______________________}\\
+        & \color{red}{\textbf{name = X-name-1}}\\
+        & \text{serves = food}\\
+        & \color{red}{\textbf{eattype = restaurant}}\\
+        & \color{red}{\textbf{near}}\text{ = riverside}\\
+        & \color{red}{\textbf{area}}\text{ = X-area-1, X-area-2}
+        \end{align}
+        </p>
+    </div>
+&lt;/div&gt;
+&lt;/small&gt;</p>
+
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="NLG-transition-in-action!">NLG transition in action!<a class="anchor-link" href="#NLG-transition-in-action!">&#182;</a></h3><p><center><h3><span style="font-variant: small-caps;">Word: EoS</span></h3>
+<img src="images/toBeAnimated/NLG_actionSeq_step10.png">
+</center>
+<br>
+<br>
+<small></p>
+<p><div>
+    <div style="display:inline-block;">
+        <p style="border:2px; border-radius: 15px; background-color:white; border-style:solid; border-color:black; padding: 0.5em; font-size: 80%; display: inline-block">
+        \begin{align}
+        & \text{Predicate: INFORM}\\
+        & \text{______________________}\\
+        & \color{red}{\textbf{name = X-name-1}}\\
+        & \text{serves = food}\\
+        & \color{red}{\textbf{eattype = restaurant}}\\
+        & \color{red}{\textbf{near}}\text{ = riverside}\\
+        & \color{red}{\textbf{area}}\text{ = X-area-1, X-area-2}
+        \end{align}
+        </p>
+    </div>
+&lt;/div&gt;
+&lt;/small&gt;</p>
+
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="NLG-transition-in-action!">NLG transition in action!<a class="anchor-link" href="#NLG-transition-in-action!">&#182;</a></h3><p><center><h3><span style="font-variant: small-caps;"></span>and so on</h3>
+<img src="images/toBeAnimated/NLG_actionSeq1.png">
+</center>
+<br>
+<br>
+<small></p>
+<p><div>
+    <div style="display:inline-block;">
+        <p style="border:2px; border-radius: 15px; background-color:white; border-style:solid; border-color:black; padding: 0.5em; font-size: 80%; display: inline-block">
+        \begin{align}
+        & \text{Predicate: INFORM}\\
+        & \text{______________________}\\
+        & \color{red}{\textbf{name = X-name-1}}\\
+        & \text{serves = food}\\
+        & \color{red}{\textbf{eattype = restaurant}}\\
+        & \color{red}{\textbf{near = riverside}}\\
+        & \color{red}{\textbf{area = X-area-1, X-area-2}}
+        \end{align}
+        </p>
+    </div>
+&lt;/div&gt;
+&lt;/small&gt;</p>
+
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Word actions are dependent on content actions.</p>
 <ul>
-<li>Content actions are ignored by the loss function, but they are indirectly evaluated on their impact on the word predictions that follow them.</li>
-<li>The loss function also penalizes undesirable behaviour, e.g. repeating the same word, predicting attributes not in the MR.</li>
+<li>Content actions precede word actions.</li>
+<li class="fragment" data-fragment-index="1">Instead, alternate between content and word actions?</li>
+</ul>
+<br>
+<br>
+<span class="fragment" data-fragment-index="2">Different classifiers are required for content and word actions.</span>
+<ul><li class="fragment" data-fragment-index="3">Actually, a different word classifier per content action.</li>
+<li class="fragment" data-fragment-index="4">Doesn't affect imitation learning!</li>
+</ul>
+<br>
+<br>
+<span class="fragment" data-fragment-index="5">The length of the transition sequence is variable.</span>
+<ul><li class="fragment" data-fragment-index="5">Content limited by the meaning representation. </li>
+<li class="fragment" data-fragment-index="6">Words limited to gold standard observations.</li>
+</ul>
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Loss-function?">Loss function?<a class="anchor-link" href="#Loss-function?">&#182;</a></h3><p><b>BLEU:</b> % of n-grams predicted present in the gold reference(s), i.e. $L=1-BLEU(s_{final}, \mathbf{y})$&lt;/span&gt;&lt;/li&gt;</p>
+$$
+BLEU([\alpha_1...\alpha_T],\mathbf{y}) = \prod_{n=1}^N \frac{\# \text{n-grams} \in ([\alpha_1...\alpha_T] \cap \mathbf{y})}{\# \text{n-grams} \in [\alpha_1..\alpha_T]}
+$$<p>Same as NLG's evaluation metric.</p>
+<ul>
+<li class="fragment" data-fragment-index="3"> Decomposable? <span class="fragment" data-fragment-index="4"><b>No!</b><br> Assuming N>1 and a word-by-word predictor.</span></li>
+</ul>
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Content actions are ignored by loss function.</p>
+<ul>
+<li>Indirectly costed by their impact on word actions.</li>
 </ul>
 
 </div>
 </div>
-</div></section><section>
+</div><div class="fragment">
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Expert-policy?">Expert policy?<a class="anchor-link" href="#Expert-policy?">&#182;</a></h3><p>The expert policy π<sub>ref</sub> is based on:</p>
-<ul>
-<li>the NL references of the MR,</li>
-<li>and the alignments..?</li>
-</ul>
-
-</div>
-</div>
-</div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Alignments">Alignments<a class="anchor-link" href="#Alignments">&#182;</a></h3><p>Training these models (independently or jointly) would be possible if we extracted data from manually aligned training references.</p>
-<ul>
-<li>However, we do not assume access to such information!</li>
-</ul>
-<p>If no alignments are available, they could be automatically calculated (<a href="http://www.aclweb.org/anthology/P09-1011">Liang et al. 2009</a>).</p>
-<ul>
-<li>But Liang et al.'s model was trained on the datasets considered, and does not generalize well.</li>
-<li>We will assume no access to that either.</li>
-</ul>
-
-</div>
-</div>
-</div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Using-naive-alignments">Using naive alignments<a class="anchor-link" href="#Using-naive-alignments">&#182;</a></h3><p>References: <br>
-| X-name-1 is a | restaurant at the | side of the river. | <br>
-| X-name-1 is a | restaurant at the | riverside. | <br>
-| X-name-1 is a | restaurant by the | river that serves | Chinese. | <br>
-| X-name-1 is a | riverside | restaurant that serves | Chinese. | <br>
-| For a Chinese | restaurant, | go to X-name-1 near the | riverside. | <br></p>
-<p><img src="images/toBeAnimated/NLG_naiveExample.png"></p>
-
-</div>
-</div>
-</div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Suboptimal-expert-policy">Suboptimal expert policy<a class="anchor-link" href="#Suboptimal-expert-policy">&#182;</a></h3><p>Since our gold standard is naively constucted, the resulting expert policy is suboptimal.</p>
-<p>Other potential causes of suboptimal experts are computational restraints.</p>
-<ul>
-<li>For large action sequences we may need to limit our estimations on a subsequence.</li>
-</ul>
-
-</div>
-</div>
-</div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Locally-Optimal-Learning-to-Search">Locally Optimal Learning to Search<a class="anchor-link" href="#Locally-Optimal-Learning-to-Search">&#182;</a></h3><p>LOLS can learn from suboptimal π<sub>ref</sub></p>
-<ul>
-<li>Because it potentially performs roll-outs with π<sub>i</sub>.</li>
-</ul>
-<p>LOLS can learn from non-decomposable loss functions (e.g. BLEU, ROUGE).</p>
-<ul>
-<li>Because it only needs to evaluate complete output predictions, not individual actions.</li>
-<li>For NLG, this means we do not require explicit supervision on how each action is aligned, or which predictor should generate each word; we just need a way to evaluate how good the complete final sentence is.</li>
-</ul>
-
-</div>
-</div>
-</div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="LOLS-in-action!">LOLS in action!<a class="anchor-link" href="#LOLS-in-action!">&#182;</a></h3><p><img src="images/toBeAnimated/NLG_LOLS.png"></p>
-
-</div>
-</div>
-</div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Sequence-correction">Sequence correction<a class="anchor-link" href="#Sequence-correction">&#182;</a></h3><p>Imitation Learning on NLG can generate very noisy training instances.
-To address this, we apply sequence correction before moving to the next timestep:</p>
-<ul>
-<li>We correct all the already examined actions using π<sub>ref</sub>.</li>
-<li>And re-predict the rest of the sequence using π<sub>i</sub>.</li>
-</ul>
-<p>If suboptimal actions are encountered further in the new sequence, sequence correction may again be performed.
-Before SC, we may allow the examination of at most E actions after the first suboptimal one; to allow the predictors to learn how to recover from the mistake.</p>
-
-</div>
-</div>
-</div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Sequence-Correction-results">Sequence Correction results<a class="anchor-link" href="#Sequence-Correction-results">&#182;</a></h3><p><br></p>
 <center>
-<img src="images/SF_HOTEL_analysis_loss.jpg">
+<img src="images/toBeAnimated/altContent1.png" width="60%">
 </center>
 </div>
 </div>
-</div></section><section>
+</div></div><div class="fragment">
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Results-per-LOLS-epoch">Results per LOLS epoch<a class="anchor-link" href="#Results-per-LOLS-epoch">&#182;</a></h3><p><br></p>
 <center>
-<img src="images/NLG_policyResults.jpg">
+<img src="images/toBeAnimated/altContent2.png" width="60%">
 </center>
 </div>
 </div>
-</div></section><section>
+</div></div><div class="fragment">
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Automatic-evaluation-for-NLG">Automatic evaluation for NLG<a class="anchor-link" href="#Automatic-evaluation-for-NLG">&#182;</a></h3><center>
-<table style="float:center;text-align:center;color:#333; border-collapse:collapse; border-spacing: 0;">
-<thead>
-<tr>
-<th style="border:1px solid transparent;"></th>
-<th colspan="3" style="text-align:center;border:1px solid transparent;">SF Restaurant</th>
-<th colspan="3" style="text-align:center;border:1px solid transparent;">SF Hotel</th>
-</tr>
-<tr>
-<th style="border:1px solid transparent;"></th>
-<th style="text-align:center;border:1px solid transparent;"><b>BLEU</b></th>
-<th style="text-align:center;border:1px solid transparent;"><b>ROUGE</b></th>
-<th style="text-align:center;border:1px solid transparent;"><b>ERR(%)</b></th>
-<th style="text-align:center;border:1px solid transparent;"><b>BLEU</b></th>
-<th style="text-align:center;border:1px solid transparent;"><b>ROUGE</b></th>
-<th style="text-align:center;border:1px solid transparent;"><b>ERR(%)</b></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="border:1px solid transparent;"><b>LSTM</b></td>
-<td style="text-align:center;border:1px solid transparent;">52.97</td>
-<td style="text-align:center;border:1px solid transparent;">43.52</td>
-<td style="text-align:center;border:1px solid transparent;">6.29</td>
-<td style="text-align:center;border:1px solid transparent;">66.37</td>
-<td style="text-align:center;border:1px solid transparent;">56.19</td>
-<td style="text-align:center;border:1px solid transparent;">3.99</td>
-</tr>
-<tr>
-<td style="border:1px solid transparent;"><b>LOLS</b></td>
-<td style="text-align:center;border:1px solid transparent;">49.44</td>
-<td style="text-align:center;border:1px solid transparent;">38.52</td>
-<td style="text-align:center;border:1px solid transparent;">0.58</td>
-<td style="text-align:center;border:1px solid transparent;">68.65</td>
-<td style="text-align:center;border:1px solid transparent;">68.37</td>
-<td style="text-align:center;border:1px solid transparent;">0.52</td>
-</tr>
-</tbody>
-</table>
+<center>
+<img src="images/toBeAnimated/altContent3.png" width="60%">
 </center>
 </div>
 </div>
-</div></section><section>
+</div></div></section><section>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Human-evaluation-for-NLG">Human evaluation for NLG<a class="anchor-link" href="#Human-evaluation-for-NLG">&#182;</a></h3><center>
-<table style="float:center; color:#333; border-collapse:collapse; border-spacing: 0;">
-<thead>
-<tr>
-<th></th>
-<th colspan="2" style="text-align:center;">SF Restaurant</th>
-<th colspan="2" style="text-align:center;">SF Hotel</th>
-</tr>
-<tr>
-<th></th>
-<th style="text-align:center;"><b>Fluency</b></th>
-<th style="text-align:center;"><b>Informativeness</b></th>
-<th style="text-align:center;"><b>Fluency</b></th>
-<th style="text-align:center;"><b>Informativeness</b></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><b>LSTM</b></td>
-<td style="text-align:center;">4.49</td>
-<td style="text-align:center;">5.29</td>
-<td style="text-align:center;">4.41</td>
-<td style="text-align:center;">5.36</td>
-</tr>
-<tr>
-<td><b>LOLS</b></td>
-<td style="text-align:center;">4.23</td>
-<td style="text-align:center;">5.36</td>
-<td style="text-align:center;">4.68</td>
-<td style="text-align:center;">5.19</td>
-</tr>
-</tbody>
-</table>
-</center><p>We performed Analysis of Variance (ANOVA) and post-hoc Tukey tests (a = 0.05); there is no statistically significant difference.</p>
+<p>No explicit supervision on how each word is aligned to which attribute.</p>
+<ul>
+<li>Evaluate how good the complete final sentence is.
+<br><center>
+<img src="images/toBeAnimated/NLG_actionSeq1.png" width="130%">
+<img src="images/toBeAnimated/NLG_actionSeq2.png" width="130%">
+</center></li>
+</ul>
 
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The loss function also penalizes undesirable behaviour:</p>
+<ul>
+<li class="fragment" data-fragment-index="1">Repeating the same word,</li>
+<li class="fragment" data-fragment-index="2">predicting content not present in the MR,</li>
+<li class="fragment" data-fragment-index="2">etc.</li>
+</ul>
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Expert-policy?">Expert policy?<a class="anchor-link" href="#Expert-policy?">&#182;</a></h3><p>For word actions:</p>
+<ul>
+<li>Which word makes the sequence best match the gold standard.</li>
+<li>Only consider words in gold standard.</li>
+<li>Best match = minimize loss function.</li>
+</ul>
+
+</div>
+</div>
+</div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<center><b>Gold standard:</b> "X-name-1 is at the side of the river"
+<br>
+<br>
+<img src="images/toBeAnimated/nlgWordRollouts.png" width="70%">
+</center>
+</div>
+</div>
+</div></div></section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>If content actions:<ul><li class="fragment" data-fragment-index="2">which content actions to include,</li><li class="fragment" data-fragment-index="2">and in what order.</li></ul></p>
+<p><span class="fragment" data-fragment-index="3">Need alignments between MR and words in gold standard.</span><ul><li class="fragment" data-fragment-index="4">Loss requires no explicit supervision on alignments.</li><li class="fragment" data-fragment-index="5">Can employ heuristics on the gold standard!</li></ul></p>
+
+</div>
+</div>
+</div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<center>
+<div>
+    <div style="display:inline-block;">
+        <p style="border:2px; border-radius: 15px; background-color:white; border-style:solid; border-color:black; padding: 0.5em; font-size: 80%; display: inline-block">
+        \begin{align}
+        & \text{Predicate: INFORM}\\
+        & \text{______________________}\\
+        & \color{blue}{\text{type = "hotel"}}\\
+        & \color{green}{\text{count = "182"}}\\
+        & \color{red}{\text{dogs_allowed = dont_care}}
+        \end{align}
+        </p>
+    </div>
+        <font size="300">&#10143;</font>
+    <div style="display:inline-block; vertical-align: middle;" >
+        <p style="display:block; width:400px; word-wrap:break-word;">
+        There are <font color="green"><u>182</u></font> <font color="blue"><u>hotels</u></font> if you <font color="red"><u>do not care</u></font> whether dogs are allowed.
+        </p>
+    </div>
+</div>
+</center>
+</div>
+</div>
+</div></div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Suboptimal-expert-policy">Suboptimal expert policy<a class="anchor-link" href="#Suboptimal-expert-policy">&#182;</a></h3><p>The expert policy depends on naive heuristics.</p>
+<p><ul><li>mistakes happen...</li></ul>
+<br></p>
+<center>
+<div>
+    <div style="display:inline-block;">
+        <p style="border:2px; border-radius: 15px; background-color:white; border-style:solid; border-color:black; padding: 0.5em; font-size: 80%; display: inline-block">
+        \begin{align}
+        & \text{Predicate: INFORM}\\
+        & \text{______________________}\\
+        & \color{blue}{\text{type = "hotel"}}\\
+        & \color{green}{\text{count = "182"}}\\
+        & \color{red}{\text{dogs_allowed = false}}
+        \end{align}
+        </p>
+    </div>
+        <font size="300">&#10143;</font>
+    <div style="display:inline-block; vertical-align: middle;" >
+        <p style="display:block; width:400px; word-wrap:break-word;">
+        There are <font color="green"><u>182</u></font> <font color="blue"><u>hotels</u></font> if you are traveling without animals.
+        </p>
+    </div>
+</div>
+</center>
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Dealing-with-suboptimal">Dealing with suboptimal<a class="anchor-link" href="#Dealing-with-suboptimal">&#182;</a></h3><p>Imitating the suboptimal expert policy is not enough.</p>
+<ul><li>Should not rely heavily on expert policy during rollin/rollouts.</li><li class="fragment" data-fragment-index="2">e.g. DAgger uses expert exclusively to cost actions.</li></ul>
+<br>
+<br>
+<span class="fragment" data-fragment-index="3">We need to learn a better classifier than the suboptimal expert.</span><ul><li class="fragment" data-fragment-index="4">Use rollouts that mix classifier and expert policy.</li><li class="fragment" data-fragment-index="5">We will be using LOLS here.</li></ul>
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3>Locally Optimal Learning to Search</h3><p style="border:3px; border-radius: 25px; background-color:lightgrey; border-style:solid; border-color:black; padding: 0.3em; font-size: 80%">
+\begin{align}
+& \textbf{Input:} \; D_{train} = \{(\mathbf{x}^1,\mathbf{y}^1)...(\mathbf{x}^M,\mathbf{y}^M)\}, \; expert\; \pi^{\star}, \; loss \; function \; L\\
+& \text{set} \; training\; examples\; \cal E = \emptyset\\
+& \color{blue}{\text{initialize a classifier } H_{0}}\\
+& \mathbf{for}\; i = 0 \;\mathbf{to} \; N\; \mathbf{do}\\
+& \quad \color{blue}{\text{set} \; rollin \; policy \; \pi^{in} = H_i}\\
+& \quad \color{blue}{\text{set} \; rollout \; policy \; \pi^{out} = mix(H_i,\pi^{\star})}\\
+& \quad \mathbf{for} \; (\mathbf{x},\mathbf{y}) \in D_{train} \; \mathbf{do}\\
+& \quad \quad \text{rollin to predict} \; \hat \alpha_1\dots\hat \alpha_T  = \pi^{in}(\mathbf{x},\mathbf{y})\\
+& \quad \quad \mathbf{for} \; \hat \alpha_t \in \hat \alpha_1\dots\hat \alpha_T \; \mathbf{do}\\
+& \quad \quad \quad \text{rollout to obtain costs}\; c \; \text{for all possible actions using}\; L\;  \\
+& \quad \quad \quad \text{extract features}\; f=\phi(\mathbf{x},S_{t-1}) \\
+& \quad \quad \quad \cal E = \cal E \cup (f,c)\\
+& \quad \color{blue}{\text{learn classifier} \; H_{i+1} \; \text{from}\; \cal E}\\
+& \color{blue}{H = \; \mathbf{avg}\{H_{0}\mathbf{\dots}H_{N}\}}\\
+\end{align}
+</p>
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="LOLS-in-action!">LOLS in action!<a class="anchor-link" href="#LOLS-in-action!">&#182;</a></h3><p><center>
+<img src="images/toBeAnimated/NLG_LOLS_1.png">
+</center>
+<br>
+<br>
+<small></p>
+<p><div>
+    <div style="display:inline-block;">
+        <p style="border:2px; border-radius: 15px; background-color:white; border-style:solid; border-color:black; padding: 0.5em; font-size: 80%; display: inline-block">
+        \begin{align}
+        & \text{Predicate: INFORM}\\
+        & \text{______________________}\\
+        & \text{name = X-name-1}\\
+        & \text{eattype = restaurant}\\
+        & \text{food = chinese}
+        \end{align}
+        </p>
+    </div>
+&lt;/div&gt;
+&lt;/small&gt;</p>
+
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="LOLS-in-action!">LOLS in action!<a class="anchor-link" href="#LOLS-in-action!">&#182;</a></h3><p><center>
+<img src="images/toBeAnimated/NLG_LOLS_2.png">
+</center>
+<br>
+<br>
+<small></p>
+<p><div>
+    <div style="display:inline-block;">
+        <p style="border:2px; border-radius: 15px; background-color:white; border-style:solid; border-color:black; padding: 0.5em; font-size: 80%; display: inline-block">
+        \begin{align}
+        & \text{Predicate: INFORM}\\
+        & \text{______________________}\\
+        & \text{name = X-name-1}\\
+        & \text{eattype = restaurant}\\
+        & \text{food = chinese}
+        \end{align}
+        </p>
+    </div>
+&lt;/div&gt;
+&lt;/small&gt;</p>
+
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="LOLS-in-action!">LOLS in action!<a class="anchor-link" href="#LOLS-in-action!">&#182;</a></h3><p><center>
+<img src="images/toBeAnimated/NLG_LOLS_3.png">
+</center>
+<br>
+<br>
+<small></p>
+<p><div>
+    <div style="display:inline-block;">
+        <p style="border:2px; border-radius: 15px; background-color:white; border-style:solid; border-color:black; padding: 0.5em; font-size: 80%; display: inline-block">
+        \begin{align}
+        & \text{Predicate: INFORM}\\
+        & \text{______________________}\\
+        & \text{name = X-name-1}\\
+        & \text{eattype = restaurant}\\
+        & \text{food = chinese}
+        \end{align}
+        </p>
+    </div>
+&lt;/div&gt;
+&lt;/small&gt;</p>
+
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="LOLS-in-action!">LOLS in action!<a class="anchor-link" href="#LOLS-in-action!">&#182;</a></h3><p><center>
+<img src="images/toBeAnimated/NLG_LOLS_4.png">
+</center>
+<br>
+<br>
+<small></p>
+<p><div>
+    <div style="display:inline-block;">
+        <p style="border:2px; border-radius: 15px; background-color:white; border-style:solid; border-color:black; padding: 0.5em; font-size: 80%; display: inline-block">
+        \begin{align}
+        & \text{Predicate: INFORM}\\
+        & \text{______________________}\\
+        & \text{name = X-name-1}\\
+        & \text{eattype = restaurant}\\
+        & \text{food = chinese}
+        \end{align}
+        </p>
+    </div>
+&lt;/div&gt;
+&lt;/small&gt;</p>
+
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="LOLS-in-action!">LOLS in action!<a class="anchor-link" href="#LOLS-in-action!">&#182;</a></h3><p><center>
+<img src="images/toBeAnimated/NLG_LOLS_5.png">
+</center>
+<br>
+<br>
+<small></p>
+<p><div>
+    <div style="display:inline-block;">
+        <p style="border:2px; border-radius: 15px; background-color:white; border-style:solid; border-color:black; padding: 0.5em; font-size: 80%; display: inline-block">
+        \begin{align}
+        & \text{Predicate: INFORM}\\
+        & \text{______________________}\\
+        & \text{name = X-name-1}\\
+        & \text{eattype = restaurant}\\
+        & \text{food = chinese}
+        \end{align}
+        </p>
+    </div>
+&lt;/div&gt;
+&lt;/small&gt;</p>
+
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="LOLS-in-action!">LOLS in action!<a class="anchor-link" href="#LOLS-in-action!">&#182;</a></h3><p><center>
+<img src="images/toBeAnimated/NLG_LOLS.png">
+</center>
+<br>
+<br>
+<small></p>
+<p><div>
+    <div style="display:inline-block;">
+        <p style="border:2px; border-radius: 15px; background-color:white; border-style:solid; border-color:black; padding: 0.5em; font-size: 80%; display: inline-block">
+        \begin{align}
+        & \text{Predicate: INFORM}\\
+        & \text{______________________}\\
+        & \text{name = X-name-1}\\
+        & \text{eattype = restaurant}\\
+        & \text{food = chinese}
+        \end{align}
+        </p>
+    </div>
+&lt;/div&gt;
+&lt;/small&gt;</p>
+
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3>Locally Optimal Learning to Search</h3><p style="border:3px; border-radius: 25px; background-color:lightgrey; border-style:solid; border-color:black; padding: 0.3em; font-size: 80%">
+\begin{align}
+& \textbf{Input:} \; D_{train} = \{(\mathbf{x}^1,\mathbf{y}^1)...(\mathbf{x}^M,\mathbf{y}^M)\}, \; expert\; \pi^{\star}, \; loss \; function \; L\\
+& \quad \quad \quad \color{blue}{learning\; rate\; p}\\
+& \text{set} \; training\; examples\; \cal E = \emptyset\\
+& \text{initialize a policy } H_{0}\\
+& \mathbf{for}\; i = 0 \;\mathbf{to} \; N\; \mathbf{do}\\
+& \quad \color{blue}{\beta = (1 - p)^i}\\
+& \quad \text{set} \; rollin \; policy \; \pi^{in} = H_i\\
+& \quad \text{set} \; rollout \; policy \; \pi^{out} = mix(H,\pi^{\star})\\
+& \quad \mathbf{for} \; (\mathbf{x},\mathbf{y}) \in D_{train} \; \mathbf{do}\\
+& \quad \quad \text{rollin to predict} \; \hat \alpha_1\dots\hat \alpha_T  = \pi^{in}(\mathbf{x},\mathbf{y})\\
+& \quad \quad \mathbf{for} \; \hat \alpha_t \in \hat \alpha_1\dots\hat \alpha_T \; \mathbf{do}\\
+& \quad \quad \quad \text{rollout to obtain costs}\; c \; \text{for all possible actions using}\; L\;  \\
+& \quad \quad \quad \text{extract features}\; f=\phi(\mathbf{x},S_{t-1}) \\
+& \quad \quad \quad \cal E = \cal E \cup (f,c)\\
+& \quad \text{learn classifier} \; H_{i+1} \; \text{from}\; \cal E\\
+& H = \; \mathbf{avg}\{H_{0}\mathbf{\dots}H_{N}\}\\
+\end{align}
+</p>
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="LOLS-modifications">LOLS modifications<a class="anchor-link" href="#LOLS-modifications">&#182;</a></h3><p><b>Exponential decay schedule</b><br>
+Introduced in SEARN (<a href="http://hunch.net/~jl/projects/reductions/searn/searn.pdf">Daumé III et al., 2009</a>)<ul><li class="fragment" data-fragment-index="4">Gradual distance from the (suboptimal) expert policy.</li><li class="fragment" data-fragment-index="5">The costs are adjusted to the classifiers' predictions, thus teaching them to predict actions jointly.</li></ul></p>
+
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>LOLS uses the same policy throughout each rollout.</p>
+<ul>
+<li>But potentially a different policy for each examined action at the same time-step.<center>
+<img src="images/perStepLOLS_3.png">
+</center></li>
+</ul>
+
+</div>
+</div>
+</div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>Here, we also use the same policy for all actions at the same time-step.<center>
+<img src="images/perStepLOLS_4.png">
+</center></li>
+</ul>
+
+</div>
+</div>
+</div></div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Sequence-correction">Sequence correction<a class="anchor-link" href="#Sequence-correction">&#182;</a></h3><p>Rollin with the classifiers, exposes them to their own actions.</p>
+<ul>
+<li>But may cause noise in feature vectors, for tasks that are context-dependent.</li>
+</ul>
+<p><center>
+<img src="images/seqCorrection3.png" width="70%">
+</center>
+<br>
+<br>
+<small></p>
+<p><div>
+    <div style="display:inline-block;">
+        <p style="border:2px; border-radius: 15px; background-color:white; border-style:solid; border-color:black; padding: 0.5em; font-size: 80%; display: inline-block">
+        \begin{align}
+        & \text{Predicate: INFORM}\\
+        & \text{______________________}\\
+        & \text{name = X-name-1}\\
+        & \text{dogs_allowed = yes}
+        \end{align}
+        </p>
+    </div>
+&lt;/div&gt;
+&lt;/small&gt;</p>
+
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Sequence-correction">Sequence correction<a class="anchor-link" href="#Sequence-correction">&#182;</a></h3><p>Rollin with the classifiers, exposes them to their own actions.</p>
+<ul>
+<li>But may cause noise in feature vectors, for tasks that are context-dependent.</li>
+</ul>
+<p><center>
+<img src="images/seqCorrection4.png" width="70%">
+</center>
+<br>
+<br>
+<small></p>
+<p><div>
+    <div style="display:inline-block;">
+        <p style="border:2px; border-radius: 15px; background-color:white; border-style:solid; border-color:black; padding: 0.5em; font-size: 80%; display: inline-block">
+        \begin{align}
+        & \text{Predicate: INFORM}\\
+        & \text{______________________}\\
+        & \text{name = X-name-1}\\
+        & \text{dogs_allowed = yes}
+        \end{align}
+        </p>
+    </div>
+&lt;/div&gt;
+&lt;/small&gt;</p>
+
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Sequence-correction">Sequence correction<a class="anchor-link" href="#Sequence-correction">&#182;</a></h3><p>Rollin with the classifiers, exposes them to their own actions.</p>
+<ul>
+<li>But may cause noise in feature vectors, for tasks that are context-dependent.</li>
+</ul>
+<p><center>
+<img src="images/seqCorrection5.png" width="70%">
+</center>
+<br>
+<br>
+<small></p>
+<p><div>
+    <div style="display:inline-block;">
+        <p style="border:2px; border-radius: 15px; background-color:white; border-style:solid; border-color:black; padding: 0.5em; font-size: 80%; display: inline-block">
+        \begin{align}
+        & \text{Predicate: INFORM}\\
+        & \text{______________________}\\
+        & \text{name = X-name-1}\\
+        & \text{dogs_allowed = yes}
+        \end{align}
+        </p>
+    </div>
+&lt;/div&gt;
+&lt;/small&gt;</p>
+
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>After a suboptimal action, we apply <b>sequence correction</b>:</p>
+<ul>
+<li>We correct all the already explored time-steps using $\pi^{\star}$.
+<br>
+<br>
+<br>
+<center>
+<img src="images/seqCorrection0.png" width="70%">
+</center>
+<br>
+<br></li>
+</ul>
+
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>After a suboptimal action, we apply <b>sequence correction</b>:</p>
+<ul>
+<li>We correct all the already explored time-steps using $\pi^{\star}$.</li>
+<li>And re-rollin the rest of the sequence using $H$.
+<br>
+<br>
+<center>
+<img src="images/seqCorrection1.png" width="70%">
+</center>
+<br>
+<br></li>
+</ul>
+
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>After a suboptimal action, we apply <b>sequence correction</b>:</p>
+<ul>
+<li>We correct all the already explored time-steps using $\pi^{\star}$.</li>
+<li>And re-rollin the rest of the sequence using $H$.
+<br>
+<br><center>
+<img src="images/seqCorrection2.png" width="70%">
+</center></li>
+</ul>
+<p>If suboptimal actions are encountered further in the new sequence, sequence correction may again be performed.</p>
+
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Before <b>sequence correction</b>, allow at most $E$ actions after the suboptimal one.</p>
+<ul>
+<li>i.e. allow the classifiers to learn how to recover from mistakes.</li>
+</ul>
+
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="NLG-results">NLG results<a class="anchor-link" href="#NLG-results">&#182;</a></h3><p><br></p>
+<center>
+<img src="images/NLG_policyResults.jpg" style="width:60%; float: left;">
+<br>
+<img src="images/seqCorrectResults.png" style="width:30%; float: right;">
+</center>
 </div>
 </div>
 </div></section></section>

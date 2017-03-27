@@ -11860,8 +11860,35 @@ a.anchor-link {
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <center>
-<h2>Lighning round</h2>
-<h3>brief presentation of other imitation learning related work</h3>
+<h2>Practical advice</h2>
+<h3>Making sure everything actually works!</h3>
+</center>
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="How-to-apply-Imitation-Learning?">How to apply Imitation Learning?<a class="anchor-link" href="#How-to-apply-Imitation-Learning?">&#182;</a></h3><p>For any task, define:</p>
+<ul>
+<li>Transition</li>
+<li>Loss function</li>
+<li>Expert policy</li>
+</ul>
+
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Is-the-expert-policy-working-as-intended?">Is the expert policy working as intended?<a class="anchor-link" href="#Is-the-expert-policy-working-as-intended?">&#182;</a></h3><p>Perform full rollins with $\pi^{\star}$.<ul><li>Resulting sequences should have $L(S_{final}, \mathbf{y}) = 0$.</li><li class="fragment" data-fragment-index="3">Or close to 0, if happy with suboptimal $\pi^{\star}$.</li></ul></p>
+<center>
+<img src="images/stateTransitExpert.png">
 </center>
 </div>
 </div>
@@ -11871,12 +11898,153 @@ a.anchor-link {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Work-using-imitation-learning-in-EACL-2017">Work using imitation learning in EACL 2017<a class="anchor-link" href="#Work-using-imitation-learning-in-EACL-2017">&#182;</a></h3><p><b>Tackling Error Propagation through Reinforcement Learning:
-A Case of Greedy Dependency Parsing</b>
-<br>
-Minh Lê and Antske Fokkens
-<br></p>
+<p>If expert policy takes too long to calculate during rollout:</p>
+<ul>
+<li>Consider suboptimal alternatives!</li>
+<li>More IL iterations could be more helpful.</li>
+</ul>
 
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Are-the-roll-outs-working-as-intended?">Are the roll-outs working as intended?<a class="anchor-link" href="#Are-the-roll-outs-working-as-intended?">&#182;</a></h3><p>Ensure costs obtained through rollouts are sensible.</p>
+<ul>
+<li>Actions returned by optimal $\pi^{\star}$ should have a low cost.</li>
+<li>Equally optimal actions should be costed closely.</li>
+</ul>
+<center>
+<img src="images/determReachStatesScored.png" width="70%">
+</center>
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Is-Imitation-Learning-working?">Is Imitation Learning working?<a class="anchor-link" href="#Is-Imitation-Learning-working?">&#182;</a></h3><p>Examine the time-steps of training instances.</p>
+<ul>
+<li>Before and after application of IL.</li>
+</ul>
+<center>
+<img src="images/toBeAnimated/NLG_LOLS.png">
+</center>
+</div>
+</div>
+</div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>If loss rises:</p>
+<ul>
+<li>Adjust transition system.</li>
+<li>Make sure features (latent representations) describe the state and actions adequately.</li>
+</ul>
+
+</div>
+</div>
+</div></div></section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Avoid-cycles">Avoid cycles<a class="anchor-link" href="#Avoid-cycles">&#182;</a></h3><p>Need to prevent cycles between state transitions!
+<br>
+<br>
+<span style="font-variant: small-caps;">... -> Swap($e_i$, $e_j$) -> Swap($e_j$, $e_i$) -> ...</span>&lt;/ul&gt;</p>
+<p>Cycles can be controlled in either:</p>
+<ul>
+<li>Transition system, or</li>
+<li>loss function.</li>
+</ul>
+
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Identify-problems-in-your-task">Identify problems in your task<a class="anchor-link" href="#Identify-problems-in-your-task">&#182;</a></h3><p>Suboptimal expert policy?</p>
+<ul>
+<li>Use rollouts that mix expert and classifier.</li>
+</ul>
+
+</div>
+</div>
+</div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Errors in rollin introducing noise to the feature vectors?</p>
+<ul>
+<li>Try sequence correction.</li>
+</ul>
+
+</div>
+</div>
+</div></div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Too many actions to rollout?</p>
+<ul>
+<li>Try targetted exploration.</li>
+</ul>
+
+</div>
+</div>
+</div></div></section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Irrelevant errors in rollouts affect costing?</p>
+<ul>
+<li>Try focused costing.</li>
+</ul>
+
+</div>
+</div>
+</div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Noisy training instances?</p>
+<ul>
+<li>Try $a$-bound noise reduction.</li>
+</ul>
+
+</div>
+</div>
+</div></div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Summary">Summary<a class="anchor-link" href="#Summary">&#182;</a></h3><p>Discussed expert policy definitions:</p>
+<ul><li>Static vs. dynamic vs. suboptimal policies.</li></ul>
+<br><br>
+<span class="fragment" data-fragment-index="2">Examined variations to exploration:</span>
+<ul><li class="fragment" data-fragment-index="2">Early termination, and targetted and partial exploration.</li></ul>
 </div>
 </div>
 </div></section></section><section><section>
@@ -11885,23 +12053,76 @@ Minh Lê and Antske Fokkens
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Summary">Summary<a class="anchor-link" href="#Summary">&#182;</a></h3><p>Discussed expert policy definitions:</p>
-<ul>
-<li>Static vs. dynamic vs. suboptimal policies.</li>
+<p>Showed how we can reduce noise in the transition sequence.</p>
+<ul><li>$\alpha$-bound and focused costing.</li></ul>
+<br><br>
+<span class="fragment" data-fragment-index="2">Applied Imitation Learning on various NLP tasks.</span>
+<ul><li class="fragment" data-fragment-index="2">Transitions, loss functions, expert policies.</li>
+<li class="fragment" data-fragment-index="3">And improved on results!</li></ul>
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<center>
+<h2>Thank you!</h2>
+</center>
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Annotated-bibliography">Annotated bibliography<a class="anchor-link" href="#Annotated-bibliography">&#182;</a></h3><h4 id="PhD-theses">PhD theses<a class="anchor-link" href="#PhD-theses">&#182;</a></h4><ul>
+<li><a href="http://www.umiacs.umd.edu/~hal/docs/daume06thesis.pdf">Hal Daumé III, 2006</a>: Practical Structured Learning Techniques for Natural Language Processing</li>
+<li><a href="http://www.cs.cmu.edu/~sross1/publications/ross_phdthesis.pdf">Stéphane Ross, 2013</a>: Interactive Learning for Sequential Decisions and Predictions</li>
+<li><a href="http://www.cs.stanford.edu/~pabbeel/thesis/thesis.pdf">Pieter Abbeel, 2008</a>: Apprenticeship Learning and Reinforcement Learning with Application to Robotic Control</li>
 </ul>
-<p>Examined variations to exploration:</p>
-<ul>
-<li>Early termination, and targetted and partial exploration.</li>
-</ul>
-<p>Showed how we can accelerate cost estimation.</p>
-<ul>
-<li>Noise reduction and focused costing.</li>
-</ul>
-<p>Applied Imitation Learning on various NLP tasks.</p>
-<ul>
-<li>Transitions, loss functions, expert policies.</li>
-<li>And improve on the results!</li>
-</ul>
+
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Papers">Papers<a class="anchor-link" href="#Papers">&#182;</a></h4><p><a href="http://ai.stanford.edu/~ang/papers/icml04-apprentice.pdf">Abeel and Ng, 2004</a>: Apprenticeship Learning via Inverse Reinforcement Learning <em>(inverse reinforcement learning)</em></p>
+<p><a href="http://timvieira.github.io/doc/2016-tacl-pruning.pdf">Viera and Eisner, 2016</a>: Learning to Prune: Exploring the Frontier of Fast and Accurate Parsing <em>(LOLS with random expert=RL, changeprop)</em></p>
+<p><a href="http://www.aclweb.org/anthology/C12-1059">Goldberg and Nivre, 2012</a>: A Dynamic Oracle for Arc-Eager Dependency Parsing <em>(DAgger for dependency parsing)</em></p>
+<p><a href="https://arxiv.org/pdf/1603.03793.pdf">Ballesteros et al., 2016</a>: Training with Exploration Improves a Greedy Stack LSTM Parser <em>(DAgger for LSTM-based dependency parsing)</em></p>
+<p><a href="https://aclweb.org/anthology/C/C16/C16-1105.pdf">Lampouras and Vlachos 2016</a>: Imitation learning for language generation from unaligned data <em>(LoLS for natural language generation, sequence correction)</em>.</p>
+
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Papers">Papers<a class="anchor-link" href="#Papers">&#182;</a></h4><p><a href="http://aclweb.org/anthology/P16-1001">Goodman et al. 2016</a>: Noise reduction and targeted exploration in imitation learning for
+Abstract Meaning Representation parsing <em>(V-DAgger for semantic parsing, targeted exploration)</em>.</p>
+<p><a href="http://www.aclweb.org/anthology/W/W11/W11-0307.pdf">Vlachos and Craven, 2011</a>: Search-based Structured Prediction applied to Biomedical Event Extraction <em>(SEARN for biomedical event extraction, focused costing)</em></p>
+<p><a href="https://arxiv.org/pdf/1511.06732.pdf">Ranzato et al., 2016</a>: Sequence Level Training with Recurrent Neural Networks <em>(Imitation learning for RNNs, learns a cost estimator instead of using roll-outs)</em></p>
+<p><a href="http://hunch.net/~jl/projects/reductions/searn/searn.pdf">Daumé III et al., 2009</a>: Search-based structured prediction <em>(SEARN algorithm)</em></p>
+
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Papers">Papers<a class="anchor-link" href="#Papers">&#182;</a></h4><p><a href="https://arxiv.org/pdf/1502.02206.pdf">Chang et al., 2015</a>: Learning to search better than your teacher <em>(LoLS algorithm, connection with RL)</em></p>
+<p><a href="https://arxiv.org/abs/1606.03476">Ho and Ermon, 2016</a>: Generative Adversarial Imitation Learning <em>(Connection with adversarial training)</em></p>
+<p><a href="https://papers.nips.cc/paper/4545-imitation-learning-by-coaching.pdf">He et al., 2012</a>: Imitation Learning by Coaching <em>(coaching for DAgger)</em></p>
 
 </div>
 </div>
