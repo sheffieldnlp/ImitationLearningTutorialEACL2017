@@ -11981,28 +11981,65 @@ University College London
 
 </div>
 </div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Why-should-NLP-care?">Why should NLP care?<a class="anchor-link" href="#Why-should-NLP-care?">&#182;</a></h3><p>In NLP we use classifiers (= policy) trained on gold standard (demonstrations by experts)</p>
+<p>Imitation learning can improve them</p>
+<p>Empirical successes in a number of tasks</p>
+
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="IL-vs-supervised-learning">IL vs supervised learning<a class="anchor-link" href="#IL-vs-supervised-learning">&#182;</a></h3><p>Yes: we also assume the gold standard structured output during training</p>
+<p>But there is more:</p>
+<ul>
+<li>we train a classifier that predicts actions</li>
+<li>the actions are not necessarily defined in the gold standard</li>
+</ul>
+<p>The latent actions make IL more like semi-supervised learning</p>
+
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="IL-vs-reinforcement-learning">IL vs reinforcement learning<a class="anchor-link" href="#IL-vs-reinforcement-learning">&#182;</a></h3><p>learning with a teacher vs learning on your own</p>
+<p>use driving</p>
+
+</div>
+</div>
 </div></section></section><section><section>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Part-1:-Imitation-Learning-for--Structured-Prediction">Part 1: Imitation Learning for  Structured Prediction<a class="anchor-link" href="#Part-1:-Imitation-Learning-for--Structured-Prediction">&#182;</a></h3><ul>
-<li>Basic concepts:<ul>
+<h3 id="Part-1:-Imitation-Learning-for--Structured-Prediction">Part 1: Imitation Learning for  Structured Prediction<a class="anchor-link" href="#Part-1:-Imitation-Learning-for--Structured-Prediction">&#182;</a></h3><p>Basic concepts:</p>
+<ul>
 <li>non-decomposable loss functions</li>
 <li>cost-sensitive classification</li>
 </ul>
-</li>
-<li>Imitation learning algorithms:<ul>
+<p>Imitation learning algorithms:</p>
+<ul>
 <li>Dataset Aggregation (DAgger)</li>
 <li>Locally Optimal Learning to Search (LOLS)</li>
 </ul>
-</li>
-<li>Interpretations and connections<ul>
+<p>Interpretations and connections</p>
+<ul>
 <li>Reinforcement Learning</li>
 <li>Recurrent Neural Networks</li>
-</ul>
-</li>
 </ul>
 
 </div>
@@ -12013,19 +12050,17 @@ University College London
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Part-2:-NLP-Applications-and-practical-advice">Part 2: NLP Applications and practical advice<a class="anchor-link" href="#Part-2:-NLP-Applications-and-practical-advice">&#182;</a></h3><ul>
-<li>Applications:<ul>
+<h3 id="Part-2:-NLP-Applications-and-practical-advice">Part 2: NLP Applications and practical advice<a class="anchor-link" href="#Part-2:-NLP-Applications-and-practical-advice">&#182;</a></h3><p>Applications:</p>
+<ul>
 <li>Dependency parsing </li>
 <li>Natural language generation</li>
 <li>Semantic parsing</li>
 </ul>
-</li>
-<li>Practical advice<ul>
+<p>Practical advice</p>
+<ul>
 <li>Expert policy definition</li>
 <li>Accelerating cost estimation</li>
 <li>Troubleshooting</li>
-</ul>
-</li>
 </ul>
 
 </div>
@@ -12037,10 +12072,14 @@ University College London
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Outcomes">Outcomes<a class="anchor-link" href="#Outcomes">&#182;</a></h3><ul>
-<li>Understanding of how IL works via unified algorithmic presentations</li>
-<li>Clarification of the connections to other learning frameworks</li>
-<li>Familiarization with representative NLP applications</li>
-<li>Recognizing when and how to apply IL</li>
+<li><p>Understanding of how IL works via unified algorithmic presentations</p>
+</li>
+<li><p>Clarification of the connections to other learning frameworks</p>
+</li>
+<li><p>Familiarization with representative NLP applications</p>
+</li>
+<li><p>Recognizing when and how to apply IL</p>
+</li>
 </ul>
 
 </div>
