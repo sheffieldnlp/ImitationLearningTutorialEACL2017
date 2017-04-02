@@ -11932,9 +11932,9 @@ a.anchor-link {
 <h3 id="Semi/Unsupervised-learning">Semi/Unsupervised learning<a class="anchor-link" href="#Semi/Unsupervised-learning">&#182;</a></h3><p>Learning with non-decomposable loss functions means</p>
 <ul>
 <li>no need to know the correct actions</li>
-<li>learn to predict them in order to minimize the loss</li>
+<li>learn to predict them in order to minimize the loss
+<img src="images/tikz/semParse.png" style="width:80%;"></li>
 </ul>
-<p><img src="images/tikz/semParse.png" style="width:80%;"></p>
 
 </div>
 </div>
@@ -12044,7 +12044,7 @@ a.anchor-link {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Coaching">Coaching<a class="anchor-link" href="#Coaching">&#182;</a></h3><p><p style="float: left;">If the optimal action is difficult<br>to predict, the coach teaches<br>a good one that is easier<br> (<a href="https://papers.nips.cc/paper/4545-imitation-learning-by-coaching.pdf">He et al., 2012</a>)</p> <a href="https://commons.wikimedia.org/wiki/File:US_Navy_091206-N-2013O-023_Sam_Givens,_a_player_for_the_Harlem_Ambassadors_basketball_team,_demonstrates_proper_dribbling_techniques_to_a_boy_during_a_basketball_camp_sponsored_by_Yokosuka%27s_Morale,_Welfare_and_Recreation_Youth.jpg"><img src="images/coaching.jpg" style="width:35%; float: right;"></a></p>
+<h3 id="Coaching">Coaching<a class="anchor-link" href="#Coaching">&#182;</a></h3><p><p style="float: left;">If the optimal action is difficult to<br>predict, the coach teaches a good one<br>that is easier (<a href="https://papers.nips.cc/paper/4545-imitation-learning-by-coaching.pdf">He et al., 2012</a>)</p> <a href="https://commons.wikimedia.org/wiki/File:US_Navy_091206-N-2013O-023_Sam_Givens,_a_player_for_the_Harlem_Ambassadors_basketball_team,_demonstrates_proper_dribbling_techniques_to_a_boy_during_a_basketball_camp_sponsored_by_Yokosuka%27s_Morale,_Welfare_and_Recreation_Youth.jpg"><img src="images/coaching.jpg" style="width:30%; float: right;"></a></p>
 
 </div>
 </div>
@@ -12055,8 +12055,8 @@ a.anchor-link {
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Expert: $\alpha^{\star}= \mathop{\arg \min}_{\alpha \in {\cal A}} L(S_t(\alpha,\pi^{\star}),\mathbf{y})$</p>
-<p>Coach: $\alpha^{\star}= \mathop{\arg \min}_{\alpha \in {\cal A}} \lbrace L(S_t(\alpha,\pi^{\star}),\mathbf{y}) - \lambda \cdot f(\alpha, \mathbf{x}, S_t)\rbrace$</p>
-<p>i.e. $\alpha^{\star}=\mathop{\arg \min}_{\alpha \in {\cal A}} \lbrace loss(\alpha) - \lambda \cdot classifier(\alpha) \rbrace$</p>
+<p>Coach: $\alpha^{\dagger}= \mathop{\arg \min}_{\alpha \in {\cal A}} \lbrace L(S_t(\alpha,\pi^{\star}),\mathbf{y}) - \lambda \cdot f(\alpha, \mathbf{x}, S_t)\rbrace$</p>
+<p>i.e. $\alpha^{\dagger}=\mathop{\arg \min}_{\alpha \in {\cal A}} \lbrace loss(\alpha) - \lambda \cdot classifier(\alpha) \rbrace$</p>
 
 </div>
 </div>
@@ -12079,7 +12079,7 @@ a.anchor-link {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3> What about Recurrent Neural Networks?</h3><p><img src="images/rnn.png" width="70%"  style="background:none;" /></p>
+<h3> What about Recurrent Neural Networks?</h3><p><img src="images/rnn.png" width="60%"  style="background:none;" /></p>
 <p>They face similar problems:
                 <ul>
                 <li>trained at the word rather than sentence level</li>

@@ -11937,7 +11937,7 @@ a.anchor-link {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3>Structured prediction</h3><p><img src="images/nlg.png" style="width:100%;"></p>
+<h3>Structured prediction</h3><p><img src="images/nlg.png" style="width:90%;"></p>
 <p>Natural language generation (NLG), but also summarization, decoding in machine translation, etc.</p><p><b>Input:</b> a meaning representation<br>
 <b>Output:</b> $\mathbf{w}=[w_1...w_N], w\in {\cal V}\cup END, w_N=END$</p>
 </div>
@@ -12053,7 +12053,7 @@ but generate better (non-i.i.d.) training data</p>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3>Transition system</h3><p>The <b>actions</b> $\cal A$ the classifier $f$ can predict and their effect on the <b>state</b> which keeps track of the prediction: $S_{t+1}=S_1(\alpha_1\ldots\alpha_t)$</p><p><img src="images/tikz/IncrementalStructure.png" style="align:center; width:70%"></p>
+<h3>Transition system</h3><p>The <b>actions</b> $\cal A$ the classifier $f$ can predict and their effect on the <b>state</b> which tracks the prediction: $S_{t+1}=S_1(\alpha_1\ldots\alpha_t)$</p><p><img src="images/tikz/IncrementalStructure.png" style="align:center; width:65%"></p>
 
 </div>
 </div>
@@ -12081,7 +12081,7 @@ but generate better (non-i.i.d.) training data</p>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <ul>
-<li><b>PoS/NER tagging?</b> <span class="fragment">for each word in the sentence, left-to-right, predict a PoS tag which is added to the output</span></li>
+<li><b>PoS/NER tagging?</b> <span class="fragment">for each word, left-to-right, predict a PoS tag which is added to the output</span></li>
 <li class="fragment"><b>NLG?</b> <span class="fragment">predict a word adding it to the output until the <code>EndOfSentence</code> is predicted</span></li>
 </ul>
 </div>
@@ -12125,7 +12125,7 @@ $$loss  = L(S_{final}, \mathbf{y}) \geq 0$$
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Action-goodness">Action goodness<a class="anchor-link" href="#Action-goodness">&#182;</a></h3><table style="font-size:80%; border-style: hidden; border-collapse: collapse; padding: 50px">
+<h3 id="Action-assessment">Action assessment<a class="anchor-link" href="#Action-assessment">&#182;</a></h3><table style="font-size:80%; border-style: hidden; border-collapse: collapse; padding: 50px">
 <thead>
 <tr>
 <th>I</th> 
@@ -12159,7 +12159,7 @@ $$loss  = L(S_{final}, \mathbf{y}) \geq 0$$
 </tbody>
 </table><p>How many incorrect PoS tags due to $\alpha_6$  being NNP? <span class="fragment" data-fragment-index="1"><b>0</b></span>
 </p>
-<p class="fragment" data-fragment-index="2"> How many $FP+FN$ due to $\alpha_6$ being B-PER? <span class="fragment" data-fragment-index="3"><b>Depends!</b> If $\alpha_7$ is</span>
+<p class="fragment" data-fragment-index="2"> How many $FP+FN$ due to $\alpha_6$ being B-PER? <span class="fragment" data-fragment-index="3"><br><b>Depends!</b> If $\alpha_7$ is</span>
 <ul class="fragment" data-fragment-index="3">
 <li>I-PER:  $0$ (correct)</li> 
 <li>O: $2$ (1FP+1FN)</li>
@@ -12174,10 +12174,11 @@ $$loss  = L(S_{final}, \mathbf{y}) \geq 0$$
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="More-action-goodness">More action goodness<a class="anchor-link" href="#More-action-goodness">&#182;</a></h3><p>Can we tell how predicting a word will change our BLEU?</p>
+<h3 id="More-action-assessment">More action assessment<a class="anchor-link" href="#More-action-assessment">&#182;</a></h3><p>Can we tell how predicting a word will change our BLEU?
 $$
 BLEU([\alpha_1...\alpha_T],\mathbf{y}) = \prod_{n=1}^N \frac{\# \text{n-grams} \in ([\alpha_1...\alpha_T] \cap \mathbf{y})}{\# \text{n-grams} \in [\alpha_1..\alpha_T]}
-$$
+$$</p>
+<p class="fragment" data-fragment-index="1"><b>No</b>! (assuming N>1)</p>
 </div>
 </div>
 </div><div class="fragment">
@@ -12186,18 +12187,8 @@ $$
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>No</strong>! (assuming N&gt;1)</p>
-
-</div>
-</div>
-</div></div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Non-decomposable</strong> losses wrt transition system are common!</p>
-<p>Imitation learning trains incremental models for these losses</p>
+<p>Imitation learning trains incremental models for such losses</p>
 
 </div>
 </div>
@@ -12207,7 +12198,7 @@ $$
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Affects joint models: loss does not always decompose over the graphical model (<a href="http://www.cs.toronto.edu/~dtarlow/tarlow_zemel_aistats12.pdf">Tarlow and Zemel, 2012</a>)</p>
+<p>Affects joint models too: loss does not always decompose over the graphical model (<a href="http://www.cs.toronto.edu/~dtarlow/tarlow_zemel_aistats12.pdf">Tarlow and Zemel, 2012</a>)</p>
 
 </div>
 </div>
@@ -12259,7 +12250,7 @@ $$\alpha^{\star}=\pi^{\star}(S_t, \mathbf{y}) = \mathop{\arg \min}_{\alpha \in {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><p style="float: left;">Only available for the training data<br> (it cheats!): a human teacher<br>demonstrating how to perform the task </p> <a href="http://www.salon.com/2016/10/06/what-makes-a-good-teacher-why-certifications-and-standards-dont-guarantee-quality-educators_partner/"><img src="images/english_teacher.jpg" style="width:25%; float: right;"></a></p>
+<p><p style="float: left;">Only available for the training data: an expert<br>demonstrating how to perform the task </p> <a href="http://www.salon.com/2016/10/06/what-makes-a-good-teacher-why-certifications-and-standards-dont-guarantee-quality-educators_partner/"><img src="images/english_teacher.jpg" style="width:20%; float: right;"></a></p>
 
 </div>
 </div>
@@ -12321,7 +12312,8 @@ $$\alpha^{\star}=\pi^{\star}(S_t, \mathbf{y}) = \mathop{\arg \min}_{\alpha \in {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Finding the optimal action can be expensive; can be sub-optimal</p>
+<p>Finding the optimal action can be expensive.</p>
+<p>IL can learn with sub-optimal experts!</p>
 
 </div>
 </div>
