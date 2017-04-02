@@ -11865,7 +11865,7 @@ a.anchor-link {
 </center>
 </div>
 </div>
-</div></section></section><section><section>
+</div></section><section>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -11914,11 +11914,11 @@ a.anchor-link {
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Are-the-roll-outs-working-as-intended?">Are the roll-outs working as intended?<a class="anchor-link" href="#Are-the-roll-outs-working-as-intended?">&#182;</a></h3><p>Ensure costs obtained through rollouts are sensible.</p>
 <ul>
-<li>Actions returned by optimal $\pi^{\star}$ should have a low cost.</li>
+<li>Actions returned by optimal $\pi^{\star}$ should have low cost.</li>
 <li>Equally optimal actions should be costed closely.</li>
 </ul>
 <center>
-<img src="images/determReachStatesScored.png" width="70%">
+<img src="images/determReachStatesScored.png" width="60%">
 </center>
 </div>
 </div>
@@ -11928,12 +11928,9 @@ a.anchor-link {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Is-Imitation-Learning-working?">Is Imitation Learning working?<a class="anchor-link" href="#Is-Imitation-Learning-working?">&#182;</a></h3><p>Examine the time-steps of training instances.</p>
-<ul>
-<li>Before and after application of IL.</li>
-</ul>
+<h3 id="Is-Imitation-Learning-working?">Is Imitation Learning working?<a class="anchor-link" href="#Is-Imitation-Learning-working?">&#182;</a></h3><p>Examine time-steps before and after application of IL.</p>
 <center>
-<img src="images/toBeAnimated/NLG_LOLS.png">
+<img src="images/toBeAnimated/NLG_LOLS.png" width="80%">
 </center>
 </div>
 </div>
@@ -12003,7 +12000,7 @@ a.anchor-link {
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Too many actions to rollout?</p>
 <ul>
-<li>Try targetted exploration.</li>
+<li>Try targeted exploration.</li>
 </ul>
 
 </div>
@@ -12044,10 +12041,10 @@ a.anchor-link {
 <ul><li>Static vs. dynamic vs. suboptimal policies.</li></ul>
 <br><br>
 <span class="fragment" data-fragment-index="2">Examined variations to exploration:</span>
-<ul><li class="fragment" data-fragment-index="2">Early termination, and targetted and partial exploration.</li></ul>
+<ul><li class="fragment" data-fragment-index="2">Early termination, and targeted and partial exploration.</li></ul>
 </div>
 </div>
-</div></section></section><section><section>
+</div></section><section>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -12056,7 +12053,7 @@ a.anchor-link {
 <p>Showed how we can reduce noise in the transition sequence.</p>
 <ul><li>$\alpha$-bound and focused costing.</li></ul>
 <br><br>
-<span class="fragment" data-fragment-index="2">Applied Imitation Learning on various NLP tasks.</span>
+<span class="fragment" data-fragment-index="2">Applying Imitation Learning on various NLP tasks.</span>
 <ul><li class="fragment" data-fragment-index="2">Transitions, loss functions, expert policies.</li>
 <li class="fragment" data-fragment-index="3">And improved on results!</li></ul>
 </div>
@@ -12069,20 +12066,36 @@ a.anchor-link {
 <div class="text_cell_render border-box-sizing rendered_html">
 <center>
 <h2>Thank you!</h2>
+<p style="text-align:center"><small><a href="http://sheffieldnlp.github.io/ImitationLearningTutorialEACL2017/">sheffieldnlp.github.io/ImitationLearningTutorialEACL2017/</a></small></p>
 </center>
 </div>
 </div>
-</div></section></section><section><section>
+</div></section><section>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Annotated-bibliography">Annotated bibliography<a class="anchor-link" href="#Annotated-bibliography">&#182;</a></h3><h4 id="PhD-theses">PhD theses<a class="anchor-link" href="#PhD-theses">&#182;</a></h4><ul>
-<li><a href="http://www.umiacs.umd.edu/~hal/docs/daume06thesis.pdf">Hal Daumé III, 2006</a>: Practical Structured Learning Techniques for Natural Language Processing</li>
-<li><a href="http://www.cs.cmu.edu/~sross1/publications/ross_phdthesis.pdf">Stéphane Ross, 2013</a>: Interactive Learning for Sequential Decisions and Predictions</li>
-<li><a href="http://www.cs.stanford.edu/~pabbeel/thesis/thesis.pdf">Pieter Abbeel, 2008</a>: Apprenticeship Learning and Reinforcement Learning with Application to Robotic Control</li>
-</ul>
+<h3 id="Available-code">Available code<a class="anchor-link" href="#Available-code">&#182;</a></h3><h4 id="Imitation-Learning">Imitation Learning<a class="anchor-link" href="#Imitation-Learning">&#182;</a></h4><p>V-DAgger (<a href="https://github.com/hopshackle/dagger-AMR">in Scala</a>) (<a href="https://github.com/sheffieldnlp/APEimitaion">in Python</a>)<br> 
+LOLS (<a href="https://github.com/glampouras/JLOLS_NLG">in Java</a>)
+<br><br></p>
+<h4 id="Applications">Applications<a class="anchor-link" href="#Applications">&#182;</a></h4><p>Dependency parsing (<a href="https://bitbucket.org/yoavgo/tacl2013dynamicoracles">in Python</a>)<br>
+Natural language generation (<a href="https://github.com/glampouras/JLOLS_NLG">in Java</a>)<br>
+Semantic parsing for AMR (<a href="https://github.com/hopshackle/dagger-AMR">in Scala</a>)
+<br><br></p>
+<h4 id="Cost-sensitive-multiclass-classification">Cost-sensitive multiclass classification<a class="anchor-link" href="#Cost-sensitive-multiclass-classification">&#182;</a></h4><p>Adaptive Regularization of Weights (<a href="https://github.com/andreasvlachos/arow_csc">in Python</a>) (<a href="https://github.com/glampouras/JLOLS_NLG">in Java</a>)</p>
+
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Annotated-bibliography">Annotated bibliography<a class="anchor-link" href="#Annotated-bibliography">&#182;</a></h3><h4 id="PhD-theses">PhD theses<a class="anchor-link" href="#PhD-theses">&#182;</a></h4><p><a href="http://www.umiacs.umd.edu/~hal/docs/daume06thesis.pdf">Hal Daumé III, 2006</a>: Practical Structured Learning Techniques for Natural Language Processing</p>
+<p><a href="http://www.cs.cmu.edu/~sross1/publications/ross_phdthesis.pdf">Stéphane Ross, 2013</a>: Interactive Learning for Sequential Decisions and Predictions</p>
+<p><a href="http://www.cs.stanford.edu/~pabbeel/thesis/thesis.pdf">Pieter Abbeel, 2008</a>: Apprenticeship Learning and Reinforcement Learning with Application to Robotic Control</p>
 
 </div>
 </div>
@@ -12096,7 +12109,7 @@ a.anchor-link {
 <p><a href="http://timvieira.github.io/doc/2016-tacl-pruning.pdf">Viera and Eisner, 2016</a>: Learning to Prune: Exploring the Frontier of Fast and Accurate Parsing <em>(LOLS with random expert=RL, changeprop)</em></p>
 <p><a href="http://www.aclweb.org/anthology/C12-1059">Goldberg and Nivre, 2012</a>: A Dynamic Oracle for Arc-Eager Dependency Parsing <em>(DAgger for dependency parsing)</em></p>
 <p><a href="https://arxiv.org/pdf/1603.03793.pdf">Ballesteros et al., 2016</a>: Training with Exploration Improves a Greedy Stack LSTM Parser <em>(DAgger for LSTM-based dependency parsing)</em></p>
-<p><a href="https://aclweb.org/anthology/C/C16/C16-1105.pdf">Lampouras and Vlachos 2016</a>: Imitation learning for language generation from unaligned data <em>(LoLS for natural language generation, sequence correction)</em>.</p>
+<p><a href="http://cs.stanford.edu/people/kevclark/resources/clark-manning-acl15-entity.pdf">Clark and Manning, 2015</a>: Entity-Centric Coreference Resolution with Model Stacking</p>
 
 </div>
 </div>
@@ -12106,11 +12119,12 @@ a.anchor-link {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="Papers">Papers<a class="anchor-link" href="#Papers">&#182;</a></h4><p><a href="http://aclweb.org/anthology/P16-1001">Goodman et al. 2016</a>: Noise reduction and targeted exploration in imitation learning for
+<h4 id="Papers">Papers<a class="anchor-link" href="#Papers">&#182;</a></h4><p><a href="https://aclweb.org/anthology/C/C16/C16-1105.pdf">Lampouras and Vlachos 2016</a>: Imitation learning for language generation from unaligned data <em>(LoLS for natural language generation, sequence correction)</em>.</p>
+<p><a href="http://aclweb.org/anthology/P16-1001">Goodman et al. 2016</a>: Noise reduction and targeted exploration in imitation learning for
 Abstract Meaning Representation parsing <em>(V-DAgger for semantic parsing, targeted exploration)</em>.</p>
 <p><a href="http://www.aclweb.org/anthology/W/W11/W11-0307.pdf">Vlachos and Craven, 2011</a>: Search-based Structured Prediction applied to Biomedical Event Extraction <em>(SEARN for biomedical event extraction, focused costing)</em></p>
+<p><a href="https://www.transacl.org/ojs/index.php/tacl/article/view/646/160">Berant and Liang, 2015</a>: Imitation Learning of Agenda-based Semantic Parsers</p>
 <p><a href="https://arxiv.org/pdf/1511.06732.pdf">Ranzato et al., 2016</a>: Sequence Level Training with Recurrent Neural Networks <em>(Imitation learning for RNNs, learns a cost estimator instead of using roll-outs)</em></p>
-<p><a href="http://hunch.net/~jl/projects/reductions/searn/searn.pdf">Daumé III et al., 2009</a>: Search-based structured prediction <em>(SEARN algorithm)</em></p>
 
 </div>
 </div>
@@ -12120,7 +12134,9 @@ Abstract Meaning Representation parsing <em>(V-DAgger for semantic parsing, targ
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="Papers">Papers<a class="anchor-link" href="#Papers">&#182;</a></h4><p><a href="https://arxiv.org/pdf/1502.02206.pdf">Chang et al., 2015</a>: Learning to search better than your teacher <em>(LoLS algorithm, connection with RL)</em></p>
+<h4 id="Papers">Papers<a class="anchor-link" href="#Papers">&#182;</a></h4><p><a href="http://hunch.net/~jl/projects/reductions/searn/searn.pdf">Daumé III et al., 2009</a>: Search-based structured prediction <em>(SEARN algorithm)</em></p>
+<p><a href="http://www.umiacs.umd.edu/~hal/docs/daume09unsearn.pdf">Daumé III, 2009</a>: Unsupervised Search-based Structured Prediction <em>(Unsupervised structured prediction with SEARN)</em></p>
+<p><a href="https://arxiv.org/pdf/1502.02206.pdf">Chang et al., 2015</a>: Learning to search better than your teacher <em>(LoLS algorithm, connection with RL)</em></p>
 <p><a href="https://arxiv.org/abs/1606.03476">Ho and Ermon, 2016</a>: Generative Adversarial Imitation Learning <em>(Connection with adversarial training)</em></p>
 <p><a href="https://papers.nips.cc/paper/4545-imitation-learning-by-coaching.pdf">He et al., 2012</a>: Imitation Learning by Coaching <em>(coaching for DAgger)</em></p>
 

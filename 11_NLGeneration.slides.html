@@ -11861,6 +11861,7 @@ a.anchor-link {
 <div class="text_cell_render border-box-sizing rendered_html">
 <center>
 <h2>Applying Imitation Learning on Natural Language Generation</h2>
+<h3>[Lampouras and Vlachos 2016](https://aclweb.org/anthology/C/C16/C16-1105.pdf)</h3>
 </center>
 </div>
 </div>
@@ -11900,8 +11901,7 @@ a.anchor-link {
         </p>
     </div>
 </div>
-</center><p><a href="https://aclweb.org/anthology/C/C16/C16-1105.pdf">Lampouras and Vlachos 2016</a> proposed using LoLS for NLG.</p>
-
+</center>
 </div>
 </div>
 </div></div></section><section>
@@ -11926,57 +11926,26 @@ a.anchor-link {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="NLG-formulation">NLG formulation<a class="anchor-link" href="#NLG-formulation">&#182;</a></h3><p style="border:3px; border-radius: 25px; background-color:lightgrey; border-style:solid; border-color:black; padding: 0.5em; font-size: 70%">
-\begin{align}
-& \textbf{Input:} \; \text{meaning representation} \; MR \; \text{with set of attributes} \; C, \; \\ 
-& \quad \quad \quad \text{word action dictionaries} \; D_c,\;\forall c \in C\\
-& \textbf{Output:} \; \text{action sequence} \; A \\
-& \; \\
-& 1 \;\;  \quad \mathbf{do} \\
-& 2 \;\;  \quad \quad \text{predict attribute} \; c ∈ C ∪ {END_{attr}} \\
-& 3 \;\;  \quad \quad \text{append} \; a_{c} \; \text{to} \; A_{c} \\
-& 4 \;\;  \quad \quad \text{remove} \; c \; \text{from} \; C \\
-& 5 \;\;  \quad \mathbf{while} \; ac ≠ END_{attr} \\
-& 6 \;\;  \quad \mathbf{for} \; a_{c} \; in \; A_{c} \; \mathbf{do} \\
-& 7 \;\;  \quad \quad \mathbf{do} \\
-& 8 \;\;  \quad \quad \quad \text{predict word} \; w ∈ D_{c} ∪ {END_{word}} \\
-& 9 \;\;  \quad \quad \quad \text{append} \;a_{w} \; \text{to} \; A_{w} \\
-& 10 \; \quad \quad \mathbf{while} \; a_{w} ≠ END_{word} \\
-& 11 \; \quad A = (A_{c}, A_{w}) \\
-\end{align}
-</p>
-</div>
-</div>
-</div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="NLG-transition-in-action!">NLG transition in action!<a class="anchor-link" href="#NLG-transition-in-action!">&#182;</a></h3><p><br></p>
-<p><center><h3><span style="font-variant: small-caps;"></span></h3>
+<p><center><h3><span style="font-variant: small-caps; color: white">...</span></h3>
 <img src="images/toBeAnimated/NLG_actionSeq_step1.png">
 </center>
 <br>
-<br>
-<small></p>
-<p><div>
-    <div style="display:inline-block;">
-        <p style="border:2px; border-radius: 15px; background-color:white; border-style:solid; border-color:black; padding: 0.5em; font-size: 80%; display: inline-block">
-        \begin{align}
-        & \text{Predicate: INFORM}\\
-        & \text{______________________}\\
-        & \text{name = X-name-1}\\
-        & \text{serves = food}\\
-        & \text{eattype = restaurant}\\
-        & \text{near = riverside}\\
-        & \text{area = X-area-1, X-area-2}
-        \end{align}
-        </p>
-    </div>
-&lt;/div&gt;
-&lt;/small&gt;</p>
-
+<br></p>
+<div style="display:inline-block;">
+<small>
+    <p style="border:2px; border-radius: 15px; background-color:white; border-style:solid; border-color:black; padding: 0.5em; font-size: 80%; display: inline-block">
+    \begin{align}
+    & \text{Predicate: INFORM}\\
+    & \text{______________________}\\
+    & \text{name = X-name-1}\\
+    & \text{serves = food}\\
+    & \text{eattype = restaurant}\\
+    & \text{near = riverside}\\
+    & \text{area = X-area-1, X-area-2}
+    \end{align}
+    </p>
+</small>
+</div>
 </div>
 </div>
 </div></section><section>
@@ -11985,29 +11954,26 @@ a.anchor-link {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="NLG-transition-in-action!">NLG transition in action!<a class="anchor-link" href="#NLG-transition-in-action!">&#182;</a></h3><p><center><h3><span style="font-variant: small-caps;">Content</span>: name</h3>
+<p><center><h3><span style="font-variant: small-caps;">Content</span>: name</h3>
 <img src="images/toBeAnimated/NLG_actionSeq_step2.png">
 </center>
 <br>
-<br>
-<small></p>
-<p><div>
-    <div style="display:inline-block;">
-        <p style="border:2px; border-radius: 15px; background-color:white; border-style:solid; border-color:black; padding: 0.5em; font-size: 80%; display: inline-block">
-        \begin{align}
-        & \text{Predicate: INFORM}\\
-        & \text{______________________}\\
-        & \color{red}{\textbf{name}} \text{ = X-name-1}\\
-        & \text{serves = food}\\
-        & \text{eattype = restaurant}\\
-        & \text{near = riverside}\\
-        & \text{area = X-area-1, X-area-2}
-        \end{align}
-        </p>
-    </div>
-&lt;/div&gt;
-&lt;/small&gt;</p>
-
+<br></p>
+<div style="display:inline-block;">
+<small>
+    <p style="border:2px; border-radius: 15px; background-color:white; border-style:solid; border-color:black; padding: 0.5em; font-size: 80%; display: inline-block">
+    \begin{align}
+    & \text{Predicate: INFORM}\\
+    & \text{______________________}\\
+    & \color{red}{\textbf{name}} \text{ = X-name-1}\\
+    & \text{serves = food}\\
+    & \text{eattype = restaurant}\\
+    & \text{near = riverside}\\
+    & \text{area = X-area-1, X-area-2}
+    \end{align}
+    </p>
+</small>
+</div>
 </div>
 </div>
 </div></section><section>
@@ -12016,14 +11982,13 @@ a.anchor-link {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="NLG-transition-in-action!">NLG transition in action!<a class="anchor-link" href="#NLG-transition-in-action!">&#182;</a></h3><p><center><h3><span style="font-variant: small-caps;">Content</span>: eattype</h3>
+<p><center><h3><span style="font-variant: small-caps;">Content</span>: eattype</h3>
 <img src="images/toBeAnimated/NLG_actionSeq_step3.png">
 </center>
 <br>
-<br>
-<small></p>
-<p><div>
-    <div style="display:inline-block;">
+<br></p>
+<div style="display:inline-block;">
+<small>
         <p style="border:2px; border-radius: 15px; background-color:white; border-style:solid; border-color:black; padding: 0.5em; font-size: 80%; display: inline-block">
         \begin{align}
         & \text{Predicate: INFORM}\\
@@ -12035,10 +12000,8 @@ a.anchor-link {
         & \text{area = X-area-1, X-area-2}
         \end{align}
         </p>
-    </div>
-&lt;/div&gt;
-&lt;/small&gt;</p>
-
+</small>
+</div>
 </div>
 </div>
 </div></section><section>
@@ -12047,14 +12010,13 @@ a.anchor-link {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="NLG-transition-in-action!">NLG transition in action!<a class="anchor-link" href="#NLG-transition-in-action!">&#182;</a></h3><p><center><h3><span style="font-variant: small-caps;"></span>and so on</h3>
+<p><center><h3><span style="font-variant: small-caps;"></span>and so on</h3>
 <img src="images/toBeAnimated/NLG_actionSeq_step4.png">
 </center>
 <br>
-<br>
-<small></p>
-<p><div>
-    <div style="display:inline-block;">
+<br></p>
+<div style="display:inline-block;">
+<small>
         <p style="border:2px; border-radius: 15px; background-color:white; border-style:solid; border-color:black; padding: 0.5em; font-size: 80%; display: inline-block">
         \begin{align}
         & \text{Predicate: INFORM}\\
@@ -12066,10 +12028,8 @@ a.anchor-link {
         & \color{red}{\textbf{area}}\text{ = X-area-1, X-area-2}
         \end{align}
         </p>
-    </div>
-&lt;/div&gt;
-&lt;/small&gt;</p>
-
+</small>
+</div>
 </div>
 </div>
 </div></section><section>
@@ -12078,14 +12038,13 @@ a.anchor-link {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="NLG-transition-in-action!">NLG transition in action!<a class="anchor-link" href="#NLG-transition-in-action!">&#182;</a></h3><p><center><h3><span style="font-variant: small-caps;">Word:</span> X-name-1</h3>
+<p><center><h3><span style="font-variant: small-caps;">Word:</span> X-name-1</h3>
 <img src="images/toBeAnimated/NLG_actionSeq_step5.png">
 </center>
 <br>
-<br>
-<small></p>
-<p><div>
-    <div style="display:inline-block;">
+<br></p>
+<div style="display:inline-block;">
+<small>
         <p style="border:2px; border-radius: 15px; background-color:white; border-style:solid; border-color:black; padding: 0.5em; font-size: 80%; display: inline-block">
         \begin{align}
         & \text{Predicate: INFORM}\\
@@ -12097,10 +12056,8 @@ a.anchor-link {
         & \color{red}{\textbf{area}}\text{ = X-area-1, X-area-2}
         \end{align}
         </p>
-    </div>
-&lt;/div&gt;
-&lt;/small&gt;</p>
-
+</small>
+</div>
 </div>
 </div>
 </div></section><section>
@@ -12109,14 +12066,13 @@ a.anchor-link {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="NLG-transition-in-action!">NLG transition in action!<a class="anchor-link" href="#NLG-transition-in-action!">&#182;</a></h3><p><center><h3><span style="font-variant: small-caps;">Word: EoS</span></h3>
+<p><center><h3><span style="font-variant: small-caps;">Word: EoS</span></h3>
 <img src="images/toBeAnimated/NLG_actionSeq_step6.png">
 </center>
 <br>
-<br>
-<small></p>
-<p><div>
-    <div style="display:inline-block;">
+<br></p>
+<div style="display:inline-block;">
+<small>
         <p style="border:2px; border-radius: 15px; background-color:white; border-style:solid; border-color:black; padding: 0.5em; font-size: 80%; display: inline-block">
         \begin{align}
         & \text{Predicate: INFORM}\\
@@ -12128,10 +12084,8 @@ a.anchor-link {
         & \color{red}{\textbf{area}}\text{ = X-area-1, X-area-2}
         \end{align}
         </p>
-    </div>
-&lt;/div&gt;
-&lt;/small&gt;</p>
-
+</small>
+</div>
 </div>
 </div>
 </div></section><section>
@@ -12140,14 +12094,13 @@ a.anchor-link {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="NLG-transition-in-action!">NLG transition in action!<a class="anchor-link" href="#NLG-transition-in-action!">&#182;</a></h3><p><center><h3><span style="font-variant: small-caps;">Word:</span> is</h3>
+<p><center><h3><span style="font-variant: small-caps;">Word:</span> is</h3>
 <img src="images/toBeAnimated/NLG_actionSeq_step7.png">
 </center>
 <br>
-<br>
-<small></p>
-<p><div>
-    <div style="display:inline-block;">
+<br></p>
+<div style="display:inline-block;">
+<small>
         <p style="border:2px; border-radius: 15px; background-color:white; border-style:solid; border-color:black; padding: 0.5em; font-size: 80%; display: inline-block">
         \begin{align}
         & \text{Predicate: INFORM}\\
@@ -12159,10 +12112,8 @@ a.anchor-link {
         & \color{red}{\textbf{area}}\text{ = X-area-1, X-area-2}
         \end{align}
         </p>
-    </div>
-&lt;/div&gt;
-&lt;/small&gt;</p>
-
+</small>
+</div>
 </div>
 </div>
 </div></section><section>
@@ -12171,14 +12122,13 @@ a.anchor-link {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="NLG-transition-in-action!">NLG transition in action!<a class="anchor-link" href="#NLG-transition-in-action!">&#182;</a></h3><p><center><h3><span style="font-variant: small-caps;">Word:</span> a</h3>
+<p><center><h3><span style="font-variant: small-caps;">Word:</span> a</h3>
 <img src="images/toBeAnimated/NLG_actionSeq_step8.png">
 </center>
 <br>
-<br>
-<small></p>
-<p><div>
-    <div style="display:inline-block;">
+<br></p>
+<div style="display:inline-block;">
+<small>
         <p style="border:2px; border-radius: 15px; background-color:white; border-style:solid; border-color:black; padding: 0.5em; font-size: 80%; display: inline-block">
         \begin{align}
         & \text{Predicate: INFORM}\\
@@ -12190,10 +12140,8 @@ a.anchor-link {
         & \color{red}{\textbf{area}}\text{ = X-area-1, X-area-2}
         \end{align}
         </p>
-    </div>
-&lt;/div&gt;
-&lt;/small&gt;</p>
-
+</small>
+</div>
 </div>
 </div>
 </div></section><section>
@@ -12202,14 +12150,13 @@ a.anchor-link {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="NLG-transition-in-action!">NLG transition in action!<a class="anchor-link" href="#NLG-transition-in-action!">&#182;</a></h3><p><center><h3><span style="font-variant: small-caps;">Word:</span> restaurant</h3>
+<p><center><h3><span style="font-variant: small-caps;">Word:</span> restaurant</h3>
 <img src="images/toBeAnimated/NLG_actionSeq_step9.png">
 </center>
 <br>
-<br>
-<small></p>
-<p><div>
-    <div style="display:inline-block;">
+<br></p>
+<div style="display:inline-block;">
+<small>
         <p style="border:2px; border-radius: 15px; background-color:white; border-style:solid; border-color:black; padding: 0.5em; font-size: 80%; display: inline-block">
         \begin{align}
         & \text{Predicate: INFORM}\\
@@ -12221,10 +12168,8 @@ a.anchor-link {
         & \color{red}{\textbf{area}}\text{ = X-area-1, X-area-2}
         \end{align}
         </p>
-    </div>
-&lt;/div&gt;
-&lt;/small&gt;</p>
-
+</small>
+</div>
 </div>
 </div>
 </div></section><section>
@@ -12233,14 +12178,13 @@ a.anchor-link {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="NLG-transition-in-action!">NLG transition in action!<a class="anchor-link" href="#NLG-transition-in-action!">&#182;</a></h3><p><center><h3><span style="font-variant: small-caps;">Word: EoS</span></h3>
+<p><center><h3><span style="font-variant: small-caps;">Word: EoS</span></h3>
 <img src="images/toBeAnimated/NLG_actionSeq_step10.png">
 </center>
 <br>
-<br>
-<small></p>
-<p><div>
-    <div style="display:inline-block;">
+<br></p>
+<div style="display:inline-block;">
+<small>
         <p style="border:2px; border-radius: 15px; background-color:white; border-style:solid; border-color:black; padding: 0.5em; font-size: 80%; display: inline-block">
         \begin{align}
         & \text{Predicate: INFORM}\\
@@ -12252,10 +12196,8 @@ a.anchor-link {
         & \color{red}{\textbf{area}}\text{ = X-area-1, X-area-2}
         \end{align}
         </p>
-    </div>
-&lt;/div&gt;
-&lt;/small&gt;</p>
-
+</small>
+</div>
 </div>
 </div>
 </div></section><section>
@@ -12264,14 +12206,13 @@ a.anchor-link {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="NLG-transition-in-action!">NLG transition in action!<a class="anchor-link" href="#NLG-transition-in-action!">&#182;</a></h3><p><center><h3><span style="font-variant: small-caps;"></span>and so on</h3>
+<p><center><h3><span style="font-variant: small-caps;"></span>and so on</h3>
 <img src="images/toBeAnimated/NLG_actionSeq1.png">
 </center>
 <br>
-<br>
-<small></p>
-<p><div>
-    <div style="display:inline-block;">
+<br></p>
+<div style="display:inline-block;">
+<small>
         <p style="border:2px; border-radius: 15px; background-color:white; border-style:solid; border-color:black; padding: 0.5em; font-size: 80%; display: inline-block">
         \begin{align}
         & \text{Predicate: INFORM}\\
@@ -12283,50 +12224,55 @@ a.anchor-link {
         & \color{red}{\textbf{area = X-area-1, X-area-2}}
         \end{align}
         </p>
-    </div>
-&lt;/div&gt;
-&lt;/small&gt;</p>
+</small>
+</div>
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Word actions are chosen based on content actions.<ul><li>Content actions precede word actions.</li><li class="fragment" data-fragment-index="5">The length of the transition sequence is variable.</li></ul></p>
 
 </div>
 </div>
-</div></section><section>
+</div><div class="fragment">
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Word actions are dependent on content actions.</p>
-<ul>
-<li>Content actions precede word actions.</li>
-<li class="fragment" data-fragment-index="1">Instead, alternate between content and word actions?</li>
-</ul>
-<br>
-<br>
-<span class="fragment" data-fragment-index="2">Different classifiers are required for content and word actions.</span>
-<ul><li class="fragment" data-fragment-index="3">Actually, a different word classifier per content action.</li>
-<li class="fragment" data-fragment-index="4">Doesn't affect imitation learning!</li>
-</ul>
-<br>
-<br>
-<span class="fragment" data-fragment-index="5">The length of the transition sequence is variable.</span>
-<ul><li class="fragment" data-fragment-index="5">Content limited by the meaning representation. </li>
-<li class="fragment" data-fragment-index="6">Words limited to gold standard observations.</li>
-</ul>
+<p><ul><li>Instead, alternate between content and word actions?</li></ul>
+<br></p>
+<center>
+<img src="images/NLG_altActionSeq.png">
+</center>
 </div>
 </div>
-</div></section><section>
+</div></div></section><section>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Loss-function?">Loss function?<a class="anchor-link" href="#Loss-function?">&#182;</a></h3><p><b>BLEU:</b> % of n-grams predicted present in the gold reference(s), i.e. $L=1-BLEU(s_{final}, \mathbf{y})$&lt;/span&gt;&lt;/li&gt;</p>
-$$
-BLEU([\alpha_1...\alpha_T],\mathbf{y}) = \prod_{n=1}^N \frac{\# \text{n-grams} \in ([\alpha_1...\alpha_T] \cap \mathbf{y})}{\# \text{n-grams} \in [\alpha_1..\alpha_T]}
-$$<p>Same as NLG's evaluation metric.</p>
-<ul>
-<li class="fragment" data-fragment-index="3"> Decomposable? <span class="fragment" data-fragment-index="4"><b>No!</b><br> Assuming N>1 and a word-by-word predictor.</span></li>
-</ul>
+<p><span>Different classifiers are required for content and word actions.</span><ul><li class="fragment" data-fragment-index="3">Actually, a different word classifier per content action.</li><li class="fragment" data-fragment-index="4">Doesn't affect imitation learning!</li></ul>
+<br>
+<br>
+<span class="fragment" data-fragment-index="5">Action space:</span><ul><li class="fragment" data-fragment-index="5">Content actions limited by the MR.</li><li class="fragment" data-fragment-index="6">Word actions limited to gold standard observations.</li></ul></p>
+
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Loss-function?">Loss function?<a class="anchor-link" href="#Loss-function?">&#182;</a></h3><p><b>BLEU:</b> % of n-grams predicted present in the gold standard,<br> i.e. $L=1-BLEU(s_{final}, \mathbf{y})$&lt;/span&gt;&lt;/li&gt;</p>
+<p>Same as NLG's evaluation metric.</p>
+
 </div>
 </div>
 </div></section><section>
@@ -12406,7 +12352,7 @@ $$<p>Same as NLG's evaluation metric.</p>
 </ul>
 </div>
 </div>
-</div></section><section>
+</div></section></section><section><section>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -12441,7 +12387,16 @@ $$<p>Same as NLG's evaluation metric.</p>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>If content actions:<ul><li class="fragment" data-fragment-index="2">which content actions to include,</li><li class="fragment" data-fragment-index="2">and in what order.</li></ul></p>
-<p><span class="fragment" data-fragment-index="3">Need alignments between MR and words in gold standard.</span><ul><li class="fragment" data-fragment-index="4">Loss requires no explicit supervision on alignments.</li><li class="fragment" data-fragment-index="5">Can employ heuristics on the gold standard!</li></ul></p>
+
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><span>Need alignments between MR and words in gold standard.</span><ul><li class="fragment" data-fragment-index="4">Loss requires no explicit supervision on alignments.</li><li class="fragment" data-fragment-index="5">Can employ heuristics on the gold standard!</li></ul></p>
 
 </div>
 </div>
@@ -12452,7 +12407,6 @@ $$<p>Same as NLG's evaluation metric.</p>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <center>
-<div>
     <div style="display:inline-block;">
         <p style="border:2px; border-radius: 15px; background-color:white; border-style:solid; border-color:black; padding: 0.5em; font-size: 80%; display: inline-block">
         \begin{align}
@@ -12470,11 +12424,10 @@ $$<p>Same as NLG's evaluation metric.</p>
         There are <font color="green"><u>182</u></font> <font color="blue"><u>hotels</u></font> if you <font color="red"><u>do not care</u></font> whether dogs are allowed.
         </p>
     </div>
-</div>
 </center>
 </div>
 </div>
-</div></div></section></section><section><section>
+</div></div></section><section>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -12484,7 +12437,6 @@ $$<p>Same as NLG's evaluation metric.</p>
 <p><ul><li>mistakes happen...</li></ul>
 <br></p>
 <center>
-<div>
     <div style="display:inline-block;">
         <p style="border:2px; border-radius: 15px; background-color:white; border-style:solid; border-color:black; padding: 0.5em; font-size: 80%; display: inline-block">
         \begin{align}
@@ -12502,7 +12454,6 @@ $$<p>Same as NLG's evaluation metric.</p>
         There are <font color="green"><u>182</u></font> <font color="blue"><u>hotels</u></font> if you are traveling without animals.
         </p>
     </div>
-</div>
 </center>
 </div>
 </div>
@@ -12525,22 +12476,22 @@ $$<p>Same as NLG's evaluation metric.</p>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3>Locally Optimal Learning to Search</h3><p style="border:3px; border-radius: 25px; background-color:lightgrey; border-style:solid; border-color:black; padding: 0.3em; font-size: 80%">
+<h3>Locally Optimal Learning to Search</h3><p style="border:3px; border-radius: 25px; background-color:lightgrey; border-style:solid; border-color:black; padding: 0.3em; font-size: 70%">
 \begin{align}
 & \textbf{Input:} \; D_{train} = \{(\mathbf{x}^1,\mathbf{y}^1)...(\mathbf{x}^M,\mathbf{y}^M)\}, \; expert\; \pi^{\star}, \; loss \; function \; L\\
 & \text{set} \; training\; examples\; \cal E = \emptyset\\
-& \color{blue}{\text{initialize a classifier } H_{0}}\\
+& \color{red}{\text{initialize a classifier } H_{0}}\\
 & \mathbf{for}\; i = 0 \;\mathbf{to} \; N\; \mathbf{do}\\
-& \quad \color{blue}{\text{set} \; rollin \; policy \; \pi^{in} = H_i}\\
-& \quad \color{blue}{\text{set} \; rollout \; policy \; \pi^{out} = mix(H_i,\pi^{\star})}\\
+& \quad \color{red}{\text{set} \; rollin \; policy \; \pi^{in} = H_i}\\
+& \quad \color{red}{\text{set} \; rollout \; policy \; \pi^{out} = mix(H_i,\pi^{\star})}\\
 & \quad \mathbf{for} \; (\mathbf{x},\mathbf{y}) \in D_{train} \; \mathbf{do}\\
 & \quad \quad \text{rollin to predict} \; \hat \alpha_1\dots\hat \alpha_T  = \pi^{in}(\mathbf{x},\mathbf{y})\\
 & \quad \quad \mathbf{for} \; \hat \alpha_t \in \hat \alpha_1\dots\hat \alpha_T \; \mathbf{do}\\
 & \quad \quad \quad \text{rollout to obtain costs}\; c \; \text{for all possible actions using}\; L\;  \\
 & \quad \quad \quad \text{extract features}\; f=\phi(\mathbf{x},S_{t-1}) \\
 & \quad \quad \quad \cal E = \cal E \cup (f,c)\\
-& \quad \color{blue}{\text{learn classifier} \; H_{i+1} \; \text{from}\; \cal E}\\
-& \color{blue}{H = \; \mathbf{avg}\{H_{0}\mathbf{\dots}H_{N}\}}\\
+& \quad \color{red}{\text{learn classifier} \; H_{i+1} \; \text{from}\; \cal E}\\
+& \color{red}{H = \; \mathbf{avg}\{H_{0}\mathbf{\dots}H_{N}\}}\\
 \end{align}
 </p>
 </div>
@@ -12551,14 +12502,13 @@ $$<p>Same as NLG's evaluation metric.</p>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="LOLS-in-action!">LOLS in action!<a class="anchor-link" href="#LOLS-in-action!">&#182;</a></h3><p><center>
+<h3 id="Performing-the-rollin">Performing the rollin<a class="anchor-link" href="#Performing-the-rollin">&#182;</a></h3><p><center>
 <img src="images/toBeAnimated/NLG_LOLS_1.png">
 </center>
 <br>
-<br>
-<small></p>
-<p><div>
-    <div style="display:inline-block;">
+<br></p>
+<div style="display:inline-block;">
+<small>
         <p style="border:2px; border-radius: 15px; background-color:white; border-style:solid; border-color:black; padding: 0.5em; font-size: 80%; display: inline-block">
         \begin{align}
         & \text{Predicate: INFORM}\\
@@ -12568,10 +12518,8 @@ $$<p>Same as NLG's evaluation metric.</p>
         & \text{food = chinese}
         \end{align}
         </p>
-    </div>
-&lt;/div&gt;
-&lt;/small&gt;</p>
-
+</small>
+</div>
 </div>
 </div>
 </div></section><section>
@@ -12580,14 +12528,13 @@ $$<p>Same as NLG's evaluation metric.</p>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="LOLS-in-action!">LOLS in action!<a class="anchor-link" href="#LOLS-in-action!">&#182;</a></h3><p><center>
+<h3 id="Performing-the-rollin">Performing the rollin<a class="anchor-link" href="#Performing-the-rollin">&#182;</a></h3><p><center>
 <img src="images/toBeAnimated/NLG_LOLS_2.png">
 </center>
 <br>
 <br>
-<small></p>
-<p><div>
     <div style="display:inline-block;">
+<small>
         <p style="border:2px; border-radius: 15px; background-color:white; border-style:solid; border-color:black; padding: 0.5em; font-size: 80%; display: inline-block">
         \begin{align}
         & \text{Predicate: INFORM}\\
@@ -12597,9 +12544,8 @@ $$<p>Same as NLG's evaluation metric.</p>
         & \text{food = chinese}
         \end{align}
         </p>
-    </div>
-&lt;/div&gt;
-&lt;/small&gt;</p>
+</small>
+</div></p>
 
 </div>
 </div>
@@ -12609,14 +12555,66 @@ $$<p>Same as NLG's evaluation metric.</p>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="LOLS-in-action!">LOLS in action!<a class="anchor-link" href="#LOLS-in-action!">&#182;</a></h3><p><center>
+<h3 id="Explore-actions">Explore actions<a class="anchor-link" href="#Explore-actions">&#182;</a></h3><p><center>
+<img src="images/toBeAnimated/NLG_LOLS_explore1.png">
+</center>
+<br>
+<br></p>
+<div style="display:inline-block;">
+<small>
+        <p style="border:2px; border-radius: 15px; background-color:white; border-style:solid; border-color:black; padding: 0.5em; font-size: 80%; display: inline-block">
+        \begin{align}
+        & \text{Predicate: INFORM}\\
+        & \text{______________________}\\
+        & \text{name = X-name-1}\\
+        & \text{eattype = restaurant}\\
+        & \text{food = chinese}
+        \end{align}
+        </p>
+</small>
+</div>
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Explore-actions">Explore actions<a class="anchor-link" href="#Explore-actions">&#182;</a></h3><p><center>
+<img src="images/toBeAnimated/NLG_LOLS_explore2.png">
+</center>
+<br>
+<br>
+    <div style="display:inline-block;">
+<small>
+        <p style="border:2px; border-radius: 15px; background-color:white; border-style:solid; border-color:black; padding: 0.5em; font-size: 80%; display: inline-block">
+        \begin{align}
+        & \text{Predicate: INFORM}\\
+        & \text{______________________}\\
+        & \text{name = X-name-1}\\
+        & \text{eattype = restaurant}\\
+        & \text{food = chinese}
+        \end{align}
+        </p>
+</small>
+</div></p>
+
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Performing-the-rollout">Performing the rollout<a class="anchor-link" href="#Performing-the-rollout">&#182;</a></h3><p><center>
 <img src="images/toBeAnimated/NLG_LOLS_3.png">
 </center>
 <br>
-<br>
-<small></p>
-<p><div>
-    <div style="display:inline-block;">
+<br></p>
+<div style="display:inline-block;">
+<small>
         <p style="border:2px; border-radius: 15px; background-color:white; border-style:solid; border-color:black; padding: 0.5em; font-size: 80%; display: inline-block">
         \begin{align}
         & \text{Predicate: INFORM}\\
@@ -12626,10 +12624,8 @@ $$<p>Same as NLG's evaluation metric.</p>
         & \text{food = chinese}
         \end{align}
         </p>
-    </div>
-&lt;/div&gt;
-&lt;/small&gt;</p>
-
+</small>
+</div>
 </div>
 </div>
 </div></section><section>
@@ -12638,14 +12634,13 @@ $$<p>Same as NLG's evaluation metric.</p>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="LOLS-in-action!">LOLS in action!<a class="anchor-link" href="#LOLS-in-action!">&#182;</a></h3><p><center>
+<h3 id="Performing-the-rollout">Performing the rollout<a class="anchor-link" href="#Performing-the-rollout">&#182;</a></h3><p><center>
 <img src="images/toBeAnimated/NLG_LOLS_4.png">
 </center>
 <br>
-<br>
-<small></p>
-<p><div>
-    <div style="display:inline-block;">
+<br></p>
+<div style="display:inline-block;">
+<small>
         <p style="border:2px; border-radius: 15px; background-color:white; border-style:solid; border-color:black; padding: 0.5em; font-size: 80%; display: inline-block">
         \begin{align}
         & \text{Predicate: INFORM}\\
@@ -12655,10 +12650,8 @@ $$<p>Same as NLG's evaluation metric.</p>
         & \text{food = chinese}
         \end{align}
         </p>
-    </div>
-&lt;/div&gt;
-&lt;/small&gt;</p>
-
+</small>
+</div>
 </div>
 </div>
 </div></section><section>
@@ -12667,14 +12660,13 @@ $$<p>Same as NLG's evaluation metric.</p>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="LOLS-in-action!">LOLS in action!<a class="anchor-link" href="#LOLS-in-action!">&#182;</a></h3><p><center>
+<h3 id="Performing-the-rollout">Performing the rollout<a class="anchor-link" href="#Performing-the-rollout">&#182;</a></h3><p><center>
 <img src="images/toBeAnimated/NLG_LOLS_5.png">
 </center>
 <br>
-<br>
-<small></p>
-<p><div>
-    <div style="display:inline-block;">
+<br></p>
+<div style="display:inline-block;">
+<small>
         <p style="border:2px; border-radius: 15px; background-color:white; border-style:solid; border-color:black; padding: 0.5em; font-size: 80%; display: inline-block">
         \begin{align}
         & \text{Predicate: INFORM}\\
@@ -12684,10 +12676,8 @@ $$<p>Same as NLG's evaluation metric.</p>
         & \text{food = chinese}
         \end{align}
         </p>
-    </div>
-&lt;/div&gt;
-&lt;/small&gt;</p>
-
+</small>
+</div>
 </div>
 </div>
 </div></section><section>
@@ -12696,14 +12686,13 @@ $$<p>Same as NLG's evaluation metric.</p>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="LOLS-in-action!">LOLS in action!<a class="anchor-link" href="#LOLS-in-action!">&#182;</a></h3><p><center>
+<h3 id="Performing-the-rollout">Performing the rollout<a class="anchor-link" href="#Performing-the-rollout">&#182;</a></h3><p><center>
 <img src="images/toBeAnimated/NLG_LOLS.png">
 </center>
 <br>
-<br>
-<small></p>
-<p><div>
-    <div style="display:inline-block;">
+<br></p>
+<div style="display:inline-block;">
+<small>
         <p style="border:2px; border-radius: 15px; background-color:white; border-style:solid; border-color:black; padding: 0.5em; font-size: 80%; display: inline-block">
         \begin{align}
         & \text{Predicate: INFORM}\\
@@ -12713,49 +12702,19 @@ $$<p>Same as NLG's evaluation metric.</p>
         & \text{food = chinese}
         \end{align}
         </p>
-    </div>
-&lt;/div&gt;
-&lt;/small&gt;</p>
-
+</small>
 </div>
 </div>
-</div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
 </div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h3>Locally Optimal Learning to Search</h3><p style="border:3px; border-radius: 25px; background-color:lightgrey; border-style:solid; border-color:black; padding: 0.3em; font-size: 80%">
-\begin{align}
-& \textbf{Input:} \; D_{train} = \{(\mathbf{x}^1,\mathbf{y}^1)...(\mathbf{x}^M,\mathbf{y}^M)\}, \; expert\; \pi^{\star}, \; loss \; function \; L\\
-& \quad \quad \quad \color{blue}{learning\; rate\; p}\\
-& \text{set} \; training\; examples\; \cal E = \emptyset\\
-& \text{initialize a policy } H_{0}\\
-& \mathbf{for}\; i = 0 \;\mathbf{to} \; N\; \mathbf{do}\\
-& \quad \color{blue}{\beta = (1 - p)^i}\\
-& \quad \text{set} \; rollin \; policy \; \pi^{in} = H_i\\
-& \quad \text{set} \; rollout \; policy \; \pi^{out} = mix(H,\pi^{\star})\\
-& \quad \mathbf{for} \; (\mathbf{x},\mathbf{y}) \in D_{train} \; \mathbf{do}\\
-& \quad \quad \text{rollin to predict} \; \hat \alpha_1\dots\hat \alpha_T  = \pi^{in}(\mathbf{x},\mathbf{y})\\
-& \quad \quad \mathbf{for} \; \hat \alpha_t \in \hat \alpha_1\dots\hat \alpha_T \; \mathbf{do}\\
-& \quad \quad \quad \text{rollout to obtain costs}\; c \; \text{for all possible actions using}\; L\;  \\
-& \quad \quad \quad \text{extract features}\; f=\phi(\mathbf{x},S_{t-1}) \\
-& \quad \quad \quad \cal E = \cal E \cup (f,c)\\
-& \quad \text{learn classifier} \; H_{i+1} \; \text{from}\; \cal E\\
-& H = \; \mathbf{avg}\{H_{0}\mathbf{\dots}H_{N}\}\\
-\end{align}
-</p>
-</div>
-</div>
-</div></section><section>
+</div></section></section><section><section>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="LOLS-modifications">LOLS modifications<a class="anchor-link" href="#LOLS-modifications">&#182;</a></h3><p><b>Exponential decay schedule</b><br>
-Introduced in SEARN (<a href="http://hunch.net/~jl/projects/reductions/searn/searn.pdf">Daumé III et al., 2009</a>)<ul><li class="fragment" data-fragment-index="4">Gradual distance from the (suboptimal) expert policy.</li><li class="fragment" data-fragment-index="5">The costs are adjusted to the classifiers' predictions, thus teaching them to predict actions jointly.</li></ul></p>
-
+Introduced in SEARN (<a href="http://hunch.net/~jl/projects/reductions/searn/searn.pdf">Daumé III et al., 2009</a>)<center>$\beta = (1 - p)^i$</center></p>
+<ul><li class="fragment" data-fragment-index="4">Gradual move away from the (suboptimal) expert.</li><li class="fragment" data-fragment-index="5">The costs are adjusted to the classifiers' predictions, thus teaching them to predict actions jointly.</li></ul>
 </div>
 </div>
 </div></section><section>
@@ -12787,24 +12746,31 @@ Introduced in SEARN (<a href="http://hunch.net/~jl/projects/reductions/searn/sea
 
 </div>
 </div>
-</div></div></section></section><section><section>
+</div></div></section><section>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Sequence-correction">Sequence correction<a class="anchor-link" href="#Sequence-correction">&#182;</a></h3><p>Rollin with the classifiers, exposes them to their own actions.</p>
-<ul>
-<li>But may cause noise in feature vectors, for tasks that are context-dependent.</li>
-</ul>
-<p><center>
+<h3 id="Rollin-noise">Rollin noise<a class="anchor-link" href="#Rollin-noise">&#182;</a></h3><p>Rollin with the classifiers: <ul><li>exposes them to their own actions,</li><li>learn to recover from errors.</li></ul>
+<br><br>
+<span class="fragment" data-fragment-index="4">But may cause noise in feature vectors of latter time-steps.</span></p>
+<ul><li class="fragment" data-fragment-index="4">Especially, for tasks that are context-dependent.</li></ul>
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Sequence-correction">Sequence correction<a class="anchor-link" href="#Sequence-correction">&#182;</a></h3><p><center>
 <img src="images/seqCorrection3.png" width="70%">
 </center>
 <br>
-<br>
-<small></p>
-<p><div>
-    <div style="display:inline-block;">
+<br></p>
+<div style="display:inline-block;">
+<small>
         <p style="border:2px; border-radius: 15px; background-color:white; border-style:solid; border-color:black; padding: 0.5em; font-size: 80%; display: inline-block">
         \begin{align}
         & \text{Predicate: INFORM}\\
@@ -12813,30 +12779,23 @@ Introduced in SEARN (<a href="http://hunch.net/~jl/projects/reductions/searn/sea
         & \text{dogs_allowed = yes}
         \end{align}
         </p>
-    </div>
-&lt;/div&gt;
-&lt;/small&gt;</p>
-
+</small>
 </div>
 </div>
-</div></section></section><section><section>
+</div>
+</div></section><section>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Sequence-correction">Sequence correction<a class="anchor-link" href="#Sequence-correction">&#182;</a></h3><p>Rollin with the classifiers, exposes them to their own actions.</p>
-<ul>
-<li>But may cause noise in feature vectors, for tasks that are context-dependent.</li>
-</ul>
-<p><center>
+<h3 id="Sequence-correction">Sequence correction<a class="anchor-link" href="#Sequence-correction">&#182;</a></h3><p><center>
 <img src="images/seqCorrection4.png" width="70%">
 </center>
 <br>
-<br>
-<small></p>
-<p><div>
-    <div style="display:inline-block;">
+<br></p>
+<div style="display:inline-block;">
+<small>
         <p style="border:2px; border-radius: 15px; background-color:white; border-style:solid; border-color:black; padding: 0.5em; font-size: 80%; display: inline-block">
         \begin{align}
         & \text{Predicate: INFORM}\\
@@ -12845,30 +12804,23 @@ Introduced in SEARN (<a href="http://hunch.net/~jl/projects/reductions/searn/sea
         & \text{dogs_allowed = yes}
         \end{align}
         </p>
-    </div>
-&lt;/div&gt;
-&lt;/small&gt;</p>
-
+</small>
 </div>
 </div>
-</div></section></section><section><section>
+</div>
+</div></section><section>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Sequence-correction">Sequence correction<a class="anchor-link" href="#Sequence-correction">&#182;</a></h3><p>Rollin with the classifiers, exposes them to their own actions.</p>
-<ul>
-<li>But may cause noise in feature vectors, for tasks that are context-dependent.</li>
-</ul>
-<p><center>
+<h3 id="Sequence-correction">Sequence correction<a class="anchor-link" href="#Sequence-correction">&#182;</a></h3><p><center>
 <img src="images/seqCorrection5.png" width="70%">
 </center>
 <br>
-<br>
-<small></p>
-<p><div>
-    <div style="display:inline-block;">
+<br></p>
+<div style="display:inline-block;">
+<small>
         <p style="border:2px; border-radius: 15px; background-color:white; border-style:solid; border-color:black; padding: 0.5em; font-size: 80%; display: inline-block">
         \begin{align}
         & \text{Predicate: INFORM}\\
@@ -12877,10 +12829,8 @@ Introduced in SEARN (<a href="http://hunch.net/~jl/projects/reductions/searn/sea
         & \text{dogs_allowed = yes}
         \end{align}
         </p>
-    </div>
-&lt;/div&gt;
-&lt;/small&gt;</p>
-
+</small>
+</div>
 </div>
 </div>
 </div></section><section>
@@ -12891,7 +12841,8 @@ Introduced in SEARN (<a href="http://hunch.net/~jl/projects/reductions/searn/sea
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>After a suboptimal action, we apply <b>sequence correction</b>:</p>
 <ul>
-<li>We correct all the already explored time-steps using $\pi^{\star}$.
+<li>Correct all already explored time-steps using $\pi^{\star}$.
+<br>
 <br>
 <br>
 <br>
@@ -12912,8 +12863,9 @@ Introduced in SEARN (<a href="http://hunch.net/~jl/projects/reductions/searn/sea
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>After a suboptimal action, we apply <b>sequence correction</b>:</p>
 <ul>
-<li>We correct all the already explored time-steps using $\pi^{\star}$.</li>
+<li>Correct all already explored time-steps using $\pi^{\star}$.</li>
 <li>And re-rollin the rest of the sequence using $H$.
+<br>
 <br>
 <br>
 <center>
@@ -12933,8 +12885,9 @@ Introduced in SEARN (<a href="http://hunch.net/~jl/projects/reductions/searn/sea
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>After a suboptimal action, we apply <b>sequence correction</b>:</p>
 <ul>
-<li>We correct all the already explored time-steps using $\pi^{\star}$.</li>
-<li>And re-rollin the rest of the sequence using $H$.
+<li>Correct all already explored time-steps using $\pi^{\star}$.</li>
+<li>And re-rollin the rest of the sequence using $H$.</li>
+<li>i.e. expose classifier to its actions again.
 <br>
 <br><center>
 <img src="images/seqCorrection2.png" width="70%">
@@ -12957,17 +12910,29 @@ Introduced in SEARN (<a href="http://hunch.net/~jl/projects/reductions/searn/sea
 
 </div>
 </div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="NLG-dev-results[Lampouras-and-Vlachos-2016](https://aclweb.org/anthology/C/C16/C16-1105.pdf)">NLG dev results<h5>[Lampouras and Vlachos 2016](https://aclweb.org/anthology/C/C16/C16-1105.pdf)</h5><a class="anchor-link" href="#NLG-dev-results[Lampouras-and-Vlachos-2016](https://aclweb.org/anthology/C/C16/C16-1105.pdf)">&#182;</a></h3><p><br></p>
+<center>
+<img src="images/seqCorrectResults.png" style="width:30%; float: left; transform: translateY(60%);">
+<br>
+<img src="images/NLG_policyResults.jpg" style="width:60%; float: right;" class="fragment" data-fragment-index="4">
+</center>
+</div>
+</div>
 </div></section><section>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="NLG-results">NLG results<a class="anchor-link" href="#NLG-results">&#182;</a></h3><p><br></p>
+<h3 id="Comparison-against-state-of-the-art[Lampouras-and-Vlachos-2016](https://aclweb.org/anthology/C/C16/C16-1105.pdf)">Comparison against state of the art<h5>[Lampouras and Vlachos 2016](https://aclweb.org/anthology/C/C16/C16-1105.pdf)</h5><a class="anchor-link" href="#Comparison-against-state-of-the-art[Lampouras-and-Vlachos-2016](https://aclweb.org/anthology/C/C16/C16-1105.pdf)">&#182;</a></h3><p><br></p>
 <center>
-<img src="images/NLG_policyResults.jpg" style="width:60%; float: left;">
-<br>
-<img src="images/seqCorrectResults.png" style="width:30%; float: right;">
+<img src="images/NLGResults.png">
 </center>
 </div>
 </div>
